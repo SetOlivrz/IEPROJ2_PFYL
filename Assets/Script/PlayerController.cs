@@ -7,13 +7,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
 
+    public Inventory inventory;
+
     bool mforward;
     bool mback;
     bool mleft;
     bool mright;
     [SerializeField] Animator animator;
 
-
+    
 
     private Vector2 moveInput;
     // Start is called before the first frame update
@@ -71,6 +73,30 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("front", false);
         animator.SetBool("left", false);
         animator.SetBool("right", false);
+    }
+
+    /*private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("Collided");
+        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
+        if(item != null)
+        {
+            Debug.Log("Entered");
+            inventory.AddItem(item);
+        }
+        Debug.Log("Exited");
+    }*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided");
+        IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();
+        if (item != null)
+        {
+            Debug.Log("Entered");
+            inventory.AddItem(item);
+        }
+        Debug.Log("Exited");
     }
 }
 
