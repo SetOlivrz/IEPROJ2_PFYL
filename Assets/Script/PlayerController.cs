@@ -75,28 +75,13 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("right", false);
     }
 
-    /*private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Debug.Log("Collided");
-        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
-        if(item != null)
-        {
-            Debug.Log("Entered");
-            inventory.AddItem(item);
-        }
-        Debug.Log("Exited");
-    }*/
-
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
         IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();
         if (item != null)
         {
-            Debug.Log("Entered");
             inventory.AddItem(item);
         }
-        Debug.Log("Exited");
     }
 }
 

@@ -29,6 +29,7 @@ public class HUD : MonoBehaviour
                 image.sprite = e.Item.Image;
 
                 //Stores a reference to the item
+                Debug.Log(e.Item);
                 itemDragHandler.Item = e.Item;
                 break;
             }
