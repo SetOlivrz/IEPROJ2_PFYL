@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
 
     private List<IInventoryItem> mItems = new List<IInventoryItem>();
     public event EventHandler<InventoryEventArgs> ItemAdded;
-
+    public event EventHandler<InventoryEventArgs> ItemRemoved;
     public void AddItem(IInventoryItem item)
     {
         if(mItems.Count < slots)
@@ -25,6 +25,26 @@ public class Inventory : MonoBehaviour
                 {
                     ItemAdded(this, new InventoryEventArgs(item));
                 }
+            }
+        }
+    }
+
+    public void RemoveItem(IInventoryItem item)
+    {
+        if (mItems.Contains(item))
+        {
+            Debug.Log("Dropping");
+            mItems.Remove(item);
+            item.onDrop();
+
+            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+            if(collider != null)
+            {
+                collider.enabled = true;
+            }
+            if(ItemRemoved != null)
+            {
+                ItemRemoved(this, new InventoryEventArgs(item));
             }
         }
     }
