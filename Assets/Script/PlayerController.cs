@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
         {
             ResetBool();
             animator.SetBool("front", true);
-
         }
     }
 
