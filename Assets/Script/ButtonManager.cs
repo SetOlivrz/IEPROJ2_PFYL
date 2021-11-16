@@ -34,8 +34,11 @@ public class ButtonManager : MonoBehaviour
             this.newGamePopup.SetActive(false);
         }
     }
+
     public void ExitGameConfirmation()
     {
+        Debug.Log("Exit");
+
         if (this.exitPopup.activeInHierarchy == false)
         {
             this.blackPanel.SetActive(true);
