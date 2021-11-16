@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ItemClickHandler : MonoBehaviour
 {
+    public Inventory inventory;
     public void OnItemClicked()
     {
         ItemDragHandler dragHandler = gameObject.transform.Find("Image").GetComponent<ItemDragHandler>();
 
         IInventoryItem item = dragHandler.Item;
 
-        item.OnUse();
+        //inventory.UseItem(item);
+
+        //item.OnUse();
     }
 }

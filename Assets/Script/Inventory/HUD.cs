@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public Inventory inventory;
+    //public GameObject message;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,4 +56,13 @@ public class HUD : MonoBehaviour
             }
         }
     }
+
+/*    public void OpenMessagePanel(string text)
+    {
+        message.SetActive(true);
+    }
+    public void CloseMessagePanel(string text)
+    {
+        message.SetActive(false);
+    }*/
 }

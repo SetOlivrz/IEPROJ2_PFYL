@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
 
     public Inventory inventory;
-
     bool mforward;
     bool mback;
     bool mleft;
@@ -21,7 +20,15 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //inventory.ItemUsed += Inventory_ItemUsed;
+    }
+
+    private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
+    {
+        IInventoryItem item = e.Item;
+
+        //Do something
+
     }
 
     // Update is called once per frame
