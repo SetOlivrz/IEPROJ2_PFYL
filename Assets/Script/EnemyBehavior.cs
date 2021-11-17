@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBehavior : MonoBehaviour
 {
     //Target
     protected Transform player;
+    private bool reachedPlayer = false;
 
     //Enemy Stats
+    [SerializeField] private string enemyName;
     [SerializeField] private float speed = 2f;
     public float health = 50.0f;
     public float damage = 20.0f;
@@ -26,6 +31,9 @@ public class EnemyBehavior : MonoBehaviour
     private float ticks = 0.0f;
     private float ATTACK_INTERVAL = 3.0f;
 
+    //Drops Copy
+    [SerializeField] private GameObject drop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +45,12 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        UpdateSprite();
+        if (!reachedPlayer)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+            if (this.enemyName == "Normal Golem") UpdateSprite();
+        }
     }
 
     void UpdateSprite()
@@ -76,7 +88,7 @@ public class EnemyBehavior : MonoBehaviour
         this.health -= damage;
     }
 
-    private void OnTriggerStay(Collider collider)
+    private void OnCollisionStay(Collision collider)
     {
         if (collider.gameObject.tag == "Player")
         {
@@ -88,5 +100,28 @@ public class EnemyBehavior : MonoBehaviour
                 Debug.Log("Attack!");
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            reachedPlayer = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            reachedPlayer = false;
+        }
+    }
+
+    public void OnKill()
+    {
+        //dropItem = true;
+        Instantiate(drop, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 }

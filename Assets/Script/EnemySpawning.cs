@@ -7,6 +7,12 @@ public class EnemySpawning : MonoBehaviour
     //Enemy Copies
     [SerializeField] private GameObject golemCopy;
 
+    //Boss Copies
+    [SerializeField] private GameObject bossGolemCopy;
+
+    //Weaker Copies
+    [SerializeField] private GameObject weakerGolemCopy;
+
     //Enemy List
     [SerializeField] public List<GameObject> enemyList;
     [SerializeField] private List<GameObject> enemyCopies;
@@ -21,9 +27,9 @@ public class EnemySpawning : MonoBehaviour
 
     //Wave
     private int total = 0; //Total enemies per wave
-    private int currentWave = 0; //Current wave #
-    private int waveMaxCount = 2; //Max number of waves per day or level
-    private int waveMaxEnemies = 5; //Max possible number of enemies per wave
+    public static int currentWave = 0; //Current wave #
+    private int waveMaxCount = 3; //Max number of waves per day or level
+    private int waveMaxEnemies = 2; //Max possible number of enemies per wave
     private bool releaseWave = false; 
     private bool isCleared = true;
 
@@ -37,6 +43,8 @@ public class EnemySpawning : MonoBehaviour
     private void Awake()
     {
         this.golemCopy.SetActive(false);
+        this.bossGolemCopy.SetActive(false);
+        this.weakerGolemCopy.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +54,11 @@ public class EnemySpawning : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             start = true;
+        }
+
+        if (currentWave >= waveMaxCount)
+        {
+            ResetAll();
         }
 
         //Prepare new wave
@@ -60,7 +73,8 @@ public class EnemySpawning : MonoBehaviour
             for (int i = 0; i < enemyList.Count; i++)
             {
                 enemyList[i].SetActive(false);
-                Destroy(enemyList[i]);
+                //Destroy(enemyList[i]);
+                enemyList[i].GetComponent<EnemyBehavior>().OnKill();
             }
             enemyList.Clear();
 
@@ -68,18 +82,28 @@ public class EnemySpawning : MonoBehaviour
             currentWave++;
 
             start = false;
+
+            if(currentWave >= waveMaxCount)
+            TimeBehavior.stageClear = true;
         }
     }
 
     void GenerateNewWave()
     {
-        if (currentWave < waveMaxCount && isCleared /*&& !TimeBehavior.isDaytime*/)
+        if (currentWave < waveMaxCount && isCleared && !TimeBehavior.isDaytime)
         {
-            total = Random.Range(2, waveMaxEnemies + 1);
+            total = Random.Range(5, waveMaxEnemies + 1);
             isCleared = false;
             releaseWave = true;
 
             Debug.Log(currentWave + 1 + " " + waveMaxCount);
+
+            if(currentWave == 1 && TimeBehavior.day == 2) SpawnEnemy(bossGolemCopy);
+
+            if (currentWave > 1 && TimeBehavior.day == 2)
+            {
+                enemyCopies.Add(weakerGolemCopy);
+            }
         }
     }
 
@@ -94,11 +118,7 @@ public class EnemySpawning : MonoBehaviour
                 this.ticks = 0.0f;
                 this.SPAWN_INTERVAL = Random.Range(5.0f, 10.0f);
 
-                GameObject enemyCopy = enemyCopies[Random.Range(0, enemyCopies.Count)];
-                Vector3 newLocation = this.spawnLocations[Random.Range(0, spawnLocations.Length)].transform.position;
-                enemyCopy = ObjectUtils.SpawnDefault(golemCopy, this.transform.parent, newLocation);
-                enemyCopy.SetActive(true);
-                enemyList.Add(enemyCopy);
+                SpawnEnemy(enemyCopies[Random.Range(0, enemyCopies.Count)]);
             }
         }
 
@@ -106,6 +126,31 @@ public class EnemySpawning : MonoBehaviour
         {
             releaseWave = false;
         }
+    }
+
+    void SpawnEnemy(GameObject toCopy)
+    {
+        GameObject enemyCopy = toCopy;
+        Vector3 newLocation = this.spawnLocations[Random.Range(0, spawnLocations.Length)].transform.position;
+        enemyCopy = ObjectUtils.SpawnDefault(toCopy, this.transform.parent, newLocation);
+        enemyCopy.SetActive(true);
+        enemyList.Add(enemyCopy);
+    }
+
+    void ResetAll()
+    {
+        //Time
+        ticks = 0.0f;
+        SPAWN_INTERVAL = 5.0f;
+        start = false;
+
+        //Wave
+        total = 0; 
+        currentWave = 0; 
+        waveMaxCount = 3; 
+        waveMaxEnemies = 2; 
+        releaseWave = false;
+        isCleared = true;
     }
 }
 
