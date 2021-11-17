@@ -8,6 +8,10 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject blackPanel;
     [SerializeField] GameObject newGamePopup;
     [SerializeField] GameObject exitPopup;
+
+    [SerializeField] GameObject overwritePopup;
+    [SerializeField] GameObject deletePopup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +61,71 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void CreateAccount()
     {
-        Debug.Log("Exit game");
+        Debug.Log("Create Account");
+        SceneManager.LoadScene("NewAccount");
+    }
+
+    public void ReturnToMainmenu()
+    {
+        Debug.Log("Return to Mainmenu");
+        SceneManager.LoadScene("Mainmenu");
+    }
+
+    public void StartNewGame()
+    {
+        Debug.Log("Load Selected Game File");
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void OverwriteConfimation()
+    {
+
+        if (this.overwritePopup.activeInHierarchy == false)
+        {
+            this.blackPanel.SetActive(true);
+            this.overwritePopup.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.overwritePopup.SetActive(false);
+        }
+    }
+
+    public void DeleteConfirmation()
+    {
+        if (this.deletePopup.activeInHierarchy == false)
+        {
+            this.blackPanel.SetActive(true);
+            this.deletePopup.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.deletePopup.SetActive(false);
+        }
+    }
+
+    public void DeleteFile()
+    {
+       //[DLELETE FILE ALGO]
+       //1. delete file selected
+       //2. trigget a popup that says the file is already deleted
+       //3. minimize the pop up
+        Debug.Log("File Deleted");
+        this.blackPanel.SetActive(false);
+        this.deletePopup.SetActive(false);
+    }
+
+    public void OverwriteNStartGame()
+    {
+
+        // [SAVE NEW GAME AND LOAD NEW GAME ALGO]
+        // 1. trigger pop us that says that the game is already loaded
+        // 2. load a new game
+        Debug.Log("Load Selected Game File");
         SceneManager.LoadScene("Level 1");
     }
 }
