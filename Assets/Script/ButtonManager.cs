@@ -13,6 +13,8 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject deletePopup;
     [SerializeField] GameObject TutorialPopup;
 
+    [SerializeField] GameObject pausePopUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -152,5 +154,34 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("Normal Level");
         SceneManager.LoadScene("Level 1");
+    }
+
+
+    public void PauseGame()
+    {
+        if (pausePopUp.activeInHierarchy == false)
+        {
+            Debug.Log("Game Paused");
+
+            Time.timeScale = 0;
+            this.blackPanel.SetActive(true);
+            this.pausePopUp.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.pausePopUp.SetActive(false);
+        }
+    }
+    public void ResumeGame()
+    {
+        PauseGame();
+        Debug.Log("Game Resumed");
+        Time.timeScale = 1;
+    }
+
+    public void AccessInventory()
+    {
+        Debug.Log("Open Inventory");
     }
 }
