@@ -24,7 +24,7 @@ public class InventorySlot
         mItemStack.Push(item);
     }
 
-    public IInventoryItem FirstITem
+    public IInventoryItem FirstItem
     {
         get
         {

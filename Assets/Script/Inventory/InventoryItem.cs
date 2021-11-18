@@ -10,6 +10,7 @@ public interface IInventoryItem
     void onPickup();
     void onDrop();
     void OnUse();
+    //InventorySlot slot { get; set; }
 }
 
 public class InventoryEventArgs : EventArgs
