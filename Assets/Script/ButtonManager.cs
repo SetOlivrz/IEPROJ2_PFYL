@@ -11,6 +11,9 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField] GameObject overwritePopup;
     [SerializeField] GameObject deletePopup;
+    [SerializeField] GameObject TutorialPopup;
+
+    [SerializeField] GameObject pausePopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -108,6 +111,19 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    public void TutorialConfirmation()
+    {
+        if (this.TutorialPopup.activeInHierarchy == false)
+        {
+            this.TutorialPopup.SetActive(true);
+        }
+        else
+        {
+            OverwriteConfimation();
+            this.TutorialPopup.SetActive(false);
+        }
+    }
+
     public void DeleteFile()
     {
        //[DLELETE FILE ALGO]
@@ -125,7 +141,47 @@ public class ButtonManager : MonoBehaviour
         // [SAVE NEW GAME AND LOAD NEW GAME ALGO]
         // 1. trigger pop us that says that the game is already loaded
         // 2. load a new game
-        Debug.Log("Load Selected Game File");
+        Debug.Log("Overwrite Data");
+    }
+
+    public void StartTutorialLevel()
+    {
+        Debug.Log("Tutorial Level");
         SceneManager.LoadScene("Level 1");
+    }
+
+    public void StartNormalLevel()
+    {
+        Debug.Log("Normal Level");
+        SceneManager.LoadScene("Level 1");
+    }
+
+
+    public void PauseGame()
+    {
+        if (pausePopUp.activeInHierarchy == false)
+        {
+            Debug.Log("Game Paused");
+
+            Time.timeScale = 0;
+            this.blackPanel.SetActive(true);
+            this.pausePopUp.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.pausePopUp.SetActive(false);
+        }
+    }
+    public void ResumeGame()
+    {
+        PauseGame();
+        Debug.Log("Game Resumed");
+        Time.timeScale = 1;
+    }
+
+    public void AccessInventory()
+    {
+        Debug.Log("Open Inventory");
     }
 }
