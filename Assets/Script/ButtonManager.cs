@@ -16,11 +16,18 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject TutorialPopup;
 
     [SerializeField] GameObject pausePopUp;
+    [SerializeField] GameObject gameOverPopup;
+
+    [SerializeField] PlayerData playerData;
+    [SerializeField] GameManager manager;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -170,12 +177,16 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("Tutorial Level");
         SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1;
+
     }
 
     public void StartNormalLevel()
     {
         Debug.Log("Normal Level");
         SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1;
+
     }
 
     // game proper ui functions
@@ -206,5 +217,33 @@ public class ButtonManager : MonoBehaviour
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
+    }
+
+    public void RestartDay()
+    {
+        playerData.currHP = playerData.maxHP;
+        manager.gameState = Status.NEUTRAL;
+        
+        Debug.Log("Restart Day");
+        SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1;
+
+    }
+
+    public void GameOverPopup()
+    {
+        if (gameOverPopup.activeInHierarchy == false)
+        {
+            Debug.Log("Game Paused");
+
+            Time.timeScale = 0;
+            this.blackPanel.SetActive(true);
+            this.gameOverPopup.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.gameOverPopup.SetActive(false);
+        }
     }
 }
