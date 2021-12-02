@@ -10,6 +10,8 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject exitPopup;
 
     [SerializeField] GameObject overwritePopup;
+    [SerializeField] GameObject loadPopup;
+
     [SerializeField] GameObject deletePopup;
     [SerializeField] GameObject TutorialPopup;
 
@@ -70,6 +72,12 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("NewAccount");
     }
 
+    public void LoadGameMenu()
+    {
+        Debug.Log("Open load game menu");
+        SceneManager.LoadScene("LoadMenu");
+    }
+
     public void ReturnToMainmenu()
     {
         Debug.Log("Return to Mainmenu");
@@ -82,6 +90,20 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void LoadConfimation()
+    {
+
+        if (this.loadPopup.activeInHierarchy == false)
+        {
+            this.blackPanel.SetActive(true);
+            this.loadPopup.SetActive(true);
+        }
+        else
+        {
+            this.blackPanel.SetActive(false);
+            this.loadPopup.SetActive(false);
+        }
+    }
     public void OverwriteConfimation()
     {
 
@@ -156,7 +178,7 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
-
+    // game proper ui functions
     public void PauseGame()
     {
         if (pausePopUp.activeInHierarchy == false)
@@ -173,6 +195,7 @@ public class ButtonManager : MonoBehaviour
             this.pausePopUp.SetActive(false);
         }
     }
+
     public void ResumeGame()
     {
         PauseGame();
