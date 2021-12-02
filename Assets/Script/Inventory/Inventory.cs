@@ -20,6 +20,37 @@ public class Inventory : MonoBehaviour
         }
     }
 
+/*    public Inventory()
+    {
+        for (int i = 0; i < slots; i++) {
+            mItems.Add(new InventorySlot(i));
+        }
+    }*/
+
+/*    private InventorySlot FindStackableSlot(IInventoryItem item)
+    {
+        foreach(InventorySlot slot in mItems)
+        {
+            if (slot.IsStackable(item))
+            {
+                return slot;
+            }
+            return null;
+        }
+    }*/
+
+/*    private InventorySlot FindNextEmptySlot()
+    {
+        foreach(InventorySlot slot in mItems)
+        {
+            if (slot.IsEmpty)
+            {
+                return slot;
+            }
+            return null;
+        }
+    }*/
+
     public void AddItem(IInventoryItem item)
     {
         if(mItems.Count < slots)
