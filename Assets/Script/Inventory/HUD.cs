@@ -16,12 +16,13 @@ public class HUD : MonoBehaviour
 
     private void InventoryScript_ItemAdded(object sender, InventoryEventArgs e)
     {
-        Transform inventoryPanel = transform.Find("Hotbar");
+        Transform inventoryPanel = transform.Find("Hot Bar UI");
         foreach(Transform slot in inventoryPanel)
         {
             // for when the border is created
             /*Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();*/
-            Transform imageTransform = slot.GetChild(0);
+            /*Transform imageTransform = slot.GetChild(0);*/
+            Transform imageTransform = slot;
             Image image = imageTransform.GetComponent<Image>();
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
             if (!image.enabled)
