@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private string enemyName;
     [SerializeField] private float speed = 2f;
     public float health = 50.0f;
-    public float damage = 20.0f;
+    public float damage = 5.0f;
     
     //Movement
     private float prev_x;
@@ -34,12 +34,22 @@ public class EnemyBehavior : MonoBehaviour
     //Drops Copy
     [SerializeField] private GameObject drop;
 
+    private PlayerData playerData;
+
     // Start is called before the first frame update
     void Start()
     {
        player = GameObject.FindGameObjectWithTag("Player").transform;
        prev_x = transform.position.x;
        prev_z = transform.position.z;
+
+        playerData = player.GetComponent<PlayerData>();
+
+        if (playerData == null)
+        {
+            Debug.Log("Component not Found");
+        }
+
     }
 
     // Update is called once per frame
@@ -96,7 +106,11 @@ public class EnemyBehavior : MonoBehaviour
             if (ticks > ATTACK_INTERVAL)
             {
                 ticks = 0.0f;
+
                 //player.health -= damage;
+                playerData.TakeDamage(damage);
+                
+                
                 Debug.Log("Attack!");
             }
         }
