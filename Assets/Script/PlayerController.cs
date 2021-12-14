@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject bullet;
 
     public Inventory inventory;
+    //checker to see if the player can shoot
+    public bool isShooting = false;
+
     bool mforward;
     bool mback;
     bool mleft;
     bool mright;
     [SerializeField] Animator animator;
-
-    
+    public Vector3 mousePos;
+    public Camera cam;
 
     private Vector2 moveInput;
     // Start is called before the first frame update
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         UpdateMoveAnimation();
+        MouseUpdate();            
     }
 
     private void UpdateMoveAnimation()
@@ -87,6 +93,59 @@ public class PlayerController : MonoBehaviour
         if (item != null)
         {
             inventory.AddItem(item);
+        }
+    }
+
+    void MouseUpdate()
+    {
+        mousePos = cam.ScreenToViewportPoint(Input.mousePosition);
+        //Debug.Log("Position " + mousePos);
+
+        //will change checker once items are implemented
+        if (!isShooting && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            isShooting = true;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShootHandler();            
+        }
+        
+    }
+    //To Fix
+    void ShootHandler()
+    {
+        Debug.Log("Entered");
+        if (isShooting)
+        {
+            if(mousePos.x == 0.5 && mousePos.y > 0.5)
+            {
+                ResetBool();
+                animator.SetBool("back", true);
+            }
+            else if (mousePos.x == 0.5 && mousePos.y < 0.5)
+            {
+                ResetBool();
+                animator.SetBool("front", true);
+            }
+            else if (mousePos.x >= 0.5)
+            {
+                ResetBool();
+                animator.SetBool("right", true);
+            }
+            else if (mousePos.x < 0.5)
+            {
+                ResetBool();
+                animator.SetBool("left", true);
+            }
+            Debug.Log("Shooting");
+        }
+
+        //will change soon once items are implemented
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            isShooting = false;
+            Debug.Log("Not Shooting");
         }
     }
 }
