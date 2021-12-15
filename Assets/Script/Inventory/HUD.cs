@@ -21,8 +21,8 @@ public class HUD : MonoBehaviour
         {
             // for when the border is created
             /*Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();*/
-            /*Transform imageTransform = slot.GetChild(0);*/
-            Transform imageTransform = slot;
+            Transform imageTransform = slot.GetChild(0);
+            //Transform imageTransform = slot;
             Image image = imageTransform.GetComponent<Image>();
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
             if (!image.enabled)

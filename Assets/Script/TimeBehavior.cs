@@ -10,6 +10,8 @@ public class TimeBehavior : MonoBehaviour
     public static int day = 1;
     private int hour = 0;
     private float minute = 0.0f;
+    //Audio
+    public AudioManager audioManager;
 
     //Light
     [SerializeField] GameObject sun;
@@ -59,6 +61,7 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 6 && isDaytime)
         {
+            audioManager.OnMusicPlay(1);
             Debug.Log("Good Evening");
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
@@ -67,10 +70,12 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime)
         {
+            //audioManager.OnMusicPlay(2);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = true;
+            audioManager.onMusicStop();
         }
 
         //timeText.text = "Day: " + day.ToString() + "\n" + hour.ToString("00") + ":" + (Mathf.Round(minute)).ToString("00");
