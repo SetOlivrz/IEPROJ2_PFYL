@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
     public PlayerController player;
     public Transform firePoint;
     public GameObject bulletPrefab;
-
+    public GameObject target;
     public float bulletForce = 20f;
 
     // Update is called once per frame
@@ -21,15 +21,23 @@ public class Shooting : MonoBehaviour
             }
         }
     }
-
-    // To fix: Shooting Direction, only shoots towards the right
     void Shoot()
     {
-                                                                       // need to replace with player look at
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        Vector3 position = player.mousePos * bulletForce;
-        position.y = 0;
-        rb.AddForce(position, ForceMode.Impulse);
+
+        GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletSphere.GetComponent<Bullet>();
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            Vector3 playerPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
+            bulletSphere.transform.LookAt(playerPos);
+            if (bullet != null)
+            {
+                bullet.Seek();
+            }
+        }
+
     }
 }

@@ -35,6 +35,10 @@ public class AudioManager : MonoBehaviour
             //to change for morning BGM
             //mainAudio.clip = nightBGM;
         }
+        if(choice == 3)
+        {
+            mainAudio.PlayOneShot(timeShift);
+        }
     }
 
    public void onMusicStop()

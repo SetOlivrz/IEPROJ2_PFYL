@@ -70,12 +70,12 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime)
         {
-            //audioManager.OnMusicPlay(2);
+            audioManager.onMusicStop();
+            audioManager.OnMusicPlay(2);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = true;
-            audioManager.onMusicStop();
         }
 
         //timeText.text = "Day: " + day.ToString() + "\n" + hour.ToString("00") + ":" + (Mathf.Round(minute)).ToString("00");

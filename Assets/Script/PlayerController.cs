@@ -99,8 +99,6 @@ public class PlayerController : MonoBehaviour
     void MouseUpdate()
     {
         mousePos = cam.ScreenToViewportPoint(Input.mousePosition);
-        //Debug.Log("Position " + mousePos);
-
         //will change checker once items are implemented
         if (!isShooting && Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -108,17 +106,16 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            ShootHandler();            
+            ShootHandler();
         }
         
     }
     //To Fix
     void ShootHandler()
     {
-        Debug.Log("Entered");
         if (isShooting)
         {
-            if(mousePos.x == 0.5 && mousePos.y > 0.5)
+            if (mousePos.x == 0.5 && mousePos.y > 0.5)
             {
                 ResetBool();
                 animator.SetBool("back", true);
@@ -138,7 +135,6 @@ public class PlayerController : MonoBehaviour
                 ResetBool();
                 animator.SetBool("left", true);
             }
-            Debug.Log("Shooting");
         }
 
         //will change soon once items are implemented
