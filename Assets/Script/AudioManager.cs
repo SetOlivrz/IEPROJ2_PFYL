@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public GameObject obj;
-    public AudioSource mainAudio;
+    private AudioSource mainAudio;
     public AudioClip nightBGM;
     public AudioClip timeShift;
     // Start is called before the first frame update
@@ -24,17 +24,16 @@ public class AudioManager : MonoBehaviour
     }
     public void OnMusicPlay(int choice)
     {
-        switch (choice)
+        if(choice == 1)
         {
-            case 1: mainAudio.clip = nightBGM;
-                if (mainAudio.isPlaying)
-                    onMusicStop();
-                break;
-            case 2: mainAudio.clip = timeShift; 
-                if (mainAudio.isPlaying)
-                    onMusicStop(); 
-                break;
-            default: mainAudio.Stop();break;
+            mainAudio.PlayOneShot(timeShift);
+            mainAudio.clip = nightBGM;
+        }
+        if(choice == 2)
+        {
+            mainAudio.PlayOneShot(timeShift);
+            //to change for morning BGM
+            //mainAudio.clip = nightBGM;
         }
     }
 
