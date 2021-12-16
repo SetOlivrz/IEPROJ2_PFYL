@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable] public class Item
+[CreateAssetMenu(fileName = "New Item")]
+public class Item : ScriptableObject
 {
-    public enum ItemType
-    {
-        Seed,
-        Weapon,
-    }
-
-    public ItemType itemType;
+    public string ItemName;
+    public Sprite ItemIcon;
+    [Range(1, 100)] public int maxStackSize = 100;
 }
