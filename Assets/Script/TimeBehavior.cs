@@ -33,7 +33,21 @@ public class TimeBehavior : MonoBehaviour
         {
             if (isDaytime)
             {
-                minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging
+                minute += Time.deltaTime * 30f; //2f; Note: Use 30f for debugging
+            }
+            //transition for audio
+            if(minute < 60.0f && minute >= 51.0f)
+            {
+                //shift from day to night
+                if(hour + 1 == 6 && isDaytime)
+                {
+                    if (audioManager.isMorning)
+                    {
+                        audioManager.onMusicStop();
+                    }
+                    if(!audioManager.mainAudio.isPlaying)
+                        audioManager.OnMusicPlay(1);
+                }
             }
 
             if (minute >= 60.0f)
@@ -54,14 +68,15 @@ public class TimeBehavior : MonoBehaviour
         if (/*hour >= 2*/ stageClear)
         {
             day++;
+            audioManager.onMusicStop();
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
+            
         }
 
         if (hour == 6 && isDaytime)
         {
-            audioManager.OnMusicPlay(1);
             Debug.Log("Good Evening");
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;

@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
-    [SerializeField] GameObject bullet;
 
     //checker to see if the player can shoot
     public bool isShooting = false;
@@ -100,11 +99,34 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                //Debug.Log(hit.point);
-                Vector3 position = new Vector3(this.transform.position.x, this.transform.position.y, hit.point.z);
-                Debug.Log(position);
-                //something something turn to direction the thing is facing
-                this.transform.LookAt(position);
+                Debug.Log(hit.point);
+                Debug.Log("Position: " + transform.position);
+                if (hit.point.x == transform.position.x)
+                {
+                    if (hit.point.z > transform.position.z)
+                    {
+                        ResetBool();
+                        animator.SetBool("back", true);
+                    }
+                    if (hit.point.z < transform.position.z)
+                    {
+                        ResetBool();
+                        animator.SetBool("front", true);
+                    }
+                }
+                else
+                {
+                    if (hit.point.x > transform.position.x)
+                    {
+                        ResetBool();
+                        animator.SetBool("right", true);
+                    }
+                    else if (hit.point.x < transform.position.x)
+                    {
+                        ResetBool();
+                        animator.SetBool("left", true);
+                    }
+                }
             }
         }
 
