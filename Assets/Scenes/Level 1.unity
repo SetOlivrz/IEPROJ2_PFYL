@@ -12984,8 +12984,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1014925456}
   moveSpeed: 10
+  bullet: {fileID: 0}
   inventory: {fileID: 1558374775}
+  isShooting: 0
   animator: {fileID: 1014925454}
+  mousePos: {x: 0, y: 0, z: 0}
+  cam: {fileID: 0}
 --- !u!212 &1014925458
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13049,6 +13053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda461f742c65ba419e46f6c73aa7f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   sun: {fileID: 705507993}
 --- !u!114 &1014925460
 MonoBehaviour:
@@ -18733,7 +18738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1558374775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18875,7 +18880,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561353614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d94843312ad0f2944a706f32977c5ce2, type: 3}
   m_Name: 
