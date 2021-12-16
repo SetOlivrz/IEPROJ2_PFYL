@@ -29,6 +29,7 @@ public class Soil : MonoBehaviour
         {
             isInRange = true;
             Debug.Log("Player in range");
+            //Get player's inventory
         }
     }
 
@@ -51,6 +52,8 @@ public class Soil : MonoBehaviour
             if (!plant.gameObject.activeSelf)
             {
                 //Check if using seed and is not occupied (need:item with tag "Seed")
+
+
                 //another check to see what seed it is (need: "Seed" item has "SeedType" enum)
 
                 //Default for now since there's no inventory system
@@ -93,6 +96,8 @@ public class Soil : MonoBehaviour
         plant.gameObject.SetActive(false);
         isGrown = false;
 
-        //Drop an item on the ground
+        //Check if inventory is full
+            //add item into inventory if not full
+            //Drop item into ground if full
     }
 }
