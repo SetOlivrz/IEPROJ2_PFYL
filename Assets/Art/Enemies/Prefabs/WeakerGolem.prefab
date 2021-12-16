@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 503855538680547468}
   - component: {fileID: 6691196455725435963}
   - component: {fileID: 8050478403236708519}
-  - component: {fileID: 6594679624642556594}
+  - component: {fileID: 2948237841518129434}
   m_Layer: 0
   m_Name: WeakerGolem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,9 @@ MonoBehaviour:
   Left: {fileID: 21300000, guid: 9808247e719338547b953c46a4f0b566, type: 3}
   Up: {fileID: 21300000, guid: ee2028cfdd30dc849a39765852b945d5, type: 3}
   Down: {fileID: 21300000, guid: fd31988279c1460499175faaca384256, type: 3}
---- !u!65 &6594679624642556594
-BoxCollider:
+  drop: {fileID: 0}
+--- !u!136 &2948237841518129434
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -114,6 +115,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.1802154, y: 2.7968621, z: 0.4087357}
-  m_Center: {x: -0.07515645, y: 0.055215742, z: -0.106904134}
+  m_Radius: 1.23
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.0000038146973, z: 0}

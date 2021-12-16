@@ -13,7 +13,7 @@ public class EnemyBehavior : MonoBehaviour
 
     //Enemy Stats
     [SerializeField] private string enemyName;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 0;
     public float health = 50.0f;
     public float damage = 5.0f;
     
@@ -39,11 +39,13 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
        player = GameObject.FindGameObjectWithTag("Player").transform;
        prev_x = transform.position.x;
        prev_z = transform.position.z;
+       speed = Random.Range(0.5f, 3.0f);
 
-        playerData = player.GetComponent<PlayerData>();
+       playerData = player.GetComponent<PlayerData>();
 
         if (playerData == null)
         {
@@ -96,6 +98,10 @@ public class EnemyBehavior : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         this.health -= damage;
+        if(this.health <= 0)
+        {
+            OnKill();
+        }
     }
 
     private void OnCollisionStay(Collision collider)
