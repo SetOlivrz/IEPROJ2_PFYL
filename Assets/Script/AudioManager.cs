@@ -15,11 +15,13 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         mainAudio = obj.GetComponent<AudioSource>();
+        mainAudio.clip = dayBGM;
     }
 
     // Update is called once per frame
     void Update()
     {
+        mainAudio.volume = 0.2f;
         if(!mainAudio.isPlaying && mainAudio != null)
         {
             mainAudio.Play();

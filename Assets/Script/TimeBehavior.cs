@@ -8,7 +8,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private int hour = 0;
+    private int hour = 0; // set to 5
     private float minute = 0.0f;
     //Audio
     public AudioManager audioManager;
@@ -33,7 +33,8 @@ public class TimeBehavior : MonoBehaviour
         {
             if (isDaytime)
             {
-                minute += Time.deltaTime * 30f; //2f; Note: Use 30f for debugging
+                // Set to 2f to showcase audio transition accurately
+                minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging 
             }
             //transition for audio
             if(minute < 60.0f && minute >= 51.0f)
