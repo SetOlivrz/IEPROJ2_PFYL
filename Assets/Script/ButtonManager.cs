@@ -6,14 +6,22 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject blackPanel;
+    [SerializeField] GameObject blackPanel2;
+    [SerializeField] GameObject blackPanel3;
+
+
+
     [SerializeField] GameObject newGamePopup;
     [SerializeField] GameObject exitPopup;
+
+    [SerializeField] GameObject createPopup;
 
     [SerializeField] GameObject overwritePopup;
     [SerializeField] GameObject loadPopup;
 
     [SerializeField] GameObject deletePopup;
     [SerializeField] GameObject TutorialPopup;
+    [SerializeField] GameObject loadConfirmationPopup;
 
     [SerializeField] GameObject pausePopUp;
     [SerializeField] GameObject gameOverPopup;
@@ -38,32 +46,49 @@ public class ButtonManager : MonoBehaviour
 
     public void NewGameConfimation()
     {
+        
 
-        if (this.newGamePopup.activeInHierarchy == false)
+        if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
         {
-            this.blackPanel.SetActive(true);
-            this.newGamePopup.SetActive(true);
+           
+            this.newGamePopup.SetActive(true); // newgame pp
+            this.newGamePopup.GetComponent<PanelOpener>().OpenPanel();
         }
         else
         {
-            this.blackPanel.SetActive(false);
-            this.newGamePopup.SetActive(false);
+            this.newGamePopup.GetComponent<PanelOpener>().OpenPanel();
+        }
+
+        if (blackPanel.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel);
+        }
+        else
+        {
+            BPfadeOut(blackPanel);
         }
     }
 
     public void ExitGameConfirmation()
     {
-        Debug.Log("Exit");
-
-        if (this.exitPopup.activeInHierarchy == false)
+        if (this.exitPopup.activeInHierarchy == false) // main panel disabled
         {
-            this.blackPanel.SetActive(true);
-            this.exitPopup.SetActive(true);
+
+            this.exitPopup.SetActive(true); // newgame pp
+            this.exitPopup.GetComponent<PanelOpener>().OpenPanel();
         }
         else
         {
-            this.blackPanel.SetActive(false);
-            this.exitPopup.SetActive(false);
+            this.exitPopup.GetComponent<PanelOpener>().OpenPanel();
+        }
+
+        if (blackPanel.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel);
+        }
+        else
+        {
+            BPfadeOut(blackPanel);
         }
     }
 
@@ -75,14 +100,56 @@ public class ButtonManager : MonoBehaviour
 
     public void CreateAccount()
     {
-        Debug.Log("Create Account");
-        SceneManager.LoadScene("NewAccount");
+
+        this.newGamePopup.GetComponent<PanelOpener>().ClosePopup();
+   
+
+        if (this.createPopup.activeInHierarchy == false) // main panel disabled
+        {
+         
+            this.createPopup.SetActive(true); // newgame pp
+            this.createPopup.GetComponent<PanelOpener>().OpenPanel();
+        }
+        else
+        {
+            this.createPopup.GetComponent<PanelOpener>().OpenPanel();
+            BPfadeOut(blackPanel);
+        }
+
+        if (blackPanel2.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel2);
+        }
+        else
+        {
+            BPfadeOut(blackPanel2);
+        }
     }
 
     public void LoadGameMenu()
     {
-        Debug.Log("Open load game menu");
-        SceneManager.LoadScene("LoadMenu");
+
+        if (this.loadPopup.activeInHierarchy == false) // main panel disabled
+        {
+
+            this.loadPopup.SetActive(true); // newgame pp
+            this.loadPopup.GetComponent<PanelOpener>().OpenPanel();
+        }
+        else
+        {
+            this.loadPopup.GetComponent<PanelOpener>().OpenPanel();
+        }
+
+        if (blackPanel.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel);
+        }
+        else
+        {
+            BPfadeOut(blackPanel);
+        }
+       // Debug.Log("Open load game menu");
+        //SceneManager.LoadScene("LoadMenu");
     }
 
     public void ReturnToMainmenu()
@@ -93,6 +160,12 @@ public class ButtonManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        Debug.Log("Load Created Game File");
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void StartLoadGame()
+    {
         Debug.Log("Load Selected Game File");
         SceneManager.LoadScene("Level 1");
     }
@@ -100,29 +173,67 @@ public class ButtonManager : MonoBehaviour
     public void LoadConfimation()
     {
 
-        if (this.loadPopup.activeInHierarchy == false)
+        //if (this.loadPopup.activeInHierarchy == false)
+        //{
+        //    this.blackPanel.SetActive(true);
+        //    this.loadPopup.SetActive(true);
+        //}
+        //else
+        //{
+        //    this.blackPanel.SetActive(false);
+        //    this.loadPopup.SetActive(false);
+        //}
+
+        if (this.loadConfirmationPopup.activeInHierarchy == false)
         {
-            this.blackPanel.SetActive(true);
-            this.loadPopup.SetActive(true);
+            BPfadeIn(blackPanel3);
+            this.loadConfirmationPopup.SetActive(true);
+            this.loadConfirmationPopup.GetComponent<Popup>().OpenPopup(); // animation
         }
         else
         {
-            this.blackPanel.SetActive(false);
-            this.loadPopup.SetActive(false);
+            //this.blackPanel3.SetActive(false);
+            this.loadConfirmationPopup.SetActive(false);
+            //this.overwritePopup.GetComponent<Popup>().OpenPopup(); // animation
+            BPfadeOut(blackPanel3);
+        }
+
+        if (blackPanel3.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel3);
+        }
+        else
+        {
+            BPfadeOut(blackPanel3);
         }
     }
+
     public void OverwriteConfimation()
     {
 
         if (this.overwritePopup.activeInHierarchy == false)
         {
-            this.blackPanel.SetActive(true);
+            //this.blackPanel3.SetActive(true);
             this.overwritePopup.SetActive(true);
+            this.overwritePopup.GetComponent<Popup>().OpenPopup(); // animation
         }
         else
         {
-            this.blackPanel.SetActive(false);
+            //this.blackPanel3.SetActive(false);
             this.overwritePopup.SetActive(false);
+
+            //this.overwritePopup.GetComponent<Popup>().OpenPopup(); // animation
+
+            //this.overwritePopup.SetActive(false);
+        }
+
+        if (blackPanel3.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel3);
+        }
+        else
+        {
+            BPfadeOut(blackPanel3);
         }
     }
 
@@ -130,26 +241,42 @@ public class ButtonManager : MonoBehaviour
     {
         if (this.deletePopup.activeInHierarchy == false)
         {
-            this.blackPanel.SetActive(true);
+            //this.blackPanel3.SetActive(true);
             this.deletePopup.SetActive(true);
+            this.deletePopup.GetComponent<Popup>().OpenPopup(); // animation
         }
         else
         {
-            this.blackPanel.SetActive(false);
+            //this.blackPanel3.SetActive(false);
             this.deletePopup.SetActive(false);
+
+            //this.overwritePopup.GetComponent<Popup>().OpenPopup(); // animation
+
+            BPfadeOut(blackPanel3);
+        }
+
+        if (blackPanel3.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel3);
+        }
+        else
+        {
+            BPfadeOut(blackPanel3);
         }
     }
 
     public void TutorialConfirmation()
     {
+        this.overwritePopup.SetActive(false);
         if (this.TutorialPopup.activeInHierarchy == false)
         {
             this.TutorialPopup.SetActive(true);
         }
         else
         {
-            OverwriteConfimation();
+            
             this.TutorialPopup.SetActive(false);
+            blackPanel3.SetActive(false);
         }
     }
 
@@ -160,7 +287,7 @@ public class ButtonManager : MonoBehaviour
        //2. trigget a popup that says the file is already deleted
        //3. minimize the pop up
         Debug.Log("File Deleted");
-        this.blackPanel.SetActive(false);
+        this.blackPanel3.SetActive(false);
         this.deletePopup.SetActive(false);
     }
 
@@ -245,5 +372,18 @@ public class ButtonManager : MonoBehaviour
             this.blackPanel.SetActive(false);
             this.gameOverPopup.SetActive(false);
         }
+    }
+
+    public void BPfadeIn(GameObject obj)
+    {
+        
+        obj.SetActive(true);
+        obj.GetComponent<FadeVFX>().panelState = FadeVFX.PanelState.FadeIn;
+        Debug.Log("CHANGE STATE");
+    }
+
+    public void BPfadeOut(GameObject obj)
+    {
+        obj.GetComponent<FadeVFX>().panelState = FadeVFX.PanelState.FadeOut;
     }
 }
