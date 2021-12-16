@@ -35,6 +35,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private GameObject drop;
 
     private PlayerData playerData;
+    // count for dead enemies
+    public int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -141,7 +143,11 @@ public class EnemyBehavior : MonoBehaviour
     public void OnKill()
     {
         //dropItem = true;
+        playerData.addGold(10);
+        count++;
         Instantiate(drop, transform.position, transform.rotation);
         Destroy(this.gameObject);
+        
+        
     }
 }

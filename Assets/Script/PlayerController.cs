@@ -88,7 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             ShootHandler();
         }
-        
+        //will change soon once items are implemented
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            isShooting = false;
+            Debug.Log("Not Shooting");
+        }
     }
     //To Fix
     void ShootHandler()
@@ -99,42 +104,30 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                Debug.Log(hit.point);
-                Debug.Log("Position: " + transform.position);
-                if (hit.point.x == transform.position.x)
+                //Debug.Log(hit.point);
+                //Debug.Log("Position: " + transform.position);
+                //TO FIX
+                if (hit.point.z > transform.position.z)
                 {
-                    if (hit.point.z > transform.position.z)
-                    {
-                        ResetBool();
-                        animator.SetBool("back", true);
-                    }
-                    if (hit.point.z < transform.position.z)
-                    {
-                        ResetBool();
-                        animator.SetBool("front", true);
-                    }
+                    ResetBool();
+                    animator.SetBool("back", true);
                 }
-                else
+                if (hit.point.z < transform.position.z)
                 {
-                    if (hit.point.x > transform.position.x)
-                    {
-                        ResetBool();
-                        animator.SetBool("right", true);
-                    }
-                    else if (hit.point.x < transform.position.x)
-                    {
-                        ResetBool();
-                        animator.SetBool("left", true);
-                    }
+                    ResetBool();
+                    animator.SetBool("front", true);
+                }
+                if (hit.point.x > transform.position.x)
+                {
+                    ResetBool();
+                    animator.SetBool("right", true);
+                }
+                else if (hit.point.x < transform.position.x)
+                {
+                    ResetBool();
+                    animator.SetBool("left", true);
                 }
             }
-        }
-
-        //will change soon once items are implemented
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            isShooting = false;
-            Debug.Log("Not Shooting");
         }
     }
 }

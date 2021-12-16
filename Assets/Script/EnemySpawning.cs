@@ -27,6 +27,7 @@ public class EnemySpawning : MonoBehaviour
 
     //Wave
     private int total = 0; //Total enemies per wave
+    private int enemyCount = 0;
     public static int currentWave = 0; //Current wave #
     private int difficulty = 5; //5 = Normal?
     private int waveMaxCount = 6; //Max number of waves per day or level
@@ -34,6 +35,7 @@ public class EnemySpawning : MonoBehaviour
     private int waveMaxEnemies = 10; //Max possible number of enemies per wave
     private bool releaseWave = false; 
     private bool isCleared = true;
+    private bool waveStart = false;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +90,30 @@ public class EnemySpawning : MonoBehaviour
             if(currentWave >= waveMaxCount)
             TimeBehavior.stageClear = true;
         }
+        if (waveStart)
+        {
+            enemyCount = 0;
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                if (enemyList[i] == null)
+                {
+                    enemyCount++;
+                }
+            }
+            if (enemyCount == total)
+            {
+                enemyList.Clear();
+
+                isCleared = true;
+                currentWave++;
+
+                start = false;
+
+                if (currentWave >= waveMaxCount)
+                    TimeBehavior.stageClear = true;
+                waveStart = false;
+            }
+        }
     }
 
     void GenerateNewWave()
@@ -97,7 +123,7 @@ public class EnemySpawning : MonoBehaviour
             total = Random.Range(waveMinEnemies, waveMaxEnemies + 1);
             isCleared = false;
             releaseWave = true;
-
+            Debug.Log(total);
             Debug.Log(currentWave + 1 + " " + waveMaxCount);
 
             //Add bosses + weaker boss + condition
@@ -107,6 +133,7 @@ public class EnemySpawning : MonoBehaviour
             {
                 enemyCopies.Add(weakerGolemCopy);
             }
+            waveStart = true;
         }
     }
 
