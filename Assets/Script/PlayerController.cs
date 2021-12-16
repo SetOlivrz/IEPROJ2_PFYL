@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log(hit.point);
                 //Debug.Log("Position: " + transform.position);
+                //TO FIX
                 if (hit.point.z > transform.position.z)
                 {
                     ResetBool();
