@@ -5,9 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public GameObject obj;
-    private AudioSource mainAudio;
+    public AudioSource mainAudio;
     public AudioClip nightBGM;
+    public AudioClip dayBGM;
     public AudioClip timeShift;
+    public AudioClip timeShiftDay;
+    public bool isMorning = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,16 +31,22 @@ public class AudioManager : MonoBehaviour
         {
             mainAudio.PlayOneShot(timeShift);
             mainAudio.clip = nightBGM;
+            isMorning = false;
         }
         if(choice == 2)
         {
-            mainAudio.PlayOneShot(timeShift);
+            mainAudio.PlayOneShot(timeShiftDay);
+            isMorning = true;
             //to change for morning BGM
-            //mainAudio.clip = nightBGM;
+            mainAudio.clip = dayBGM;
+        }
+        if(choice == 3)
+        {
+            mainAudio.PlayOneShot(timeShift);
         }
     }
 
-   public void onMusicStop()
+    public void onMusicStop()
     {
         mainAudio.Stop();
     }

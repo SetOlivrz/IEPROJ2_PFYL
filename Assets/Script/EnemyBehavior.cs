@@ -98,6 +98,10 @@ public class EnemyBehavior : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         this.health -= damage;
+        if(this.health <= 0)
+        {
+            OnKill();
+        }
     }
 
     private void OnCollisionStay(Collision collider)

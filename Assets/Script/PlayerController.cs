@@ -7,9 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
-    [SerializeField] GameObject bullet;
 
-    public Inventory inventory;
     //checker to see if the player can shoot
     public bool isShooting = false;
 
@@ -25,15 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //inventory.ItemUsed += Inventory_ItemUsed;
-    }
-
-    private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
-    {
-        IInventoryItem item = e.Item;
-
-        //Do something
-
+        
     }
 
     // Update is called once per frame
@@ -87,20 +77,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("right", false);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        IInventoryItem item = collision.collider.GetComponent<IInventoryItem>();
-        if (item != null)
-        {
-            inventory.AddItem(item);
-        }
-    }
-
     void MouseUpdate()
     {
-        mousePos = cam.ScreenToViewportPoint(Input.mousePosition);
-        //Debug.Log("Position " + mousePos);
-
         //will change checker once items are implemented
         if (!isShooting && Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -108,37 +86,48 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            ShootHandler();            
+            ShootHandler();
         }
         
     }
     //To Fix
     void ShootHandler()
     {
-        Debug.Log("Entered");
         if (isShooting)
         {
-            if(mousePos.x == 0.5 && mousePos.y > 0.5)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                ResetBool();
-                animator.SetBool("back", true);
+                Debug.Log(hit.point);
+                Debug.Log("Position: " + transform.position);
+                if (hit.point.x == transform.position.x)
+                {
+                    if (hit.point.z > transform.position.z)
+                    {
+                        ResetBool();
+                        animator.SetBool("back", true);
+                    }
+                    if (hit.point.z < transform.position.z)
+                    {
+                        ResetBool();
+                        animator.SetBool("front", true);
+                    }
+                }
+                else
+                {
+                    if (hit.point.x > transform.position.x)
+                    {
+                        ResetBool();
+                        animator.SetBool("right", true);
+                    }
+                    else if (hit.point.x < transform.position.x)
+                    {
+                        ResetBool();
+                        animator.SetBool("left", true);
+                    }
+                }
             }
-            else if (mousePos.x == 0.5 && mousePos.y < 0.5)
-            {
-                ResetBool();
-                animator.SetBool("front", true);
-            }
-            else if (mousePos.x >= 0.5)
-            {
-                ResetBool();
-                animator.SetBool("right", true);
-            }
-            else if (mousePos.x < 0.5)
-            {
-                ResetBool();
-                animator.SetBool("left", true);
-            }
-            Debug.Log("Shooting");
         }
 
         //will change soon once items are implemented
