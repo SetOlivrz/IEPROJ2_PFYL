@@ -154,8 +154,9 @@ public class ButtonManager : MonoBehaviour
 
     public void ReturnToMainmenu()
     {
+        Time.timeScale = 1;
         Debug.Log("Return to Mainmenu");
-        SceneManager.LoadScene("Mainmenu");
+        SceneManager.LoadScene("Mainmenu 1");
     }
 
     public void StartNewGame()
@@ -319,18 +320,41 @@ public class ButtonManager : MonoBehaviour
     // game proper ui functions
     public void PauseGame()
     {
-        if (pausePopUp.activeInHierarchy == false)
-        {
-            Debug.Log("Game Paused");
+        //if (pausePopUp.activeInHierarchy == false)
+        //{
+        //    Debug.Log("Game Paused");
 
-            Time.timeScale = 0;
-            this.blackPanel.SetActive(true);
-            this.pausePopUp.SetActive(true);
+        //    Time.timeScale = 0;
+        //    this.blackPanel.SetActive(true);
+        //    this.pausePopUp.SetActive(true);
+        //}
+        //else
+        //{
+        //    this.blackPanel.SetActive(false);
+        //    this.pausePopUp.SetActive(false);
+        //}
+
+
+        if (this.pausePopUp.activeInHierarchy == false) // main panel disabled
+        {
+            
+            Debug.Log("Game Paused");
+            //Time.timeScale = 0;
+            this.pausePopUp.SetActive(true); // newgame pp
+            this.pausePopUp.GetComponent<PanelOpener>().OpenPanel();
         }
         else
         {
-            this.blackPanel.SetActive(false);
-            this.pausePopUp.SetActive(false);
+            this.pausePopUp.GetComponent<PanelOpener>().OpenPanel();
+        }
+
+        if (blackPanel.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel);
+        }
+        else
+        {
+            BPfadeOut(blackPanel);
         }
     }
 

@@ -9,9 +9,11 @@ public class PlayerData : MonoBehaviour
     // im planning to use this script for storing player data that are needed for the saving mech implementation, but feel free to modify it as much as you can 
     public float maxHP = 100;
     public float currHP = 100;
-    public float GOLD = 0;
+    public int GOLD = 100;
 
     [SerializeField] Slider hpBar;
+    [SerializeField] Text goldLabel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,10 +48,17 @@ public class PlayerData : MonoBehaviour
         {
             GOLD = 0;
         }
+
+        goldLabel.text = GOLD.ToString();
     }
 
     public void TakeDamage(float damage)
     {
         currHP -= damage;
+    }
+
+    public void addGold(int amnt)
+    {
+        GOLD += amnt;
     }
 }

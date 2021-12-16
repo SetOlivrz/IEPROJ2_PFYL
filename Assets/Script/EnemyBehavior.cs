@@ -143,9 +143,11 @@ public class EnemyBehavior : MonoBehaviour
     public void OnKill()
     {
         //dropItem = true;
+        playerData.addGold(10);
         count++;
         Instantiate(drop, transform.position, transform.rotation);
         Destroy(this.gameObject);
+        
         
     }
 }
