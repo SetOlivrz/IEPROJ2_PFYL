@@ -10,7 +10,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 0; // set to 5
+    private float hour = 5; // set to 5 for debugging
     private float minute = 0.0f;
     //Audio
     public AudioManager audioManager;
@@ -44,17 +44,19 @@ public class TimeBehavior : MonoBehaviour
                 minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging 
             }
             //transition for audio
-            if(minute < 60.0f && minute >= 51.0f)
+            if(minute < 60.0f && minute >= 55.0f)
             {
                 //shift from day to night
                 if(hour + 1 == 6 && isDaytime)
                 {
-                    if (audioManager.isMorning)
+                    if (audioManager.isMorning && !audioManager.isNightPlaying)
                     {
-                        audioManager.onMusicStop();
+                        audioManager.OnMusicStop();
                     }
-                    if(!audioManager.mainAudio.isPlaying)
+                    if (!audioManager.mainAudio.isPlaying)
+                    {
                         audioManager.OnMusicPlay(1);
+                    }
                 }
             }
 
@@ -76,7 +78,7 @@ public class TimeBehavior : MonoBehaviour
         if (/*hour >= 2*/ stageClear)
         {
             day++;
-            audioManager.onMusicStop();
+            audioManager.OnMusicStop();
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -93,7 +95,7 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime)
         {
-            audioManager.onMusicStop();
+            audioManager.OnMusicStop();
             audioManager.OnMusicPlay(2);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);

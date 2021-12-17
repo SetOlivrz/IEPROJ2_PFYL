@@ -8874,7 +8874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1669641879}
   mainAudio: {fileID: 0}
-  nightBGM: {fileID: 8300000, guid: ba4e4ebc043beae4f860034d9ec213c7, type: 3}
+  nightBGM: {fileID: 8300000, guid: ba33ece8b90859345b2e55de8e4fc01f, type: 3}
   dayBGM: {fileID: 8300000, guid: 6375f2dcbbc95804a9f4cb068371c8fe, type: 3}
   timeShift: {fileID: 8300000, guid: 95d662bb7b587c7499027931a4070718, type: 3}
   timeShiftDay: {fileID: 8300000, guid: c36f169763d07b944b19a385842c99ac, type: 3}
@@ -17104,6 +17104,7 @@ MonoBehaviour:
   gameOverPopup: {fileID: 333671088}
   playerData: {fileID: 27880568}
   manager: {fileID: 633700474}
+  audioManager: {fileID: 633700473}
 --- !u!4 &1203873998
 Transform:
   m_ObjectHideFlags: 0
