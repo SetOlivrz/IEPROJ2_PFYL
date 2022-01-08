@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemStack
 {
+    public static ItemStack Empty = new ItemStack(); 
     public Item item;
     public int count;
     public int slotID;
@@ -46,7 +47,7 @@ public class ItemStack
         return count;
     }
 
-    public void setStack(ItemStack stackIn)
+    public void SetStack(ItemStack stackIn)
     {
         this.item = stackIn.GetItem();
         this.count = stackIn.GetCount();
@@ -70,6 +71,11 @@ public class ItemStack
     public void SetCount(int amount)
     {
         this.count = amount;
+    }
+
+    public bool CanAddToo(int amount)
+    {
+        return (this.count + amount) <= this.item.maxStackSize;
     }
 
     public ItemStack SplitStack(int amount)
