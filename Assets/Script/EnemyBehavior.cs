@@ -54,6 +54,16 @@ public class EnemyBehavior : MonoBehaviour
             Debug.Log("Component not Found");
         }
 
+        if (enemyName == "Boss Golem" || enemyName == "Boss Zombie" || enemyName == "Boss Slime")
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
+        if (enemyName == "Weaker Golem" || enemyName == "Weaker Zombie" || enemyName == "Weaker Slime")
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+
     }
 
     // Update is called once per frame
@@ -63,7 +73,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
-            if (this.enemyName == "Normal Golem") UpdateSprite();
+            UpdateSprite();
         }
     }
 
@@ -145,9 +155,8 @@ public class EnemyBehavior : MonoBehaviour
         //dropItem = true;
         playerData.addGold(10);
         count++;
-        Instantiate(drop, transform.position, transform.rotation);
+        int dropRate = Random.Range(1, 101);
+        if (dropRate >= 1 && dropRate <= 30) Instantiate(drop, transform.position, transform.rotation);
         Destroy(this.gameObject);
-        
-        
     }
 }
