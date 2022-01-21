@@ -6,12 +6,18 @@ public class EnemySpawning : MonoBehaviour
 {
     //Enemy Copies
     [SerializeField] private GameObject golemCopy;
+    [SerializeField] private GameObject zombieCopy;
+    [SerializeField] private GameObject slimeCopy;
 
     //Boss Copies
     [SerializeField] private GameObject bossGolemCopy;
+    [SerializeField] private GameObject bossZombieCopy;
+    [SerializeField] private GameObject bossSlimeCopy;
 
     //Weaker Copies
     [SerializeField] private GameObject weakerGolemCopy;
+    [SerializeField] private GameObject weakerZombieCopy;
+    [SerializeField] private GameObject weakerSlimeCopy;
 
     //Enemy List
     [SerializeField] public List<GameObject> enemyList;
@@ -42,13 +48,23 @@ public class EnemySpawning : MonoBehaviour
     {
         //Add available enemies
         enemyCopies.Add(golemCopy);
+        enemyCopies.Add(zombieCopy);
+        enemyCopies.Add(slimeCopy);
     }
 
     private void Awake()
     {
         this.golemCopy.SetActive(false);
+        this.zombieCopy.SetActive(false);
+        this.slimeCopy.SetActive(false);
+
         this.bossGolemCopy.SetActive(false);
+        this.bossZombieCopy.SetActive(false);
+        this.bossSlimeCopy.SetActive(false);
+
         this.weakerGolemCopy.SetActive(false);
+        this.weakerZombieCopy.SetActive(false);
+        this.weakerSlimeCopy.SetActive(false);
     }
 
     // Update is called once per frame
