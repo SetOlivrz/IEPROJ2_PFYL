@@ -11,9 +11,16 @@ public class Soil : MonoBehaviour
 
     Sprite seed;
 
+    GameObject progress_bar;
+    Vector3 localScale;
+
     // Start is called before the first frame update
     void Start()
     {
+        progress_bar = this.transform.GetChild(0).GetChild(0).gameObject;
+        localScale = progress_bar.transform.localScale;
+        localScale.x = 0;
+        progress_bar.transform.localScale = localScale;
         seed = Resources.Load<Sprite>("Rose_Seed");
     }
 
@@ -36,6 +43,9 @@ public class Soil : MonoBehaviour
                     this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.first_growth;
                     planted_crop.state = "First";
                     ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.red;
+                    localScale.x = (0.7f / 3) * 1;
+                    progress_bar.transform.localScale = localScale;
                 }
             }
 
@@ -47,6 +57,9 @@ public class Soil : MonoBehaviour
                     this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.second_growth;
                     planted_crop.state = "Second";
                     ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    localScale.x = (0.7f / 3) * 2;
+                    progress_bar.transform.localScale = localScale;
                 }
             }
 
@@ -58,6 +71,9 @@ public class Soil : MonoBehaviour
                     this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.third_growth;
                     planted_crop.state = "Third";
                     ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.green;
+                    localScale.x = (0.7f / 3) * 3;
+                    progress_bar.transform.localScale = localScale;
                 }
             }
         }
