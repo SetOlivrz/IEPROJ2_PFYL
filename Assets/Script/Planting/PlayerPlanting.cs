@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class PlayerPlanting : MonoBehaviour
 {
     private GameObject soil;
     private GameObject prev_soil;
     [SerializeField] private string equipped_tool;
+    [SerializeField] GameObject equipped_sprite;
     bool inContact = false;
     // r g b a
     Color tilled_soil_color = new Color((float)160 / 255, (float)132 / 255, (float)107 / 255, (float)110 / 255);
@@ -58,21 +61,25 @@ public class PlayerPlanting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             equipped_tool = "hoe";
+            equipped_sprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("TOOL_Hoe");
             Debug.Log("Equipped: Hoe");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             equipped_tool = "seed";
+            equipped_sprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Rose_Seed");
             Debug.Log("Equipped: Seed");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             equipped_tool = "watering_can";
+            equipped_sprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("TOOL_Watering Can");
             Debug.Log("Equipped: Watering Can");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             equipped_tool = "hand";
+            equipped_sprite.GetComponent<SpriteRenderer>().sprite = null;
             Debug.Log("Equipped: Hand / Pick Up");
         }
     }
@@ -147,6 +154,12 @@ public class PlayerPlanting : MonoBehaviour
             soil = collision.gameObject;
             inContact = true;
             Debug.Log(soil.name);
+        }
+
+        if (collision.gameObject.tag == "Ground")
+        {
+            soil = null;
+            inContact = false;
         }
     }
 }
