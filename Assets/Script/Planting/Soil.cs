@@ -4,100 +4,78 @@ using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
-    bool isInRange = false;
-    bool isGrown = false;
+    public string state = "";
+    public bool occupied = false;
+    public Plant planted_crop;
+    float ticks = 0.0f;
 
-    //seems redundant, will replace later when inventory system has been implemented
-    Plant plant;
+    Sprite seed;
+
+    GameObject progress_bar;
+    Vector3 localScale;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        progress_bar = this.transform.GetChild(0).GetChild(0).gameObject;
+        localScale = progress_bar.transform.localScale;
+        localScale.x = 0;
+        progress_bar.transform.localScale = localScale;
+        seed = Resources.Load<Sprite>("Rose_Seed");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    //Trigger enter and exit are to check if player is near enough to plant on specific plot
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
+        if (occupied)
         {
-            isInRange = true;
-            Debug.Log("Player in range");
-            //Get player's inventory
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            isInRange = false;
-            Debug.Log("Player no longer in range");
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if (isInRange)
-        {
-            plant = GetComponentInChildren<Plant>();
-
-            //Check to see if plot is empty or not
-            if (!plant.gameObject.activeSelf)
+            if (planted_crop.state != "Third" && this.state == "Watered")
             {
-                //Check if using seed and is not occupied (need:item with tag "Seed")
-
-
-                //another check to see what seed it is (need: "Seed" item has "SeedType" enum)
-
-                //Default for now since there's no inventory system
-                plant.gameObject.SetActive(true);
-
-                plant.type = Plant.PlantType.Rose;
-
-
-
-                Debug.Log("Planted");
-                StartCoroutine(Grow());
+                ticks += Time.deltaTime;
             }
-            //Check if plot is occupied and ready to harvest
-            else if (isGrown)
+
+            if (planted_crop.state == "Seed")
             {
-                Harvest();
+                this.transform.GetChild(0).gameObject.SetActive(true);
+                this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = seed;
+                if (ticks >= planted_crop.growth_interval)
+                {
+                    this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.first_growth;
+                    planted_crop.state = "First";
+                    ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.red;
+                    localScale.x = (0.7f / 3) * 1;
+                    progress_bar.transform.localScale = localScale;
+                }
+            }
+
+            else if (planted_crop.state == "First")
+            {
+                this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.first_growth;
+                if (ticks >= planted_crop.growth_interval)
+                {
+                    this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.second_growth;
+                    planted_crop.state = "Second";
+                    ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    localScale.x = (0.7f / 3) * 2;
+                    progress_bar.transform.localScale = localScale;
+                }
+            }
+
+            else if (planted_crop.state == "Second")
+            {
+                this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.second_growth;
+                if (ticks >= planted_crop.growth_interval)
+                {
+                    this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = planted_crop.third_growth;
+                    planted_crop.state = "Third";
+                    ticks = 0.0f;
+                    progress_bar.GetComponent<SpriteRenderer>().color = Color.green;
+                    localScale.x = (0.7f / 3) * 3;
+                    progress_bar.transform.localScale = localScale;
+                }
             }
         }
-    }
-
-    //Grow coroutine for the plants
-    IEnumerator Grow()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            // sprite changing goes here
-
-            //Timer happens 3 times
-            yield return new WaitForSeconds(plant.growthSpeed / 3);
-        }
-
-        Debug.Log("Finished Growing");
-    }
-
-    //Function used to harvest crop that is fully grown
-    void Harvest()
-    {
-        //Set sprite to inactive
-        plant = GetComponentInChildren<Plant>();
-        plant.gameObject.SetActive(false);
-        isGrown = false;
-
-        //Check if inventory is full
-            //add item into inventory if not full
-            //Drop item into ground if full
     }
 }
