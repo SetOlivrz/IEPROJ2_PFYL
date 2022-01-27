@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public Item[] itemsToAdd;
 
-    public Inventory myInventory = new Inventory(18);
+    public Inventory myInventory = new Inventory(24);
     private bool isOpen;
 
     private void Start()
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                InventoryManager.INSTANCE.CloseContainer();
+                InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
                 isOpen = false;
             }
         }
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         {
             if (isOpen)
             {
-                InventoryManager.INSTANCE.CloseContainer();
+                InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
                 isOpen = false;
             }
         }

@@ -20,10 +20,12 @@ public class InventoryManager : MonoBehaviour
     private ItemStack curDraggedStack = ItemStack.Empty;
     private GameObject spawnedDragStack;
     private DraggedItemStack dragStack;
+    private Tooltip tooltip;
 
     private void Start()
     {
         dragStack = GetComponentInChildren<DraggedItemStack>();
+        tooltip = GetComponentInChildren<Tooltip>();
     }
 
     public GameObject GetContainerPrefab(string name)
@@ -64,6 +66,11 @@ public class InventoryManager : MonoBehaviour
     public void SetDraggedItemStack(ItemStack stackIn)
     {
         dragStack.SetDraggedStack(curDraggedStack = stackIn);
+    }
+
+    public void DrawToolTip(string itemName)
+    {
+        tooltip.SetToolTip(itemName);
     }
 }
 

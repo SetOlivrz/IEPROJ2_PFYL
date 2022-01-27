@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerDownHandler
+public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image itemIcon;
     public Text itemAmount;
@@ -67,18 +67,25 @@ public class Slot : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    private void SetToolTip(string nameIn)
+    {
+        inventoryManager.DrawToolTip(nameIn);
+    }
+
     private void OnLeftClick(ItemStack curDraggedStack, ItemStack stackCopy)
     {
         if(!myStack.IsEmpty() && curDraggedStack.IsEmpty())
         {
             inventoryManager.SetDraggedItemStack(stackCopy);
             this.SetSlotContents(ItemStack.Empty);
+            SetToolTip(string.Empty);
         }
 
         if(myStack.IsEmpty() && !curDraggedStack.IsEmpty())
         {
             this.SetSlotContents(curDraggedStack);
             inventoryManager.SetDraggedItemStack(ItemStack.Empty);
+            SetToolTip(myStack.GetItem().ItemName);
         }
 
         if(!myStack.IsEmpty() && !curDraggedStack.IsEmpty())
@@ -90,6 +97,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
                     stackCopy.IncreaseAmount(curDraggedStack.GetCount());
                     this.SetSlotContents(stackCopy);
                     inventoryManager.SetDraggedItemStack(ItemStack.Empty);
+                    SetToolTip(myStack.GetItem().ItemName);
                 }
                 else
                 {
@@ -99,6 +107,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
                     dragCopy.SetCount(difference);
                     this.SetSlotContents(stackCopy);
                     inventoryManager.SetDraggedItemStack(dragCopy);
+                    SetToolTip(string.Empty);
                 }
             }
             else
@@ -106,6 +115,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
                 ItemStack curDragCopy = curDraggedStack.Copy();
                 this.SetSlotContents(curDraggedStack);
                 inventoryManager.SetDraggedItemStack(stackCopy);
+                SetToolTip(string.Empty);
             }
         }
     }
@@ -117,6 +127,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
             ItemStack stack = stackCopy.SplitStack((stackCopy.GetCount() / 2));
             inventoryManager.SetDraggedItemStack(stack);
             this.SetSlotContents(stackCopy);
+            SetToolTip(string.Empty);
         }
 
         if (myStack.IsEmpty() && !curDraggedStack.IsEmpty())
@@ -125,6 +136,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
             ItemStack curDragCopy = curDraggedStack.Copy();
             curDragCopy.DecreaseAmount(1);
             inventoryManager.SetDraggedItemStack(curDragCopy);
+            SetToolTip(string.Empty);
         }
 
         if(!myStack.IsEmpty() && !curDraggedStack.IsEmpty())
@@ -139,8 +151,24 @@ public class Slot : MonoBehaviour, IPointerDownHandler
                     ItemStack dragCopy = curDraggedStack.Copy();
                     dragCopy.DecreaseAmount(1);
                     inventoryManager.SetDraggedItemStack(dragCopy);
+                    SetToolTip(string.Empty);
                 }
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ItemStack curDraggedStack = inventoryManager.GetDraggedItemStack();
+
+        if(!myStack.IsEmpty() && curDraggedStack.IsEmpty())
+        {
+            SetToolTip(myStack.GetItem().ItemName);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SetToolTip(string.Empty);
     }
 }
