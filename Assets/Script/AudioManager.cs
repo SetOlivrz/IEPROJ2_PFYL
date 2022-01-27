@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mainAudio.volume = 0.5f;
+        mainAudio.volume = 0.2f;
         if(!mainAudio.isPlaying && mainAudio != null && !isPaused)
         {
             mainAudio.Play();
