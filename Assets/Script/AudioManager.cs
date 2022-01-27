@@ -11,8 +11,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip timeShift;
     public AudioClip timeShiftDay;
     public bool isMorning = true;
-    public bool isNightPlaying = false;
-    private bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +22,7 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         mainAudio.volume = 0.2f;
-        if(!mainAudio.isPlaying && mainAudio != null && !isPaused)
+        if(!mainAudio.isPlaying && mainAudio != null)
         {
             mainAudio.Play();
         }
@@ -33,34 +31,25 @@ public class AudioManager : MonoBehaviour
     {
         if(choice == 1)
         {
-            isMorning = false;
-            isNightPlaying = true;
             mainAudio.PlayOneShot(timeShift);
             mainAudio.clip = nightBGM;
+            isMorning = false;
         }
         if(choice == 2)
         {
             mainAudio.PlayOneShot(timeShiftDay);
             isMorning = true;
-            isNightPlaying = false;
             //to change for morning BGM
             mainAudio.clip = dayBGM;
         }
+        if(choice == 3)
+        {
+            mainAudio.PlayOneShot(timeShift);
+        }
     }
 
-    public void OnMusicStop()
+    public void onMusicStop()
     {
         mainAudio.Stop();
-    }
-
-    public void OnGamePause()
-    {
-        mainAudio.Stop();
-        isPaused = true;
-    }
-
-    public void OnGameResume()
-    {
-        isPaused = false;
     }
 }

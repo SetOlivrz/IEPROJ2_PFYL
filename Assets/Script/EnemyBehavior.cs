@@ -154,6 +154,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         //dropItem = true;
         playerData.addGold(10);
+        EnemySpawning.totalEnemyKilledInLevel++;
         count++;
         int dropRate = Random.Range(1, 101);
         if (dropRate >= 1 && dropRate <= 30) Instantiate(drop, transform.position, transform.rotation);

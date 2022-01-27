@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
 
     //checker to see if the player can shoot
     public bool isShooting = false;
-    public bool isUpwards = false;
-    public bool isRight = false;
 
+    bool mforward;
+    bool mback;
+    bool mleft;
+    bool mright;
     [SerializeField] Animator animator;
     public Vector3 mousePos;
     public Camera cam;
@@ -29,7 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         UpdateMoveAnimation();
-        AnimationChecker();
         MouseUpdate();            
     }
 
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
     void MouseUpdate()
     {
         //will change checker once items are implemented
-        if (!isShooting && Input.GetKeyDown(KeyCode.Alpha5))
+        if (!isShooting && Input.GetKeyDown(KeyCode.Alpha1))
         {
             isShooting = true;
         }
@@ -88,41 +89,12 @@ public class PlayerController : MonoBehaviour
             ShootHandler();
         }
         //will change soon once items are implemented
-/*        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             isShooting = false;
             Debug.Log("Not Shooting");
-        }*/
-    }
-
-    private void AnimationChecker()
-    {
-        //W
-        if (animator.GetBool("back"))
-        {
-            isUpwards = true;
-            isRight = false;
-        }
-        //S
-        else if (animator.GetBool("front"))
-        {
-            isUpwards = false;
-            isRight = false;
-        }
-        //A
-        else if (animator.GetBool("left"))
-        {
-            isUpwards = false;
-            isRight = false;
-        }
-        //D
-        else if (animator.GetBool("right"))
-        {
-            isUpwards = false;
-            isRight = true;
         }
     }
-
     //To Fix
     void ShootHandler()
     {

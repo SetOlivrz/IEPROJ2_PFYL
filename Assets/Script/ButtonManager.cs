@@ -29,8 +29,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
 
-    [Header("Audio")]
-    [SerializeField] AudioManager audioManager;
+
 
 
     // Start is called before the first frame update
@@ -357,16 +356,13 @@ public class ButtonManager : MonoBehaviour
         {
             BPfadeOut(blackPanel);
         }
-        audioManager.OnGamePause();
     }
 
     public void ResumeGame()
     {
         PauseGame();
         Debug.Log("Game Resumed");
-        audioManager.OnGameResume();
         Time.timeScale = 1;
-        
     }
 
     public void AccessInventory()
