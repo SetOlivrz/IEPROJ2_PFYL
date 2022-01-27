@@ -850,10 +850,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c278d359655f0da4b8c6b3bd41cc3159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 2106595123641395480, guid: c15267c3765fcf744b6e2ab4d0e3c25c, type: 3}
+  slotPrefab: {fileID: 6939649823305933871, guid: 63e75a3aa11ca2840a6ab7a647957e3b, type: 3}
   containers:
-  - containerName: Player Inventory
+  - containerName: PlayerInventory
     containerpPrefab: {fileID: 7387384152189818283, guid: 1ad90f3f02ca2dd4f9052df748d85f66, type: 3}
+  - containerName: PlayerHotbar
+    containerpPrefab: {fileID: 425698032277400108, guid: 22bf7acd235615648be6c39593b76b1a, type: 3}
 --- !u!114 &2121343117
 MonoBehaviour:
   m_ObjectHideFlags: 0
