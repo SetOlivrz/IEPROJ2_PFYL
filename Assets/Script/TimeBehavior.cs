@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 0; // set to 5
+    private float hour = 5; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -54,7 +54,30 @@ public class TimeBehavior : MonoBehaviour
 
         if (!(day == maxDay && hour == 0 && minute >= 0)) //day == 7 && hour == 6 && minute >= 59.0f
         {
+
             UpdateTicks();
+            if (isDaytime)
+            {
+                // Set to 2f to showcase audio transition accurately
+                minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging 
+            }
+            //transition for audio
+            if(minute < 60.0f && minute >= 55.0f)
+            {
+                //shift from day to night
+                if(hour + 1 == 6 && isDaytime)
+                {
+                    if (audioManager.isMorning && !audioManager.isNightPlaying)
+                    {
+                        audioManager.OnMusicStop();
+                    }
+                    if (!audioManager.mainAudio.isPlaying)
+                    {
+                        audioManager.OnMusicPlay(1);
+                    }
+                }
+            }
+
 
             //transition for audio
             AudioTransitionChecker();
@@ -65,9 +88,12 @@ public class TimeBehavior : MonoBehaviour
         if (/*hour >= 2*/ stageClear)
         {
             day++;
+
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
-            audioManager.onMusicStop();
+            audioManager.OnMusicStop();
+
+            audioManager.OnMusicStop();
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -86,7 +112,7 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
-            audioManager.onMusicStop();
+            audioManager.OnMusicStop();
             audioManager.OnMusicPlay(2);
 
             Debug.Log("Good Morning");
@@ -134,7 +160,7 @@ public class TimeBehavior : MonoBehaviour
             {
                 if (audioManager.isMorning)
                 {
-                    audioManager.onMusicStop();
+                    audioManager.OnMusicStop();
                 }
 
                 if (!audioManager.mainAudio.isPlaying)
