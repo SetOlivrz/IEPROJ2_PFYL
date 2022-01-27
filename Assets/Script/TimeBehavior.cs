@@ -4,6 +4,8 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 using UnityEngine.Experimental.GlobalIllumination;
 
 public class TimeBehavior : MonoBehaviour
@@ -12,14 +14,18 @@ public class TimeBehavior : MonoBehaviour
     public static int day = 1;
     private float hour = 0; // set to 5
     private float minute = 0.0f;
+    private float accumMins = 0.0f;
 
     private float maxMins = 60.0f; // nMins it takes to be considered as an hour
     private float maxHours = 6.0f; // nHours it takes to be considered as a Day
 
     private const int maxDay = 8; // one full week cycle
 
+    // lights
+    private float lighTicks = 0.0f;
+    private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 3.0f;
+    private const float TIME_MULTIPLIER = 2.0f;
 
     //Audio
     public AudioManager audioManager;
@@ -39,13 +45,13 @@ public class TimeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-  
+
         if (!(day == maxDay && hour == 0 && minute >= 0)) //day == 7 && hour == 6 && minute >= 59.0f
         {
             UpdateTicks();
@@ -59,13 +65,17 @@ public class TimeBehavior : MonoBehaviour
         if (/*hour >= 2*/ stageClear)
         {
             day++;
+            EnemySpawning.totalEnemyInLevel = 0;
+            EnemySpawning.totalEnemyKilledInLevel = 0;
             audioManager.onMusicStop();
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
-            
+
         }
 
+
+     
         if (hour == maxHours && isDaytime == true) // set to night when the hours needed is met
         {
             Debug.Log("Good Evening");
@@ -83,14 +93,20 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = true;
+
         }
 
         //Debug.Log("Day: " + day + "  Hour: " + hour + " " + "Minutes: " + minute);
 
         //timeText.text = "Day: " + day.ToString() + "\n" + hour.ToString("00") + ":" + (Mathf.Round(minute)).ToString("00");
-        Debug.Log("Day: " + day.ToString() + "\n" + hour.ToString("00") + ":" + (Mathf.Round(minute)).ToString("00"));
+        //Debug.Log("Day: " + day.ToString() + "\n" + hour.ToString("00") + ":" + (Mathf.Round(minute)).ToString("00"));
 
         dayLabel.text = "DAY " + day.ToString();
+
+        UpdateClock();
+
+
+        // update light
     }
 
     private void UpdateHours()
@@ -141,6 +157,30 @@ public class TimeBehavior : MonoBehaviour
 
     public void UpdateClock()
     {
-        //clock.transform.rotation = Mathf.Lerp(0.0f, 360.0f, minute/hour);
+        if (isDaytime == true)
+        {
+            accumMins += Time.deltaTime * TIME_MULTIPLIER;
+            float angle = Mathf.Lerp(0.0f, -180, accumMins/ (maxMins * maxHours));
+
+            Quaternion target = Quaternion.Euler(0, 0, angle);
+
+            clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
+
+           // Debug.Log("AM: " + accumMins + "Mins: " + minute);
+        }
+        
+        
+        else if (isDaytime ==  false)
+        {
+            accumMins = 0;
+            float angle = Mathf.Lerp(-180, -360, (EnemySpawning.totalEnemyKilledInLevel/EnemySpawning.totalEnemyInLevel));
+
+            Quaternion target = Quaternion.Euler(0, 0, angle);
+            clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime);
+
+             Debug.Log("night: killed " + EnemySpawning.totalEnemyKilledInLevel + "/: " + EnemySpawning.totalEnemyInLevel);
+
+        }
+
     }
 }

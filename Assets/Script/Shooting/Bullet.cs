@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Colliding");
         if (collision.collider.CompareTag("Enemy"))
         {
-            Debug.Log("Collided with " + collision.collider.name);
+           // Debug.Log("Collided with " + collision.collider.name);
             EnemyBehavior enemy = collision.collider.GetComponent<EnemyBehavior>();
             enemy.ReceiveDamage(10);
             Destroy(gameObject);

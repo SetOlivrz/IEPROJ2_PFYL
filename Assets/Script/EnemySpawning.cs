@@ -33,19 +33,30 @@ public class EnemySpawning : MonoBehaviour
 
     //Wave
     private int total = 0; //Total enemies per wave
+    public static float totalEnemyInLevel = 0; //Total enemies per wave
+    public static float totalEnemyKilledInLevel = 0; //Total enemies per wave
+
+
     private int enemyCount = 0;
+
     public static int currentWave = 0; //Current wave #
     private int difficulty = 5; //5 = Normal?
+
     private int waveMaxCount = 6; //Max number of waves per day or level
+
     private int waveMinEnemies = 5; //Min possible number of enemies per wave
     private int waveMaxEnemies = 10; //Max possible number of enemies per wave
-    private bool releaseWave = false; 
+
+    private bool releaseWave = false;
     private bool isCleared = true;
     private bool waveStart = false;
+
+    private int[] nMaxEnemyPerWave = { 0,0,0,0,0,0} ;
 
     // Start is called before the first frame update
     void Start()
     {
+        RandomizeTotalEnemiesPerWave();
         //Add available enemies
         enemyCopies.Add(golemCopy);
         enemyCopies.Add(zombieCopy);
@@ -70,6 +81,7 @@ public class EnemySpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //For debugging
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -79,6 +91,7 @@ public class EnemySpawning : MonoBehaviour
         if (currentWave >= waveMaxCount)
         {
             ResetAll();
+          
         }
 
         //Prepare new wave
@@ -87,6 +100,7 @@ public class EnemySpawning : MonoBehaviour
         //Release wave
         ReleaseWave();
 
+        // ------------------------------------------- FOR DEBUGGING --------------------------------------------------//
         //Delete wave: For debugging (if player cleared a wave)
         if (start /*|| TimeBehavior.isDaytime*/)
         {
@@ -103,17 +117,24 @@ public class EnemySpawning : MonoBehaviour
 
             start = false;
 
-            if(currentWave >= waveMaxCount)
-            TimeBehavior.stageClear = true;
+            if (currentWave >= waveMaxCount)
+            {
+                TimeBehavior.stageClear = true;
+            }
         }
+        // ------------------------------------------- FOR DEBUGGING --------------------------------------------------//
+
         if (waveStart)
-        {
+        { 
             enemyCount = 0;
             for (int i = 0; i < enemyList.Count; i++)
             {
                 if (enemyList[i] == null)
                 {
                     enemyCount++;
+                    Debug.Log("Killed: " + totalEnemyKilledInLevel + "/" + totalEnemyInLevel);
+
+                    //totalEnemyKilledInLevel++;
                 }
             }
             if (enemyCount == total)
@@ -134,16 +155,19 @@ public class EnemySpawning : MonoBehaviour
 
     void GenerateNewWave()
     {
-        if (currentWave < waveMaxCount && isCleared && !TimeBehavior.isDaytime)
+        if (currentWave < waveMaxCount && isCleared && !TimeBehavior.isDaytime) // less than wavecount, nit cleared, night time
         {
-            total = Random.Range(waveMinEnemies, waveMaxEnemies + 1);
+            //total = Random.Range(waveMinEnemies, waveMaxEnemies + 1);
+
+            total = nMaxEnemyPerWave[currentWave];
             isCleared = false;
             releaseWave = true;
+
             Debug.Log(total);
-            Debug.Log(currentWave + 1 + " " + waveMaxCount);
+            Debug.Log("current wave = " + (currentWave+1) + " waveMaxCount" + waveMaxCount);
 
             //Add bosses + weaker boss + condition
-            if((currentWave + 1) % difficulty == 0 && TimeBehavior.day == 5) SpawnEnemy(bossGolemCopy);
+            if ((currentWave + 1) % difficulty == 0 && TimeBehavior.day == 5) SpawnEnemy(bossGolemCopy);
 
             if (currentWave > difficulty && TimeBehavior.day == 5)
             {
@@ -155,7 +179,7 @@ public class EnemySpawning : MonoBehaviour
 
     void ReleaseWave()
     {
-        if(enemyList.Count < total && releaseWave)
+        if (enemyList.Count < total && releaseWave)
         {
             this.ticks += Time.deltaTime;
 
@@ -191,13 +215,30 @@ public class EnemySpawning : MonoBehaviour
         start = false;
 
         //Wave
-        total = 0; 
-        currentWave = 0; 
+        total = 0;
+        currentWave = 0;
         waveMaxCount = 5;
-        waveMinEnemies = 5;
-        waveMaxEnemies = 10; 
+        waveMinEnemies = 5;//5
+        waveMaxEnemies = 10;//10
         releaseWave = false;
         isCleared = true;
+        totalEnemyInLevel = 0;
+        totalEnemyKilledInLevel = 0;
+        RandomizeTotalEnemiesPerWave();
+
+    }
+
+
+    public void RandomizeTotalEnemiesPerWave()
+    {
+        for (int i = 0; i < waveMaxCount; i++)
+        {
+            nMaxEnemyPerWave[i] = Random.Range(waveMinEnemies, waveMaxEnemies + (i + 1));
+             totalEnemyInLevel += nMaxEnemyPerWave[i];
+            Debug.Log("Num: " + nMaxEnemyPerWave[i]);
+        }
+         Debug.Log("total number of enemies: " + totalEnemyInLevel);
+
     }
 }
 
