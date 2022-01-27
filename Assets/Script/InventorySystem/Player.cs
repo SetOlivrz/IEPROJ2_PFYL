@@ -8,13 +8,16 @@ public class Player : MonoBehaviour
 
     public Inventory myInventory = new Inventory(24);
     private bool isOpen;
-
+    private int selectedHotbarIndex = 0;
     private void Start()
     {
         foreach(Item item in itemsToAdd)
         {
             myInventory.AddItem(new ItemStack(item, 1));
         }
+
+        InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+        isOpen = false;
     }
 
     private void Update()
@@ -41,5 +44,26 @@ public class Player : MonoBehaviour
                 isOpen = false;
             }
         }
+
+        UpdateSelectedHotbarIndex(Input.GetAxis("Mouse ScrollWheel"));
+    }
+
+    private void UpdateSelectedHotbarIndex(float direction)
+    {
+        if (direction > 0)
+            direction = 1;
+        if (direction < 0)
+            direction = -1;
+
+        for (selectedHotbarIndex -= (int)direction; selectedHotbarIndex < 0; selectedHotbarIndex += 6);
+
+        while (selectedHotbarIndex >= 6)
+            selectedHotbarIndex -= 6;
+
+    }
+
+    public int GetSelectedHotbarIndex()
+    {
+        return selectedHotbarIndex;
     }
 }

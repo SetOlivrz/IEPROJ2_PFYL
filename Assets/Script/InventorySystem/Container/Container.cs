@@ -23,7 +23,7 @@ public class Container
         RectTransform slotRT = slot.GetComponent<RectTransform>();
         slot.SetSlot(inventory, slotID, this);
         spawnedSlot.transform.SetParent(spawnedContainerPrefab.transform);
-        spawnedSlot.transform.SetAsLastSibling();
+        spawnedSlot.transform.SetAsFirstSibling();
         slotRT.anchoredPosition = new Vector2(x, y);
         slotRT.sizeDelta = Vector2.one * slotSize;
         slotRT.localScale = Vector3.one;
