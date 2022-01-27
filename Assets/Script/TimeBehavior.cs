@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 5; // set to 5 for debugging
+    private float hour = 0; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
