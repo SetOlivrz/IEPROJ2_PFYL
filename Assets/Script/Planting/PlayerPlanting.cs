@@ -10,9 +10,13 @@ public class PlayerPlanting : MonoBehaviour
     private GameObject soil;
     private GameObject prev_soil;
     [SerializeField] private string equipped_tool;
+    // holder sprite
     [SerializeField] GameObject equipped_sprite;
+    // Game objects used as a socket for various tools and weapons
     [SerializeField] GameObject rightHand;
     [SerializeField] GameObject leftHand;
+    [SerializeField] GameObject gunSlotL;
+    [SerializeField] GameObject gunSlotR;
     bool inContact = false;
 
     // r g b a
@@ -101,23 +105,54 @@ public class PlayerPlanting : MonoBehaviour
         {
             rightHand.GetComponent<SpriteRenderer>().sprite = equipped_sprite.GetComponent<SpriteRenderer>().sprite;
             rightHand.GetComponent<SpriteRenderer>().flipX = false;
-            rightHand.SetActive(true);
+            if(equipped_tool == "gun")
+            {
+                gunSlotR.GetComponent<SpriteRenderer>().sprite = equipped_sprite.GetComponent<SpriteRenderer>().sprite;
+                gunSlotR.GetComponent<SpriteRenderer>().flipX = false;
+                rightHand.SetActive(false);
+                gunSlotR.SetActive(true);
+            }
+            else
+            {
+                rightHand.SetActive(true);
+                gunSlotR.SetActive(false);
+            }
+            gunSlotL.SetActive(false);
             leftHand.SetActive(false);
+            equipped_sprite.SetActive(false);
+        }
+        else if (player.isUpwards)
+        {
+            rightHand.SetActive(false);
+            leftHand.SetActive(false);
+            gunSlotR.SetActive(false);
+            gunSlotL.SetActive(false);
+            equipped_sprite.SetActive(true);
+            if(equipped_tool == "gun")
+            {
+                equipped_sprite.SetActive(false);
+            }
+
         }
         else if (!player.isRight)
         {
             leftHand.GetComponent<SpriteRenderer>().sprite = equipped_sprite.GetComponent<SpriteRenderer>().sprite;
             leftHand.GetComponent<SpriteRenderer>().flipX = true;
-            leftHand.SetActive(true);
+            if (equipped_tool == "gun")
+            {
+                gunSlotL.GetComponent<SpriteRenderer>().sprite = equipped_sprite.GetComponent<SpriteRenderer>().sprite;
+                gunSlotL.GetComponent<SpriteRenderer>().flipX = true;
+                leftHand.SetActive(false);
+                gunSlotL.SetActive(true);
+            }
+            else
+            {
+                leftHand.SetActive(true);
+                gunSlotL.SetActive(false);
+            }
             rightHand.SetActive(false);
-        }
-        if (player.isUpwards)
-        {
-            
-        }
-        else if (!player.isUpwards)
-        {
-            
+            gunSlotR.SetActive(false);
+            equipped_sprite.SetActive(false);
         }
     }
 
