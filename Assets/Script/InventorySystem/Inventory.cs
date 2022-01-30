@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Inventory
 {
-    private List<ItemStack> inventoryContents = new List<ItemStack>();
+    [SerializeField] private List<ItemStack> inventoryContents = new List<ItemStack>();
 
     public Inventory(int size)
     {

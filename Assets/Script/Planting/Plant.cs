@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    //enum should be here I guess for plant types
-    public enum PlantType
-    {
-        Rose,
-        Bomb
-    };
-
-    public float growthSpeed;
-    public PlantType type;
+    private float growthSpeed;
+    private Seed.SeedTypes type;
 
     // Start is called before the first frame update
     void Start()
     {
-        switch (type)
-        {
-            case PlantType.Rose:
-                growthSpeed = 5f;
-                break;
-            case PlantType.Bomb:
-                growthSpeed = 5.5f;
-                break;
-        }
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public Seed.SeedTypes GetPlantType()
     {
-        
+        return type;
+    }
+
+    public void SetPlant(Seed seed)
+    {
+        this.type = seed.GetSeedType();
+
+        SetGrowthSpeed(seed.GetGrowth());
+    }
+
+    public float GetGrowth()
+    {
+        return growthSpeed;
+    }
+
+    public void SetGrowthSpeed(float growthSpeed)
+    {
+        this.growthSpeed = growthSpeed;
     }
 }

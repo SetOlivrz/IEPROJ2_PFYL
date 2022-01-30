@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
 
         while (selectedHotbarIndex >= 6)
             selectedHotbarIndex -= 6;
-
     }
 
     public int GetSelectedHotbarIndex()

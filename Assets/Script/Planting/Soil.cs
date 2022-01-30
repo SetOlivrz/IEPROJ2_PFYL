@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
-    bool isInRange = false;
     bool isGrown = false;
+    bool hasSeed = false;
+    bool isTilled = false;
 
     //seems redundant, will replace later when inventory system has been implemented
+    public GameObject plantObject;
     Plant plant;
+    SpriteRenderer plantSprite;
+
+
+    public List<PlantSprites> plantSprites = new List<PlantSprites>();
 
     // Start is called before the first frame update
     void Start()
     {
-
+        plant = plantObject.GetComponent<Plant>();
+        plantSprite = plantObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -22,74 +29,25 @@ public class Soil : MonoBehaviour
         
     }
 
-    //Trigger enter and exit are to check if player is near enough to plant on specific plot
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            isInRange = true;
-            Debug.Log("Player in range");
-            //Get player's inventory
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            isInRange = false;
-            Debug.Log("Player no longer in range");
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if (isInRange)
-        {
-            plant = GetComponentInChildren<Plant>();
-
-            //Check to see if plot is empty or not
-            if (!plant.gameObject.activeSelf)
-            {
-                //Check if using seed and is not occupied (need:item with tag "Seed")
-
-
-                //another check to see what seed it is (need: "Seed" item has "SeedType" enum)
-
-                //Default for now since there's no inventory system
-                plant.gameObject.SetActive(true);
-
-                plant.type = Plant.PlantType.Rose;
-
-
-
-                Debug.Log("Planted");
-                StartCoroutine(Grow());
-            }
-            //Check if plot is occupied and ready to harvest
-            else if (isGrown)
-            {
-                Harvest();
-            }
-        }
-    }
-
     //Grow coroutine for the plants
     IEnumerator Grow()
     {
         for (int i = 0; i < 3; i++)
         {
-            // sprite changing goes here
+            // sprite change goes here
+            plantSprite.sprite = plantSprites[(int)plant.GetPlantType()].plantSprites[i];
 
+            Debug.Log(i + "count");
             //Timer happens 3 times
-            yield return new WaitForSeconds(plant.growthSpeed / 3);
+            yield return new WaitForSeconds(plant.GetGrowth() / 3);
         }
 
         Debug.Log("Finished Growing");
     }
 
     //Function used to harvest crop that is fully grown
-    void Harvest()
+    //Not fully implemented yet do not use!!!!!
+    public void Harvest()
     {
         //Set sprite to inactive
         plant = GetComponentInChildren<Plant>();
@@ -99,5 +57,62 @@ public class Soil : MonoBehaviour
         //Check if inventory is full
             //add item into inventory if not full
             //Drop item into ground if full
+    }
+
+    public void Till()
+    {
+        //code here that changes color of soil
+
+        isTilled = true;
+
+        Debug.Log("You have tilled the soil");
+    }
+
+    public void Plant(Seed seed)
+    {
+        //set the plant based on seed
+        plant.SetPlant(seed);
+
+        //stuff here to show the plant on the soil
+        plantSprite.sprite = plantSprites[(int)plant.GetPlantType()].plantSprites[0];
+        plantObject.SetActive(true);
+
+        Debug.Log("You have planted something");
+    }
+
+    public void Water()
+    {
+        //code here that changes color of soil
+
+        //not sure what to do here
+        // Plant will now start to grow
+        StartCoroutine(Grow());
+
+        Debug.Log("Watered the soil");
+    }
+
+    public bool GetIsTilled()
+    {
+        return isTilled;
+    }
+
+    public bool GetHasSeed()
+    {
+        return hasSeed;
+    }
+
+    public void SetHasSeed(bool hasSeed)
+    {
+        this.hasSeed = hasSeed;
+    }
+
+    public bool GetIsGrown()
+    {
+        return isGrown;
+    }
+
+    public void SetIsGrown(bool isGrown)
+    {
+        this.isGrown = isGrown;
     }
 }

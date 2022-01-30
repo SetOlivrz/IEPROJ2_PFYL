@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[CreateAssetMenu(fileName = "New Seed")]
+public class Seed : Item
+{
+    public enum SeedTypes
+    {
+        Rose,
+        Cabbage
+    };
+
+    [SerializeField] private SeedTypes seedType;
+    [SerializeField] private float growthSpeed;
+
+    public SeedTypes GetSeedType()
+    {
+        return seedType;
+    }
+
+    public float GetGrowth()
+    {
+        return growthSpeed;
+    }
+}
