@@ -63,6 +63,7 @@ public class Soil : MonoBehaviour
     {
         //code here that changes color of soil
 
+
         isTilled = true;
 
         Debug.Log("You have tilled the soil");

@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2849523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0055, y: 1.2377, z: 0.1096}
+  m_LocalPosition: {x: 2.6, y: 1.2377, z: 0.1096}
   m_LocalScale: {x: 0.75, y: 1.5, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
@@ -274,6 +274,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 571808cc725162c44b6ddcc1adf0c52f, type: 2}
   - {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
   - {fileID: 11400000, guid: d2364f9ced4087a44a1292caabc87c60, type: 2}
+  - {fileID: 11400000, guid: 9c99d1f4628f9e44dbf68a0c593a6ce5, type: 2}
   myInventory:
     inventoryContents:
     - item: {fileID: 0}
@@ -713,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720597666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: -1.39}
+  m_LocalPosition: {x: 0, y: -0.4, z: -2.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1593568202}
@@ -1029,6 +1030,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: fdfeed3332b0766468a23b6989eecc18, type: 3}
     - {fileID: 21300000, guid: a0733911af0bdd443871dc0eb00d96be, type: 3}
     - {fileID: 21300000, guid: adfa166b4bf239c4f8bbdf5441375526, type: 3}
+  - plantSprites:
+    - {fileID: 21300000, guid: 232a666eb4f06a444bec91199bd3b890, type: 3}
+    - {fileID: 21300000, guid: 8c612ece0d914644ea2cdb141971d610, type: 3}
+    - {fileID: 21300000, guid: 81ca114381f775f4ba3b19f137a9c413, type: 3}
 --- !u!65 &2063770625
 BoxCollider:
   m_ObjectHideFlags: 0

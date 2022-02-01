@@ -9,7 +9,8 @@ public class Seed : Item
     public enum SeedTypes
     {
         Rose,
-        Cabbage
+        Cabbage,
+        Bush,
     };
 
     [SerializeField] private SeedTypes seedType;
