@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592dc4b0d1c37644cb9eb911a3e2c65d, type: 3}
-  m_Name: Cola
+  m_Script: {fileID: 11500000, guid: 56092cd4d99420748a22c2531feb7bee, type: 3}
+  m_Name: Hoe
   m_EditorClassIdentifier: 
-  ItemName: Cola
-  ItemIcon: {fileID: 21300000, guid: 48723b40c8c07564094d99b7f8edce9d, type: 3}
-  maxStackSize: 30
+  ItemName: Hoe
+  ItemIcon: {fileID: 21300000, guid: 8a62471fa406c4349a168087bfb3a902, type: 3}
+  maxStackSize: 1
+  toolType: 0

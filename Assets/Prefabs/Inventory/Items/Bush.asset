@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592dc4b0d1c37644cb9eb911a3e2c65d, type: 3}
-  m_Name: Cola
+  m_Script: {fileID: 11500000, guid: 97d2a6f60c8163a428b621e51aaf6ac4, type: 3}
+  m_Name: Bush
   m_EditorClassIdentifier: 
-  ItemName: Cola
-  ItemIcon: {fileID: 21300000, guid: 48723b40c8c07564094d99b7f8edce9d, type: 3}
-  maxStackSize: 30
+  ItemName: Bush Seed
+  ItemIcon: {fileID: 21300000, guid: 232a666eb4f06a444bec91199bd3b890, type: 3}
+  maxStackSize: 100
+  seedType: 2
+  growthSpeed: 20
