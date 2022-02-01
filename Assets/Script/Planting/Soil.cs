@@ -32,14 +32,14 @@ public class Soil : MonoBehaviour
     //Grow coroutine for the plants
     IEnumerator Grow()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 1; i < 3; i++)
         {
+            yield return new WaitForSeconds(plant.GetGrowth() / 2);
             // sprite change goes here
             plantSprite.sprite = plantSprites[(int)plant.GetPlantType()].plantSprites[i];
 
             Debug.Log(i + "count");
             //Timer happens 3 times
-            yield return new WaitForSeconds(plant.GetGrowth() / 3);
         }
 
         Debug.Log("Finished Growing");
@@ -62,7 +62,7 @@ public class Soil : MonoBehaviour
     public void Till()
     {
         //code here that changes color of soil
-
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
 
         isTilled = true;
 
@@ -84,6 +84,7 @@ public class Soil : MonoBehaviour
     public void Water()
     {
         //code here that changes color of soil
+        gameObject.GetComponent<MeshRenderer>().material.color = new Color32(55, 55, 55, 255);
 
         //not sure what to do here
         // Plant will now start to grow
