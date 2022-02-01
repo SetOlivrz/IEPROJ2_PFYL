@@ -64,7 +64,7 @@ public class PlayerPlanting : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Soil")
+        if (other.tag == "Soil" && other.gameObject == soil.gameObject)
         {
             soil = null;
         }
