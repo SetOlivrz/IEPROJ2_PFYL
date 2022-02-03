@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56092cd4d99420748a22c2531feb7bee, type: 3}
-  m_Name: Hoe
+  m_Script: {fileID: 11500000, guid: 97d2a6f60c8163a428b621e51aaf6ac4, type: 3}
+  m_Name: Rose
   m_EditorClassIdentifier: 
-  ItemName: Hoe
-  ItemIcon: {fileID: 21300000, guid: 8a62471fa406c4349a168087bfb3a902, type: 3}
-  maxStackSize: 1
-  toolType: 0
+  ItemName: Rose Seed
+  ItemIcon: {fileID: 21300000, guid: 5283afd3c846f744281629da89b9416a, type: 3}
+  maxStackSize: 100
+  seedType: 0
+  growthSpeed: 1

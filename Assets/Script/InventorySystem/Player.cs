@@ -45,6 +45,12 @@ public class Player : MonoBehaviour
             }
         }
 
+        /*if (Input.GetKeyDown(KeyCode.E))
+        {
+            myInventory.AddItem(new ItemStack(itemsToAdd[2], 1));
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+        }*/
+
         UpdateSelectedHotbarIndex(Input.GetAxis("Mouse ScrollWheel"));
     }
 

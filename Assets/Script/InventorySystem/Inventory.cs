@@ -54,4 +54,23 @@ public class Inventory
     {
         return inventoryContents;
     }
+
+    public int GetInventorySize()
+    {
+        return inventoryContents.Count;
+    }
+
+    public int GetItemsCount()
+    {
+        int count = 0;
+        foreach(ItemStack items in inventoryContents)
+        {
+            if(items.GetItem() != null)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }

@@ -110,6 +110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantObject: {fileID: 3174570418234078935}
+  plant: {fileID: 0}
+  seedDrops:
+  - items:
+    - {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
+    - {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
+    - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - items:
+    - {fileID: 11400000, guid: d2364f9ced4087a44a1292caabc87c60, type: 2}
+    - {fileID: 11400000, guid: b239e963a7ee8c441bd0471f3059a8e1, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 0bc8066bdbf22df438d8c5caa09e9cd3, type: 2}
+    - {fileID: 11400000, guid: 0bc8066bdbf22df438d8c5caa09e9cd3, type: 2}
   plantSprites:
   - plantSprites:
     - {fileID: 21300000, guid: 5283afd3c846f744281629da89b9416a, type: 3}

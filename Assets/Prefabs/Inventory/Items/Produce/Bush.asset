@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56092cd4d99420748a22c2531feb7bee, type: 3}
-  m_Name: WateringCan
+  m_Script: {fileID: 11500000, guid: ad6929423fc12cd40b1002a34a7a9bba, type: 3}
+  m_Name: Bush
   m_EditorClassIdentifier: 
-  ItemName: Watering Can
-  ItemIcon: {fileID: 21300000, guid: 48723b40c8c07564094d99b7f8edce9d, type: 3}
-  maxStackSize: 1
-  toolType: 1
+  ItemName: Bush
+  ItemIcon: {fileID: 21300000, guid: 81ca114381f775f4ba3b19f137a9c413, type: 3}
+  maxStackSize: 100
+  produceTypes: 2

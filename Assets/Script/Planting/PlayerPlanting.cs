@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPlanting : MonoBehaviour
 {
-    private Player player;
+    [SerializeField] Player player;
     private Soil soil;
 
     void Start()
@@ -14,13 +14,22 @@ public class PlayerPlanting : MonoBehaviour
 
     void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.E))
+        {
+            player.myInventory.AddItem(new ItemStack(player.myInventory.itemsToAdd[0], 1));
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
+        }*/
+
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Mouse Clicked!");
 
             ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
 
-            Debug.Log(currentHeldItem.GetItem().ItemName);
+            if (currentHeldItem.GetItem() != null)
+                Debug.Log(currentHeldItem.GetItem().ItemName);
+            else
+                Debug.Log("Hands");
 
             // Checks if player can plant when left clicking
             if (soil)
@@ -39,6 +48,28 @@ public class PlayerPlanting : MonoBehaviour
                     }
                 }
 
+                if(currentHeldItem.GetItem() == null && soil.GetIsGrown())
+                {
+                    //Check if inventory is full
+                    if(player.myInventory.GetInventorySize() > player.myInventory.GetItemsCount())
+                    {
+                        foreach(Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                        {
+                            player.myInventory.AddItem(new ItemStack(itemsToAdd, 1));
+                        }
+
+                        //player.myInventory.AddItem(drops);
+                        InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
+                    }
+                    else
+                    {
+                        //If inventory is full
+                            //drop item(s)
+                    }
+
+                    soil.Harvest();
+                }
+
                 if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
                 {
                     //get seed from inventory and remove 1 instance
@@ -50,7 +81,6 @@ public class PlayerPlanting : MonoBehaviour
 
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
-                    soil.SetHasSeed(true);
                     soil.Plant(seed);
                 }
             }

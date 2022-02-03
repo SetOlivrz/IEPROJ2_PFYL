@@ -509,6 +509,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3174570418187072463, guid: b44377a0869c06648a82012277dc7115, type: 3}
+      propertyPath: seedDrops.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3174570418187072560, guid: b44377a0869c06648a82012277dc7115, type: 3}
       propertyPath: m_Name
       value: Soil (1)

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Soil : MonoBehaviour
-{
+{   
     bool isGrown = false;
     bool hasSeed = false;
     bool isTilled = false;
 
     //seems redundant, will replace later when inventory system has been implemented
     public GameObject plantObject;
-    Plant plant;
+    public Plant plant;
+    public List<ItemDrops> seedDrops;
     SpriteRenderer plantSprite;
 
 
@@ -42,6 +43,8 @@ public class Soil : MonoBehaviour
             //Timer happens 3 times
         }
 
+        gameObject.GetComponent<MeshRenderer>().material.color = new Color32(212, 212, 212, 255);
+        isGrown = true;
         Debug.Log("Finished Growing");
     }
 
@@ -50,13 +53,12 @@ public class Soil : MonoBehaviour
     public void Harvest()
     {
         //Set sprite to inactive
-        plant = GetComponentInChildren<Plant>();
-        plant.gameObject.SetActive(false);
+        plantObject.SetActive(false);
         isGrown = false;
+        hasSeed = false;
+        isTilled = false;
 
-        //Check if inventory is full
-            //add item into inventory if not full
-            //Drop item into ground if full
+        Debug.Log("Harvested");
     }
 
     public void Till()
@@ -71,6 +73,7 @@ public class Soil : MonoBehaviour
 
     public void Plant(Seed seed)
     {
+        hasSeed = true;
         //set the plant based on seed
         plant.SetPlant(seed);
 
