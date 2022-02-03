@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ec4dc0c136c42479c16d8d9a58e70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &194115929
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,10 +509,6 @@ PrefabInstance:
     - target: {fileID: 3174570418187072459, guid: b44377a0869c06648a82012277dc7115, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174570418187072463, guid: b44377a0869c06648a82012277dc7115, type: 3}
-      propertyPath: seedDrops.Array.size
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3174570418187072560, guid: b44377a0869c06648a82012277dc7115, type: 3}
       propertyPath: m_Name
