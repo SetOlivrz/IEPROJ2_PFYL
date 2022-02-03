@@ -16,4 +16,4 @@ MonoBehaviour:
   ItemIcon: {fileID: 21300000, guid: 5283afd3c846f744281629da89b9416a, type: 3}
   maxStackSize: 100
   seedType: 0
-  growthSpeed: 1
+  growthSpeed: 2

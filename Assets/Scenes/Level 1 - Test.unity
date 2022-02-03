@@ -507,6 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 27880572}
   moveSpeed: 10
+  player: {fileID: 0}
   isShooting: 0
   isUpwards: 0
   isRight: 0
@@ -624,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ec4dc0c136c42479c16d8d9a58e70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &27880577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +644,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
   - {fileID: 11400000, guid: d2364f9ced4087a44a1292caabc87c60, type: 2}
   - {fileID: 11400000, guid: 9c99d1f4628f9e44dbf68a0c593a6ce5, type: 2}
+  - {fileID: 11400000, guid: a5158ef47e2488d4fbd81efce565190e, type: 2}
   myInventory:
     inventoryContents:
     - item: {fileID: 0}
