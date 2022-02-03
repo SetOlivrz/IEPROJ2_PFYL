@@ -43,6 +43,16 @@ public class ItemStack
         return this.item;
     }
 
+    public void SetItem(Item item)
+    {
+        this.item = item;
+    }
+
+    public void RemoveItem()
+    {
+        this.item = null;
+    }
+
     public int GetCount()
     {
         return count;

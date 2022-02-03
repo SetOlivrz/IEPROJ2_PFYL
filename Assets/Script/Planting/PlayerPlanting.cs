@@ -43,6 +43,11 @@ public class PlayerPlanting : MonoBehaviour
                 {
                     //get seed from inventory and remove 1 instance
                     currentHeldItem.DecreaseAmount(1);
+                    if(currentHeldItem.GetCount() < 1)
+                    {
+                        currentHeldItem.RemoveItem();
+                    }
+
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
                     soil.SetHasSeed(true);
