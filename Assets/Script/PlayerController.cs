@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
+    [SerializeField] Player player;
 
     //checker to see if the player can shoot
     public bool isShooting = false;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = gameObject.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
     void MouseUpdate()
     {
         //will change checker once items are implemented
-        if (!isShooting && Input.GetKeyDown(KeyCode.Alpha5))
+        if (!isShooting && player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool gun && gun.GetToolType() == Tool.ToolTypes.Gun)
         {
             isShooting = true;
         }
@@ -87,6 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             ShootHandler();
         }
+
+        if (isShooting && !(player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool notGun && notGun.GetToolType() == Tool.ToolTypes.Gun))
+        {
+            isShooting = false;
+        }
+
         //will change soon once items are implemented
 /*        if (Input.GetKeyDown(KeyCode.Alpha2))
         {

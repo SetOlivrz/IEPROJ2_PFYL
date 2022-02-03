@@ -20,7 +20,7 @@ public class PlayerPlanting : MonoBehaviour
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !player.isOpen)
         {
             Debug.Log("Mouse Clicked!");
 

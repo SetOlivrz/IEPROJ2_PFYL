@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public Item[] itemsToAdd;
 
     public Inventory myInventory = new Inventory(24);
-    private bool isOpen;
+    public bool isOpen { get; private set; }
     private int selectedHotbarIndex = 0;
     private void Start()
     {
