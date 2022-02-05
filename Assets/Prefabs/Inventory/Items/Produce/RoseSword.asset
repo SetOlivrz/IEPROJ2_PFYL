@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RoseSword
   m_EditorClassIdentifier: 
   ItemName: Rose Sword
-  ItemIcon: {fileID: 21300000, guid: 383b08a3e6dd192408cb12c097390e1d, type: 3}
+  ItemIcon: {fileID: 21300000, guid: c8d8b2d3c592b5f4092631b4babdd234, type: 3}
   maxStackSize: 1
   produceTypes: 0
