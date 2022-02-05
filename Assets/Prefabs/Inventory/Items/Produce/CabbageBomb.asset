@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CabbageBomb
   m_EditorClassIdentifier: 
   ItemName: Cabbage Bomb
-  ItemIcon: {fileID: 21300000, guid: adfa166b4bf239c4f8bbdf5441375526, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 2515d71241239874e8d77e06e72440be, type: 3}
   maxStackSize: 5
   produceTypes: 1
