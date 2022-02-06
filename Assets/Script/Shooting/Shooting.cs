@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
     public PlayerController player;
     public Transform firePoint;
     public GameObject bulletPrefab;
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +19,7 @@ public class Shooting : MonoBehaviour
             }
         }
     }
+    //Generates the bullet and its behavior
     void Shoot()
     {
 

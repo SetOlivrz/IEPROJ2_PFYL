@@ -43,7 +43,6 @@ public class AudioManager : MonoBehaviour
             mainAudio.PlayOneShot(timeShiftDay);
             isMorning = true;
             isNightPlaying = false;
-            //to change for morning BGM
             mainAudio.clip = dayBGM;
         }
     }

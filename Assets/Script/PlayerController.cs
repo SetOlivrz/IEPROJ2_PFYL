@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     public bool isRight = false;
 
     [SerializeField] Animator animator;
-    public Vector3 mousePos;
-    public Camera cam;
 
     private Vector2 moveInput;
     // Start is called before the first frame update
@@ -93,13 +91,6 @@ public class PlayerController : MonoBehaviour
         {
             isShooting = false;
         }
-
-        //will change soon once items are implemented
-/*        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            isShooting = false;
-            Debug.Log("Not Shooting");
-        }*/
     }
 
     private void AnimationChecker()
@@ -130,18 +121,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //To Fix
+    //Handles the shooting for the player
     void ShootHandler()
     {
         if (isShooting)
         {
+            animator.SetTrigger("Shoot");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                //Debug.Log(hit.point);
-                //Debug.Log("Position: " + transform.position);
-                //TO FIX
                 if (hit.point.z > transform.position.z)
                 {
                     ResetBool();
