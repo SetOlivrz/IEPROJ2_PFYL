@@ -31,8 +31,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
-                isOpen = false;
+                //InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+                //isOpen = false;
             }
         }
 
@@ -70,5 +70,18 @@ public class Player : MonoBehaviour
     public int GetSelectedHotbarIndex()
     {
         return selectedHotbarIndex;
+    }
+    public void OpenInventory()
+    {
+        if (!isOpen)
+        {
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerInventory(null, myInventory));
+            isOpen = true;
+        }
+        else
+        {
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+            isOpen = false;
+        }
     }
 }
