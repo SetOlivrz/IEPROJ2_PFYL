@@ -25,7 +25,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 2.0f;
+    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Audio
     public AudioManager audioManager;
@@ -56,11 +56,6 @@ public class TimeBehavior : MonoBehaviour
         {
 
             UpdateTicks();
-            if (isDaytime)
-            {
-                // Set to 2f to showcase audio transition accurately
-                minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging 
-            }
             //transition for audio
             if(minute < 60.0f && minute >= 55.0f)
             {
@@ -192,7 +187,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-           // Debug.Log("AM: " + accumMins + "Mins: " + minute);
+            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         
