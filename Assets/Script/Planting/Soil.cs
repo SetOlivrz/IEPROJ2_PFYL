@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Soil : MonoBehaviour
 {   
     bool isGrown = false;
     bool hasSeed = false;
     bool isTilled = false;
+
+    public float gTicks = 0.0f;
+    public float plantGTime = 1.0f;
+
+    [SerializeField] private GameObject canvas;
 
     //seems redundant, will replace later when inventory system has been implemented
     public GameObject plantObject;
@@ -17,22 +23,36 @@ public class Soil : MonoBehaviour
 
     public List<PlantSprites> plantSprites = new List<PlantSprites>();
 
+
+    private void Awake()
+    {
+        gTicks = 0.0f;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        canvas.SetActive(false);
         plant = plantObject.GetComponent<Plant>();
         plantSprite = plantObject.GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (canvas.activeInHierarchy == true)
+        {
+            gTicks += Time.deltaTime;
+
+        }
     }
 
     //Grow coroutine for the plants
     IEnumerator Grow()
     {
+        plantGTime = plant.GetGrowth();
+
+        canvas.SetActive(true);
         for (int i = 1; i < 3; i++)
         {
             yield return new WaitForSeconds(plant.GetGrowth() / 2);
@@ -46,6 +66,7 @@ public class Soil : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material.color = new Color32(212, 212, 212, 255);
         isGrown = true;
         Debug.Log("Finished Growing");
+        canvas.SetActive(false);
     }
 
     //Function used to harvest crop that is fully grown

@@ -187,7 +187,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
+            //Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         
