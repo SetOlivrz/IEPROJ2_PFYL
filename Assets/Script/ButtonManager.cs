@@ -29,6 +29,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
 
+    [SerializeField] Player player;
     [Header("Audio")]
     [SerializeField] AudioManager audioManager;
 
@@ -372,6 +373,9 @@ public class ButtonManager : MonoBehaviour
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
+
+        player.OpenInventory();
+     
     }
 
     public void RestartDay()
