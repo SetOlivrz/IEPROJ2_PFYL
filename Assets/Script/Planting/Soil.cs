@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Soil : MonoBehaviour
-{   
+{
     bool isGrown = false;
     bool hasSeed = false;
     bool isTilled = false;
+    public bool isGrowing { get; private set; }
 
     public float gTicks = 0.0f;
     public float plantGTime = 1.0f;
@@ -31,6 +32,7 @@ public class Soil : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isGrowing = false;
         canvas.SetActive(false);
         plant = plantObject.GetComponent<Plant>();
         plantSprite = plantObject.GetComponent<SpriteRenderer>();
@@ -78,6 +80,7 @@ public class Soil : MonoBehaviour
         isGrown = false;
         hasSeed = false;
         isTilled = false;
+        isGrowing = false;
 
         Debug.Log("Harvested");
     }
@@ -107,6 +110,8 @@ public class Soil : MonoBehaviour
 
     public void Water()
     {
+        isGrowing = true;
+
         //code here that changes color of soil
         gameObject.GetComponent<MeshRenderer>().material.color = new Color32(55, 55, 55, 255);
 

@@ -42,7 +42,7 @@ public class PlayerPlanting : MonoBehaviour
                             soil.Till();
                             break;
                         case Tool.ToolTypes.WateringCan:
-                            if(soil.GetHasSeed())
+                            if(soil.GetHasSeed() && !soil.isGrowing)
                             soil.Water();
                             break;
                     }
@@ -101,10 +101,17 @@ public class PlayerPlanting : MonoBehaviour
     {
         if (other.tag == "Soil")
         {
+<<<<<<< Updated upstream
             if(other.gameObject == soil.gameObject)
             {
                 soil = null;
             }        
+=======
+            if (other.gameObject == soil.gameObject)
+            {
+                soil = null;
+            }   
+>>>>>>> Stashed changes
         }
 
         Debug.Log("Out of range!");
