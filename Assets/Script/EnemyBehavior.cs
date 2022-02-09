@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] public string enemyName;
     [SerializeField] private float speed = 0;
     public float health = 50.0f;
+    private float maxHealth;
     public float damage = 5.0f;
     
     //Movement
@@ -38,6 +39,10 @@ public class EnemyBehavior : MonoBehaviour
     //Drops Copy
     [SerializeField] private GameObject drop;
 
+    //Health bar
+    [SerializeField] private GameObject progress_bar;
+    private Vector3 localScale;
+
     private PlayerData playerData;
     // count for dead enemies
     public int count = 0;
@@ -45,7 +50,12 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       progress_bar = this.transform.GetChild(0).gameObject;
+       localScale = progress_bar.transform.localScale;
+       //localScale.x = 0;
+       progress_bar.transform.localScale = localScale;
+       maxHealth = health;
+
        player = GameObject.FindGameObjectWithTag("Player").transform;
        prev_x = transform.position.x;
        prev_z = transform.position.z;
@@ -125,8 +135,14 @@ public class EnemyBehavior : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         this.health -= damage;
-        if(this.health <= 0)
+
+        localScale.x = health / maxHealth;
+        progress_bar.transform.localScale = localScale;
+
+        if (this.health <= 0)
         {
+            localScale.x = 0;
+            progress_bar.transform.localScale = localScale;
             OnKill();
         }
 
