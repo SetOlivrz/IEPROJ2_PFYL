@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
         {
            // Debug.Log("Collided with " + collision.collider.name);
             EnemyBehavior enemy = collision.collider.GetComponent<EnemyBehavior>();
-            enemy.ReceiveDamage(10);
+            if(enemy.enemyName == "Normal Slime") enemy.ReceiveDamage(30);
+            else enemy.ReceiveDamage(10);
             Destroy(gameObject);
         }
 
