@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 5; // set to 5 for debugging
+    private float hour = 0; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -25,7 +25,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 2.0f;
+    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Audio
     public AudioManager audioManager;
@@ -56,13 +56,8 @@ public class TimeBehavior : MonoBehaviour
         {
 
             UpdateTicks();
-            if (isDaytime)
-            {
-                // Set to 2f to showcase audio transition accurately
-                minute += Time.deltaTime * 2f; //2f; Note: Use 30f for debugging 
-            }
-            //transition for audio, plays church warning bells 20 seconds before nighttime
-            if(minute < 60.0f && minute >= 40.0f)
+            //transition for audio
+            if(minute < 60.0f && minute >= 55.0f)
             {
                 //shift from day to night
                 if(hour + 1 == 6 && isDaytime)
@@ -70,10 +65,9 @@ public class TimeBehavior : MonoBehaviour
                     if (audioManager.isMorning && !audioManager.isNightPlaying)
                     {
                         audioManager.OnMusicStop();
-                        
                     }
                     if (!audioManager.mainAudio.isPlaying)
-                    {  
+                    {
                         audioManager.OnMusicPlay(1);
                     }
                 }
@@ -93,11 +87,15 @@ public class TimeBehavior : MonoBehaviour
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
             audioManager.OnMusicStop();
+
+            audioManager.OnMusicStop();
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
 
         }
+
+
      
         if (hour == maxHours && isDaytime == true) // set to night when the hours needed is met
         {
@@ -158,11 +156,13 @@ public class TimeBehavior : MonoBehaviour
                 if (audioManager.isMorning)
                 {
                     audioManager.OnMusicStop();
-                    if (!audioManager.mainAudio.isPlaying)
-                    {
-                        audioManager.OnMusicPlay(1);
-                    }
-                }                
+                }
+
+                if (!audioManager.mainAudio.isPlaying)
+                {
+                    audioManager.OnMusicPlay(1);
+
+                }
             }
         }
     }
@@ -187,7 +187,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-           // Debug.Log("AM: " + accumMins + "Mins: " + minute);
+            //Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         

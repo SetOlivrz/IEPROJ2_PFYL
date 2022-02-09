@@ -45,6 +45,22 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            selectedHotbarIndex = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            selectedHotbarIndex = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            selectedHotbarIndex = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            selectedHotbarIndex = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            selectedHotbarIndex = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+            selectedHotbarIndex = 5;
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            selectedHotbarIndex = 6;
+
+
         /*if (Input.GetKeyDown(KeyCode.E))
         {
             myInventory.AddItem(new ItemStack(itemsToAdd[2], 1));
