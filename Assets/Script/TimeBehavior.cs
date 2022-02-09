@@ -45,7 +45,7 @@ public class TimeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class TimeBehavior : MonoBehaviour
 
             UpdateTicks();
             //transition for audio
-            if(minute < 60.0f && minute >= 55.0f)
+            if(minute < 60.0f && minute >= 40.0f)
             {
                 //shift from day to night
                 if(hour + 1 == 6 && isDaytime)
@@ -76,7 +76,6 @@ public class TimeBehavior : MonoBehaviour
 
             //transition for audio
             AudioTransitionChecker();
-
             UpdateHours();
         }
 
@@ -148,7 +147,7 @@ public class TimeBehavior : MonoBehaviour
 
     private void AudioTransitionChecker()
     {
-        if (minute < 60.0f && minute >= 51.0f)
+        if (minute < 60.0f && minute >= 50.0f)
         {
             //shift from day to night for audio
             if (hour + 1 == 6 && isDaytime)

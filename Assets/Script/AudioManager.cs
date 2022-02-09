@@ -19,19 +19,23 @@ public class AudioManager : MonoBehaviour
     public bool isMuted = false;
     private bool isPaused = false;
     private bool triggered = false;
+    
+    [Header("Options")]
+    [SerializeField] Text sliderText;
     private float holder = 0.0f;
+    private float slideHolder = 0;
+
     private void Awake()
     {
-         
+        DontDestroyOnLoad(transform.gameObject);
         if(instance == null)
         {
             instance = this;
         }
-        else if(instance != null)
+        else
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(transform.gameObject);
     }
     // Start is called before the first frame update
     void Start()
@@ -42,23 +46,22 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Scene current = SceneManager.GetActiveScene();
-        //triggered is a temp stop gap to prevent the main audio from continuously playing
-        // checker is also a temporary stop gap 
-        if(current.name == "Level 1 - Test" && !triggered)
+        if (!triggered)
         {
-            isMainMenu = false;
-            mainAudio.clip = dayBGM;
-            isMorning = true;
-            triggered = true;
-        }
-        if(mainAudio != null)
-        {
-            //mainAudio.volume = 0.2f;
-            if(!mainAudio.isPlaying && !isPaused)
+            Scene current = SceneManager.GetActiveScene();
+            // triggered is a temp stop gap to prevent the main audio from continuously playing
+            // checker is also a temporary stop gap 
+            if(current.name == "Level 1 - Test")
             {
-                mainAudio.Play();
+                isMainMenu = false;
+                mainAudio.clip = dayBGM;
+                isMorning = true;
+                triggered = true;
             }
+        }
+        if(!mainAudio.isPlaying && !isPaused && mainAudio != null)
+        {
+            mainAudio.Play();
         }
         
     }
@@ -99,10 +102,9 @@ public class AudioManager : MonoBehaviour
     public void OnVolumeChange(Slider slider)
     {
         mainAudio.volume = slider.value;
-        Debug.Log(mainAudio.volume);
+        slideHolder = Mathf.Round(slider.value * 100.0f);
+        sliderText.text = slideHolder.ToString() + "%";
     }
-
-
 
     public void OnMute(bool muted)
     {
@@ -111,8 +113,7 @@ public class AudioManager : MonoBehaviour
             holder = mainAudio.volume;
             mainAudio.volume = 0;
             isMuted = true;
-        }
-            
+        } 
         else
         {
             mainAudio.volume = holder;
