@@ -46,6 +46,7 @@ public class EnemyBehavior : MonoBehaviour
     private PlayerData playerData;
     // count for dead enemies
     public int count = 0;
+    private bool hasAttacked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -154,15 +155,18 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            //makes it so that the mobs instantly damage player and then takes a while before attacking
+            if (!hasAttacked)
+            {
+                playerData.TakeDamage(damage);
+                hasAttacked = true;
+            }
             this.ticks += Time.deltaTime;
             if (ticks > ATTACK_INTERVAL)
             {
                 ticks = 0.0f;
-
-                //player.health -= damage;
                 playerData.TakeDamage(damage);
-                
-                
+                hasAttacked = false;
                 Debug.Log("Attack!");
             }
         }

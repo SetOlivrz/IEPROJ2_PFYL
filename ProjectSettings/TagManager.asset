@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Soil
+  - Ground
+  - Store
   layers:
   - Default
   - TransparentFX

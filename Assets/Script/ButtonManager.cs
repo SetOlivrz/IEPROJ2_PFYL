@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -29,27 +30,17 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
 
+    [SerializeField] GameObject optionsPanel;
+    [SerializeField] GameObject mute;
+    [SerializeField] GameObject unmute;
+    [SerializeField] Text sliderValue;
+
     [SerializeField] Player player;
     [Header("Audio")]
     [SerializeField] AudioManager audioManager;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void NewGameConfimation()
     {
-        
-
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
         {
            
@@ -306,7 +297,7 @@ public class ButtonManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         Debug.Log("Tutorial Level");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1 - Test");
         Time.timeScale = 1;
 
     }
@@ -314,7 +305,7 @@ public class ButtonManager : MonoBehaviour
     public void StartNormalLevel()
     {
         Debug.Log("Normal Level");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1 - Test");
         Time.timeScale = 1;
 
     }
@@ -368,6 +359,23 @@ public class ButtonManager : MonoBehaviour
         audioManager.OnGameResume();
         Time.timeScale = 1;
         
+    }
+    //To fix UI update of buttons && slider
+    public void Options()
+    {
+        optionsPanel.SetActive(true);
+
+        if(audioManager.isMuted)
+        {
+            mute.SetActive(false);
+            unmute.SetActive(true);
+        }
+        else
+        {
+            mute.SetActive(true);
+            unmute.SetActive(false);
+        }
+        sliderValue.text = audioManager.mainAudio.volume.ToString();
     }
 
     public void AccessInventory()

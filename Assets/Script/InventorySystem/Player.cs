@@ -31,8 +31,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                //InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
-                //isOpen = false;
+                InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+                isOpen = false;
             }
         }
 
