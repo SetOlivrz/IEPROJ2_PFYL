@@ -19236,8 +19236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Normal Golem
   speed: 2
-  health: 50
-  damage: 20
+  health: 60
+  damage: 4
   Right: {fileID: 21300000, guid: 93fd73d3d0d10cd4b93d6ccc40c6f5bd, type: 3}
   Left: {fileID: 21300000, guid: 9808247e719338547b953c46a4f0b566, type: 3}
   Up: {fileID: 21300000, guid: ee2028cfdd30dc849a39765852b945d5, type: 3}
@@ -21767,6 +21767,14 @@ PrefabInstance:
     - target: {fileID: 4354928273000097501, guid: 77bf1b4f5c854b745831a314b2b67889, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354928273000097502, guid: 77bf1b4f5c854b745831a314b2b67889, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354928273000097502, guid: 77bf1b4f5c854b745831a314b2b67889, type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77bf1b4f5c854b745831a314b2b67889, type: 3}
