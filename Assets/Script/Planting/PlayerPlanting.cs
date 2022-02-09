@@ -101,17 +101,10 @@ public class PlayerPlanting : MonoBehaviour
     {
         if (other.tag == "Soil")
         {
-<<<<<<< Updated upstream
             if(other.gameObject == soil.gameObject)
             {
                 soil = null;
-            }        
-=======
-            if (other.gameObject == soil.gameObject)
-            {
-                soil = null;
-            }   
->>>>>>> Stashed changes
+            }
         }
 
         Debug.Log("Out of range!");
