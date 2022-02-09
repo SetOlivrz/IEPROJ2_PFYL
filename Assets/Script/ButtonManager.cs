@@ -30,15 +30,15 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
 
+
+    [SerializeField] Player player;
+
+    [Header("Audio")]
+    [SerializeField] AudioManager audioManager;
     [SerializeField] GameObject optionsPanel;
     [SerializeField] GameObject mute;
     [SerializeField] GameObject unmute;
     [SerializeField] Text sliderValue;
-
-    [SerializeField] Player player;
-    [Header("Audio")]
-    [SerializeField] AudioManager audioManager;
-
     public void NewGameConfimation()
     {
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
@@ -363,19 +363,20 @@ public class ButtonManager : MonoBehaviour
     //To fix UI update of buttons && slider
     public void Options()
     {
-        optionsPanel.SetActive(true);
-
-        if(audioManager.isMuted)
-        {
-            mute.SetActive(false);
-            unmute.SetActive(true);
-        }
-        else
-        {
-            mute.SetActive(true);
-            unmute.SetActive(false);
-        }
+        optionsPanel.SetActive(true);        
         sliderValue.text = audioManager.mainAudio.volume.ToString();
+    }
+
+    public void Mute()
+    {
+        mute.gameObject.GetComponent<Button>().interactable = false;
+        unmute.gameObject.GetComponent<Button>().interactable = true;
+    }
+
+    public void Unmute()
+    {
+        mute.gameObject.GetComponent<Button>().interactable = true;
+        unmute.gameObject.GetComponent<Button>().interactable = false;
     }
 
     public void AccessInventory()
