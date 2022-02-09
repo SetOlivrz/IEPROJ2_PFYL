@@ -99,9 +99,12 @@ public class PlayerPlanting : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Soil" && other.gameObject == soil.gameObject)
+        if (other.tag == "Soil")
         {
-            soil = null;
+            if(other.gameObject == soil.gameObject)
+            {
+                soil = null;
+            }        
         }
 
         Debug.Log("Out of range!");

@@ -19,7 +19,7 @@ public class GrowthTimerDisplay : MonoBehaviour
     void Start()
     {
        soilScript = soil.GetComponent<Soil>();
-        timerDisplay.fillAmount =0;
+       timerDisplay.fillAmount =0;
     }
 
     // Update is called once per frame
