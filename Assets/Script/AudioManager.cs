@@ -48,7 +48,6 @@ public class AudioManager : MonoBehaviour
     {
         if (!triggered)
         {
-            Debug.Log("TEST");
             Scene current = SceneManager.GetActiveScene();
             // triggered is a temp stop gap to prevent the main audio from continuously playing
             // checker is also a temporary stop gap 
@@ -62,7 +61,6 @@ public class AudioManager : MonoBehaviour
         }
         if(!mainAudio.isPlaying && !isPaused && mainAudio != null)
         {
-            Debug.Log("DAFUQ");
             mainAudio.Play();
         }
         

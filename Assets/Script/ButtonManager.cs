@@ -363,6 +363,7 @@ public class ButtonManager : MonoBehaviour
     //To fix UI update of buttons && slider
     public void Options()
     {
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         optionsPanel.SetActive(true);        
         sliderValue.text = audioManager.mainAudio.volume.ToString();
     }

@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 5; // set to 5 for debugging
+    private float hour = 0; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -59,21 +59,16 @@ public class TimeBehavior : MonoBehaviour
             //transition for audio
             if(minute < 60.0f && minute >= 40.0f)
             {
-                Debug.Log("Entered");
                 //shift from day to night
                 if(hour + 1 == 6 && isDaytime)
                 {
                     if (audioManager.isMorning && !audioManager.isNightPlaying)
                     {
-                        Debug.Log("Checker");
                         audioManager.OnMusicStop();
                     }
                     if (!audioManager.mainAudio.isPlaying)
                     {
-                        Debug.Log(audioManager.mainAudio.isPlaying);
-                        Debug.Log("Checker_2");
                         audioManager.OnMusicPlay(1);
-                        Debug.Log("WHY");
                     }
                 }
             }

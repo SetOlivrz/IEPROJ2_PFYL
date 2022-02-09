@@ -5278,7 +5278,7 @@ MonoBehaviour:
   playerData: {fileID: 0}
   manager: {fileID: 0}
   player: {fileID: 0}
-  audioManager: {fileID: 2956238926689702818, guid: 19a912040221871438e6b85bb854af40, type: 3}
+  audioManager: {fileID: 0}
   optionsPanel: {fileID: 255660868}
   mute: {fileID: 1595659064}
   unmute: {fileID: 358604533}
@@ -6534,7 +6534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.22870685, b: 0.016420428, a: 1}
+  m_Color: {r: 0.5471698, g: 0.387882, b: 0.17808829, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12454,7 +12454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.22870685, b: 0.016420428, a: 1}
+  m_Color: {r: 0.5471698, g: 0.387882, b: 0.17808829, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
