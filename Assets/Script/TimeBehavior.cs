@@ -28,7 +28,7 @@ public class TimeBehavior : MonoBehaviour
     private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Audio
-    public AudioManager audioManager;
+    [SerializeField] AudioManager audioManager;
 
     //Light
     [SerializeField] GameObject sun;
@@ -45,7 +45,7 @@ public class TimeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
