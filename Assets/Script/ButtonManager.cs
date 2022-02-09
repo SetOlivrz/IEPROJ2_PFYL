@@ -34,7 +34,6 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] Player player;
 
     [Header("Audio")]
-    [SerializeField] AudioManager audioManager;
     [SerializeField] GameObject optionsPanel;
     [SerializeField] GameObject mute;
     [SerializeField] GameObject unmute;
@@ -349,23 +348,22 @@ public class ButtonManager : MonoBehaviour
         {
             BPfadeOut(blackPanel);
         }
-        audioManager.OnGamePause();
+        AudioManager.instance.OnGamePause();
     }
 
     public void ResumeGame()
     {
         PauseGame();
         Debug.Log("Game Resumed");
-        audioManager.OnGameResume();
+        AudioManager.instance.OnGameResume();
         Time.timeScale = 1;
         
     }
     //To fix UI update of buttons && slider
     public void Options()
     {
-        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         optionsPanel.SetActive(true);        
-        sliderValue.text = audioManager.mainAudio.volume.ToString();
+        sliderValue.text = AudioManager.instance.mainAudio.volume.ToString();
     }
 
     public void Mute()
