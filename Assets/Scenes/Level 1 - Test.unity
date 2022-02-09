@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda461f742c65ba419e46f6c73aa7f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 2956238926689702818, guid: 19a912040221871438e6b85bb854af40, type: 3}
+  audioManager: {fileID: 0}
   sun: {fileID: 857538359}
   clock: {fileID: 1362612099}
   dayLabel: {fileID: 679115720}
@@ -12668,7 +12668,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 4.5905e-41, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -17429,7 +17429,7 @@ MonoBehaviour:
   playerData: {fileID: 27880568}
   manager: {fileID: 633700474}
   player: {fileID: 27880577}
-  audioManager: {fileID: 2956238926689702818, guid: 19a912040221871438e6b85bb854af40, type: 3}
+  audioManager: {fileID: 0}
   optionsPanel: {fileID: 0}
   mute: {fileID: 0}
   unmute: {fileID: 0}
