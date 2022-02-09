@@ -10,9 +10,10 @@ public class EnemyBehavior : MonoBehaviour
     //Target
     protected Transform player;
     private bool reachedPlayer = false;
+    private bool damaged = false;
 
     //Enemy Stats
-    [SerializeField] private string enemyName;
+    [SerializeField] public string enemyName;
     [SerializeField] private float speed = 0;
     public float health = 50.0f;
     public float damage = 5.0f;
@@ -30,6 +31,9 @@ public class EnemyBehavior : MonoBehaviour
     //Interval
     private float ticks = 0.0f;
     private float ATTACK_INTERVAL = 3.0f;
+
+    private float dticks = 0.0f;
+    private float dATTACK_INTERVAL = 0.5f;
 
     //Drops Copy
     [SerializeField] private GameObject drop;
@@ -75,6 +79,17 @@ public class EnemyBehavior : MonoBehaviour
 
             UpdateSprite();
         }
+
+        if (damaged)
+        {
+            dticks += Time.deltaTime;
+            if (dticks > dATTACK_INTERVAL)
+            {
+                dticks = 0f;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                damaged = false;
+            }
+        }
     }
 
     void UpdateSprite()
@@ -114,6 +129,9 @@ public class EnemyBehavior : MonoBehaviour
         {
             OnKill();
         }
+
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        damaged = true;
     }
 
     private void OnCollisionStay(Collision collider)
@@ -158,6 +176,11 @@ public class EnemyBehavior : MonoBehaviour
         count++;
         int dropRate = Random.Range(1, 101);
         if (dropRate >= 1 && dropRate <= 30) Instantiate(drop, transform.position, transform.rotation);
+        //this.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        Vector3 enemyLocation = transform.position;
+        //gameObject.SetActive(false);
+        enemyLocation.y = -20;
+        this.transform.position = enemyLocation;
         Destroy(this.gameObject);
     }
 }
