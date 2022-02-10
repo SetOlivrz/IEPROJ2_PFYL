@@ -53,6 +53,8 @@ public class EnemySpawning : MonoBehaviour
 
     private int[] nMaxEnemyPerWave = { 0,0,0,0,0,0} ;
 
+    [SerializeField] GameObject StageClearUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,7 +93,7 @@ public class EnemySpawning : MonoBehaviour
         if (currentWave >= waveMaxCount)
         {
             ResetAll();
-          
+            StageClearUI.SetActive(true);
         }
 
         //Prepare new wave
@@ -225,7 +227,6 @@ public class EnemySpawning : MonoBehaviour
         totalEnemyInLevel = 0;
         totalEnemyKilledInLevel = 0;
         RandomizeTotalEnemiesPerWave();
-
     }
 
 
