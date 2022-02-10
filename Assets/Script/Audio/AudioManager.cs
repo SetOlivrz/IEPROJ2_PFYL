@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource effectsAudio;
     [SerializeField] AudioClip mainmenu;
 
+    private Scene scene;
+    private bool mmMusic = false;
     private bool isPaused = false;
     
     [Header("Options")]
@@ -22,12 +24,13 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-       
         if(instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
             PlayMainBGM(mainmenu);
+            mainAudio.volume = 0.2f;
+            mmMusic = true;
         }
         else
         {
@@ -100,5 +103,10 @@ public class AudioManager : MonoBehaviour
             mainAudio.volume = holder;
             isMuted = false;
         }
+    }
+
+    public void OnMain()
+    {
+        PlayMainBGM(mainmenu);
     }
 }
