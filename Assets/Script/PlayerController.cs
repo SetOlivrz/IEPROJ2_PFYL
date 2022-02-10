@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
             rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
             leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
 
-            if (currentHeldItem.item.ItemName == "Rose Sword")
+            if (currentHeldItem.item.ItemName == "Rose Sword" || currentHeldItem.item.ItemName == "Gun")
             {
                 //Hand
                 defaultHand.SetActive(false);
