@@ -147,6 +147,7 @@ public class ButtonManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Debug.Log("Return to Mainmenu");
+        AudioManager.instance.OnMain();
         SceneManager.LoadScene("Mainmenu 1");
     }
 
@@ -295,7 +296,7 @@ public class ButtonManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         Debug.Log("Tutorial Level");
-        SceneManager.LoadScene("Level 1 - Test");
+        SceneManager.LoadScene("Test");
         Time.timeScale = 1;
 
     }
@@ -347,14 +348,14 @@ public class ButtonManager : MonoBehaviour
         {
             BPfadeOut(blackPanel);
         }
-        AudioManager.instance.OnGamePause();
+        //AudioManager.instance.OnGamePause();
     }
 
     public void ResumeGame()
     {
         PauseGame();
         Debug.Log("Game Resumed");
-        AudioManager.instance.OnGameResume();
+        //AudioManager.instance.OnGameResume();
         Time.timeScale = 1;
         
     }
@@ -390,6 +391,7 @@ public class ButtonManager : MonoBehaviour
             Unmute();
         }
     }
+
 
     public void OptionsPopup()
     {
@@ -438,6 +440,17 @@ public class ButtonManager : MonoBehaviour
         unmute.gameObject.GetComponent<Button>().interactable = false;
     }
 
+    public void MuteButton()
+    {
+        if (AudioManager.instance.isMuted)
+        {
+            AudioManager.instance.OnMute(false);
+        }
+        else
+        {
+            AudioManager.instance.OnMute(true);
+        }
+    }
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");

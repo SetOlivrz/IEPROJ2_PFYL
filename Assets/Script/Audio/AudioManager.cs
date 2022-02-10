@@ -11,19 +11,26 @@ public class AudioManager : MonoBehaviour
     [Header("Sources")]
     [SerializeField] AudioSource mainAudio;
     [SerializeField] AudioSource effectsAudio;
+    [SerializeField] AudioClip mainmenu;
 
+    private Scene scene;
+    private bool mmMusic = false;
     private bool isPaused = false;
     
     [Header("Options")]
     private float holder = 0.0f;
     public bool isMuted = false;
+    public float volume = 1.0f;
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            PlayMainBGM(mainmenu);
+            mainAudio.volume = 0.2f;
+            mmMusic = true;
         }
         else
         {
@@ -80,6 +87,7 @@ public class AudioManager : MonoBehaviour
     public void OnVolumeChange(float value)
     {
         AudioListener.volume = value;
+        volume = value;
     }
 
     public void OnMute(bool muted)
@@ -95,5 +103,10 @@ public class AudioManager : MonoBehaviour
             mainAudio.volume = holder;
             isMuted = false;
         }
+    }
+
+    public void OnMain()
+    {
+        PlayMainBGM(mainmenu);
     }
 }

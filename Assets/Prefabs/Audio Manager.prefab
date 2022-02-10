@@ -175,7 +175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAudio: {fileID: 7715509889545159620}
   effectsAudio: {fileID: 87927364631400756}
+  mainmenu: {fileID: 8300000, guid: abd669c070d055341a47285ec814d26a, type: 3}
   isMuted: 0
+  volume: 1
 --- !u!114 &9217557085056425717
 MonoBehaviour:
   m_ObjectHideFlags: 0
