@@ -58,6 +58,7 @@ public class EnemySpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ResetAll();
         RandomizeTotalEnemiesPerWave();
         //Add available enemies
         enemyCopies.Add(golemCopy);
