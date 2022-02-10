@@ -510,6 +510,10 @@ MonoBehaviour:
   sun: {fileID: 857538359}
   clock: {fileID: 1362612099}
   dayLabel: {fileID: 679115720}
+  dayBGM: {fileID: 8300000, guid: 6375f2dcbbc95804a9f4cb068371c8fe, type: 3}
+  nightBGM: {fileID: 8300000, guid: d6226e12e27b9f547bee60719d80b72c, type: 3}
+  nightTimeShift: {fileID: 8300000, guid: cbec32ddb6f27b342a4e3b390a211d67, type: 3}
+  daytimeShift: {fileID: 8300000, guid: c36f169763d07b944b19a385842c99ac, type: 3}
 --- !u!114 &27880571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17737,6 +17741,7 @@ MonoBehaviour:
   optionsPanel: {fileID: 0}
   mute: {fileID: 0}
   unmute: {fileID: 0}
+  clip: {fileID: 0}
   sliderValue: {fileID: 0}
 --- !u!4 &1203873998
 Transform:

@@ -13,6 +13,8 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] GameObject bulletCountUI;
     [SerializeField] GameObject bulletCountText;
+    [SerializeField] Image bulletImage;
+    [SerializeField] Image errorImage;
     private float ticks = 0.0f;
     private const float INTERVAL = 5f;
 
@@ -46,11 +48,16 @@ public class Shooting : MonoBehaviour
         }
 
         ticks += Time.deltaTime;
-        if (ticks > INTERVAL && bulletCount < 10)
+        if(bulletCount < 10)
         {
-            bulletCount++;
-            ticks = 0.0f;
+            bulletImage.fillAmount = ticks;
+            if (ticks > INTERVAL)
+            {
+                bulletCount++;
+                ticks = 0.0f;
+            }
         }
+        
 
         bulletCountText.GetComponent<Text>().text = bulletCount.ToString();
     }
