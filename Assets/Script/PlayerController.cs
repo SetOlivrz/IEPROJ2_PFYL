@@ -30,11 +30,6 @@ public class PlayerController : MonoBehaviour
         defaultHand = player.transform.GetChild(3).gameObject;
         rightHand = player.transform.GetChild(4).gameObject;
         leftHand = player.transform.GetChild(5).gameObject;
-
-        //Hand
-        defaultHand.SetActive(true);
-        rightHand.SetActive(false);
-        leftHand.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,7 +38,8 @@ public class PlayerController : MonoBehaviour
         Move();
         UpdateMoveAnimation();
         AnimationChecker();
-        MouseUpdate();     
+        MouseUpdate();
+        ChangeSlot();
         ChangeEquippedSprite();
     }
 
@@ -113,48 +109,24 @@ public class PlayerController : MonoBehaviour
         {
             isUpwards = true;
             isRight = false;
-
-            //Hand
-            defaultHand.SetActive(true);
-            rightHand.SetActive(false);
-            leftHand.SetActive(false);
-            EmptyHand();
         }
         //S
         else if (animator.GetBool("front"))
         {
             isUpwards = false;
             isRight = false;
-
-            //Hand
-            defaultHand.SetActive(true);
-            rightHand.SetActive(false);
-            leftHand.SetActive(false);
-            EmptyHand();
         }
         //A
         else if (animator.GetBool("left"))
         {
             isUpwards = false;
             isRight = false;
-
-            //Hand
-            defaultHand.SetActive(false);
-            rightHand.SetActive(false);
-            leftHand.SetActive(true);
-            EmptyHand();
         }
         //D
         else if (animator.GetBool("right"))
         {
             isUpwards = false;
             isRight = true;
-
-            //Hand
-            defaultHand.SetActive(false);
-            rightHand.SetActive(true);
-            leftHand.SetActive(false);
-            EmptyHand();
         }
     }
 
@@ -210,17 +182,59 @@ public class PlayerController : MonoBehaviour
                 leftHand.SetActive(false);
             }
         }
+        else
+        {
+            defaultHand.GetComponent<SpriteRenderer>().sprite = null;
+            rightHand.GetComponent<SpriteRenderer>().sprite = null;
+            leftHand.GetComponent<SpriteRenderer>().sprite = null;
+        }
     }
 
     void EmptyHand()
     {
         ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
-        if (currentHeldItem.GetItem() == null)
+        defaultHand.SetActive(false);
+        rightHand.SetActive(false);
+        leftHand.SetActive(false);
+    }
+
+    void ChangeSlot()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            defaultHand.SetActive(false);
-            rightHand.SetActive(false);
-            leftHand.SetActive(false);
+            StopCoroutine("DisableItem");
+            if (isRight)
+            {
+                defaultHand.SetActive(false);
+                rightHand.SetActive(true);
+                leftHand.SetActive(false);
+                //EmptyHand();
+            }
+
+            else if (!isRight)
+            {
+                defaultHand.SetActive(false);
+                rightHand.SetActive(false);
+                leftHand.SetActive(true);
+                //EmptyHand();
+            }
+
+            else if (isUpwards || !isUpwards)
+            {
+                defaultHand.SetActive(true);
+                rightHand.SetActive(false);
+                leftHand.SetActive(false);
+                //EmptyHand();
+            }
+
+            StartCoroutine("DisableItem");
         }
+    }
+
+    public IEnumerator DisableItem()
+    {
+        yield return new WaitForSeconds(0.3f);
+        EmptyHand();
     }
 }
 
