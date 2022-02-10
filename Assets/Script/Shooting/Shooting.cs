@@ -13,12 +13,16 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] GameObject bulletCountUI;
     [SerializeField] GameObject bulletCountText;
-    [SerializeField] Image bulletImage;
-    [SerializeField] Image errorImage;
+    [SerializeField] Image reloadImage;
     private float ticks = 0.0f;
     private const float INTERVAL = 5f;
 
     [SerializeField] Player playerClass;
+
+    private void Start()
+    {
+        reloadImage.fillAmount = 0;
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,23 +45,34 @@ public class Shooting : MonoBehaviour
         
         if (player.isShooting)
         {
-            if (Input.GetMouseButtonDown(0) && bulletCount > 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Shoot();
+                if(bulletCount > 0)
+                {
+                    Shoot();
+                }
+                //flash red supposedly
+                /*else if (bulletCount <= 0)
+                {
+                    reloadImage.color = Color.red;
+                    
+                }*/
+
             }
         }
 
         ticks += Time.deltaTime;
         if(bulletCount < 10)
         {
-            bulletImage.fillAmount = ticks;
+            //reloading ui
+            reloadImage.fillAmount = ticks / 5.0f;
             if (ticks > INTERVAL)
             {
                 bulletCount++;
                 ticks = 0.0f;
+                reloadImage.fillAmount = 0;
             }
         }
-        
 
         bulletCountText.GetComponent<Text>().text = bulletCount.ToString();
     }
