@@ -17,11 +17,20 @@ public class Shooting : MonoBehaviour
     private float ticks = 0.0f;
     private const float INTERVAL = 5f;
 
-    [SerializeField] Player playerClass;
+    Player playerClass;
+
+    //Hand
+    private GameObject defaultHand;
+    private GameObject rightHand;
+    private GameObject leftHand;
 
     private void Start()
     {
         reloadImage.fillAmount = 0;
+        playerClass = gameObject.GetComponent<Player>();
+        defaultHand = player.transform.GetChild(6).gameObject;
+        rightHand = player.transform.GetChild(7).gameObject;
+        leftHand = player.transform.GetChild(8).gameObject;
     }
 
     // Update is called once per frame
@@ -47,7 +56,9 @@ public class Shooting : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(bulletCount > 0)
+                //ChangeEquippedSprite();
+                ChangeSlot();
+                if (bulletCount > 0)
                 {
                     Shoot();
                 }
@@ -91,5 +102,57 @@ public class Shooting : MonoBehaviour
             bulletSphere.transform.LookAt(playerPos);
         }
 
+    }
+
+    //void ChangeEquippedSprite()
+    //{
+    //    ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
+
+    //    if (currentHeldItem.GetItem() != null)
+    //    {
+    //        defaultHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+    //        rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+    //        leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+    //    }
+    //}
+
+    void ChangeSlot()
+    {
+        if (player.isRight)
+        {
+            defaultHand.SetActive(false);
+            rightHand.SetActive(true);
+            leftHand.SetActive(false);
+        }
+
+        else if (!player.isRight)
+        {
+            defaultHand.SetActive(false);
+            rightHand.SetActive(false);
+            leftHand.SetActive(true);
+        }
+
+        else if (player.isUpwards || !player.isUpwards)
+        {
+            defaultHand.SetActive(true);
+            rightHand.SetActive(false);
+            leftHand.SetActive(false);
+        }
+
+        StartCoroutine("DisableItem");
+    }
+
+    public IEnumerator DisableItem()
+    {
+        yield return new WaitForSeconds(0.3f);
+        EmptyHand();
+    }
+
+    void EmptyHand()
+    {
+        ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
+        defaultHand.SetActive(false);
+        rightHand.SetActive(false);
+        leftHand.SetActive(false);
     }
 }
