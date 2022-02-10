@@ -20,7 +20,7 @@ public class PlayerPlanting : MonoBehaviour
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !player.isOpen)
         {
             Debug.Log("Mouse Clicked!");
 
@@ -39,11 +39,13 @@ public class PlayerPlanting : MonoBehaviour
                     switch (tool.GetToolType())
                     {
                         case Tool.ToolTypes.Hoe:
-                            soil.Till();
+                            if(!soil.GetIsTilled())
+                                soil.Till();
                             break;
                         case Tool.ToolTypes.WateringCan:
                             if(soil.GetHasSeed())
-                            soil.Water();
+                                if(!soil.isGrowing)
+                                    soil.Water();
                             break;
                     }
                 }
@@ -53,12 +55,30 @@ public class PlayerPlanting : MonoBehaviour
                     //Check if inventory is full
                     if(player.myInventory.GetInventorySize() > player.myInventory.GetItemsCount())
                     {
-                        foreach(Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                        /*foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
                         {
                             player.myInventory.AddItem(new ItemStack(itemsToAdd, 1));
+                        }*/
+
+                        //GameObject.Instantiate(soil.seedDrop, gameObject.transform.parent);
+
+                        foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                        {
+                            if(itemsToAdd is Seed x)
+                            {
+                                GameObject itemDrop = GameObject.Instantiate(soil.seedDrop, gameObject.transform);
+                                SeedDrop seedDrop = itemDrop.GetComponent<SeedDrop>();
+                                seedDrop.seedType = x.GetSeedType();
+
+                                itemDrop.GetComponent<SpriteRenderer>().sprite = seedDrop.seedDropList[(int)x.GetSeedType()].ItemIcon;
+                            }
+                            if(itemsToAdd is PlantProduce y)
+                            {
+                                GameObject itemDrop = GameObject.Instantiate(soil.plantProduceDrop, gameObject.transform);
+                                PlantProduceDrop produceDrop = itemDrop.GetComponent<PlantProduceDrop>();
+                            }
                         }
 
-                        //player.myInventory.AddItem(drops);
                         InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
                     }
                     else
@@ -99,9 +119,12 @@ public class PlayerPlanting : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Soil" && other.gameObject == soil.gameObject)
+        if (other.tag == "Soil")
         {
-            soil = null;
+            if(other.gameObject == soil.gameObject)
+            {
+                soil = null;
+            }
         }
 
         Debug.Log("Out of range!");
