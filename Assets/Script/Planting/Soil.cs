@@ -42,11 +42,14 @@ public class Soil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvas.activeInHierarchy == true)
+        if (canvas != null)
         {
-            gTicks += Time.deltaTime;
-
+            if (canvas.activeInHierarchy == true)
+            {
+                gTicks += Time.deltaTime;
+            }
         }
+       
     }
 
     //Grow coroutine for the plants
@@ -81,7 +84,7 @@ public class Soil : MonoBehaviour
         hasSeed = false;
         isTilled = false;
         isGrowing = false;
-
+        gTicks = 0;
         Debug.Log("Harvested");
     }
 
