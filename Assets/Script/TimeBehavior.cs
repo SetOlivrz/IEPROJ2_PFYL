@@ -25,7 +25,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
+    private const float TIME_MULTIPLIER = 10.0f; // 3f for debugging
 
     //Light
     [SerializeField] GameObject sun;
@@ -49,6 +49,7 @@ public class TimeBehavior : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
+        AssetChanger.instance.ChangeAssets(true);
     }
 
     // Update is called once per frame
@@ -71,6 +72,7 @@ public class TimeBehavior : MonoBehaviour
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
+            AssetChanger.instance.ChangeAssets(true);
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -89,6 +91,7 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
+            AssetChanger.instance.ChangeAssets(true);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
@@ -133,6 +136,7 @@ public class TimeBehavior : MonoBehaviour
             //shift from day to night for audio
             if (hour + 1 == 6 && isDaytime)
             {
+                AssetChanger.instance.ChangeAssets(false);
                 AudioManager.instance.PlayBGM(nightTimeShift, nightBGM);
             }
         }
