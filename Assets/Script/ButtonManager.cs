@@ -361,7 +361,25 @@ public class ButtonManager : MonoBehaviour
     //To fix UI update of buttons && slider
     public void Options()
     {
-        optionsPanel.SetActive(true);
+        if (this.optionsPanel.activeInHierarchy == false) // main panel disabled
+        {
+
+            this.optionsPanel.SetActive(true); // newgame pp
+            this.optionsPanel.GetComponent<PanelOpener>().OpenPanel();
+        }
+        else
+        {
+            this.optionsPanel.GetComponent<PanelOpener>().OpenPanel();
+        }
+
+        if (blackPanel.activeInHierarchy == false)
+        {
+            BPfadeIn(blackPanel);
+        }
+        else
+        {
+            BPfadeOut(blackPanel);
+        }
         // checker for if and when the options menu is accessed in actual game
         if (AudioManager.instance.isMuted)
         {
