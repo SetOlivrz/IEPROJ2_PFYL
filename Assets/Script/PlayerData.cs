@@ -13,8 +13,7 @@ public class PlayerData : MonoBehaviour
 
     [SerializeField] Slider hpBar;
     [SerializeField] Text goldLabel;
-
-
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +33,16 @@ public class PlayerData : MonoBehaviour
     {
         hpBar.maxValue = maxHP;
         hpBar.value = currHP;
-
-        if (currHP <= 0)
+        if(currHP <= 10)
         {
-            currHP = 0;
-            Debug.Log("Player died");
+            animator.SetBool("hurt", true);
+            if (currHP <= 0)
+            {
+                currHP = 0;
+                Debug.Log("Player died");
+            }
         }
+        
     }
 
     void UpdateGold()

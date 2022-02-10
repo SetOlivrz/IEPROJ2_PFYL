@@ -9,6 +9,7 @@ public class Tool : Item
     {
         Hoe,
         WateringCan,
+        Gun
     };
 
     [SerializeField] private ToolTypes toolType;

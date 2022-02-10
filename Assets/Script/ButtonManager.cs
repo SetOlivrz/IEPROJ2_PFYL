@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -29,26 +30,15 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
 
+
+    [SerializeField] Player player;
+
     [Header("Audio")]
-    [SerializeField] AudioManager audioManager;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] GameObject optionsPanel;
+    [SerializeField] GameObject mute;
+    [SerializeField] GameObject unmute;
     public void NewGameConfimation()
     {
-        
-
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
         {
            
@@ -305,7 +295,7 @@ public class ButtonManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         Debug.Log("Tutorial Level");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1 - Test");
         Time.timeScale = 1;
 
     }
@@ -313,7 +303,7 @@ public class ButtonManager : MonoBehaviour
     public void StartNormalLevel()
     {
         Debug.Log("Normal Level");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1 - Test");
         Time.timeScale = 1;
 
     }
@@ -357,21 +347,50 @@ public class ButtonManager : MonoBehaviour
         {
             BPfadeOut(blackPanel);
         }
-        audioManager.OnGamePause();
+        AudioManager.instance.OnGamePause();
     }
 
     public void ResumeGame()
     {
         PauseGame();
         Debug.Log("Game Resumed");
-        audioManager.OnGameResume();
+        AudioManager.instance.OnGameResume();
         Time.timeScale = 1;
         
+    }
+    //To fix UI update of buttons && slider
+    public void Options()
+    {
+        optionsPanel.SetActive(true);
+        // checker for if and when the options menu is accessed in actual game
+        if (AudioManager.instance.isMuted)
+        {
+            Mute();
+        }
+        else
+        {
+            Unmute();
+        }
+    }
+
+    public void Mute()
+    {
+        mute.gameObject.GetComponent<Button>().interactable = false;
+        unmute.gameObject.GetComponent<Button>().interactable = true;
+    }
+
+    public void Unmute()
+    {
+        mute.gameObject.GetComponent<Button>().interactable = true;
+        unmute.gameObject.GetComponent<Button>().interactable = false;
     }
 
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
+
+        player.OpenInventory();
+     
     }
 
     public void RestartDay()

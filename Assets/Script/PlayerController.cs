@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] float moveSpeed;
+    [SerializeField] Player player;
 
     //checker to see if the player can shoot
     public bool isShooting = false;
@@ -14,14 +15,21 @@ public class PlayerController : MonoBehaviour
     public bool isRight = false;
 
     [SerializeField] Animator animator;
-    public Vector3 mousePos;
-    public Camera cam;
 
     private Vector2 moveInput;
+
+    //Hand
+    private GameObject defaultHand;
+    private GameObject rightHand;
+    private GameObject leftHand;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = gameObject.GetComponent<Player>();
+        defaultHand = player.transform.GetChild(3).gameObject;
+        rightHand = player.transform.GetChild(4).gameObject;
+        leftHand = player.transform.GetChild(5).gameObject;
     }
 
     // Update is called once per frame
@@ -30,7 +38,9 @@ public class PlayerController : MonoBehaviour
         Move();
         UpdateMoveAnimation();
         AnimationChecker();
-        MouseUpdate();            
+        MouseUpdate();
+        ChangeSlot();
+        ChangeEquippedSprite();
     }
 
     private void UpdateMoveAnimation()
@@ -44,13 +54,11 @@ public class PlayerController : MonoBehaviour
         {
             ResetBool();
             animator.SetBool("left", true);
-
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             ResetBool();
             animator.SetBool("right", true);
-
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -79,7 +87,7 @@ public class PlayerController : MonoBehaviour
     void MouseUpdate()
     {
         //will change checker once items are implemented
-        if (!isShooting && Input.GetKeyDown(KeyCode.Alpha5))
+        if (!isShooting && player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool gun && gun.GetToolType() == Tool.ToolTypes.Gun)
         {
             isShooting = true;
         }
@@ -87,12 +95,11 @@ public class PlayerController : MonoBehaviour
         {
             ShootHandler();
         }
-        //will change soon once items are implemented
-/*        if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (isShooting && !(player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool notGun && notGun.GetToolType() == Tool.ToolTypes.Gun))
         {
             isShooting = false;
-            Debug.Log("Not Shooting");
-        }*/
+        }
     }
 
     private void AnimationChecker()
@@ -123,18 +130,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //To Fix
+    //Handles the shooting for the player
     void ShootHandler()
     {
         if (isShooting)
         {
+            animator.SetTrigger("Shoot");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                //Debug.Log(hit.point);
-                //Debug.Log("Position: " + transform.position);
-                //TO FIX
                 if (hit.point.z > transform.position.z)
                 {
                     ResetBool();
@@ -157,6 +162,79 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ChangeEquippedSprite()
+    {
+        ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
+
+        if (currentHeldItem.GetItem() != null)
+        {
+            defaultHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+            rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+            leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+
+            if (currentHeldItem.item.ItemName == "Rose Sword" || currentHeldItem.item.ItemName == "Gun")
+            {
+                //Hand
+                defaultHand.SetActive(false);
+                rightHand.SetActive(false);
+                leftHand.SetActive(false);
+            }
+        }
+        else
+        {
+            defaultHand.GetComponent<SpriteRenderer>().sprite = null;
+            rightHand.GetComponent<SpriteRenderer>().sprite = null;
+            leftHand.GetComponent<SpriteRenderer>().sprite = null;
+        }
+    }
+
+    void EmptyHand()
+    {
+        ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
+        defaultHand.SetActive(false);
+        rightHand.SetActive(false);
+        leftHand.SetActive(false);
+    }
+
+    void ChangeSlot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StopCoroutine("DisableItem");
+            if (isRight)
+            {
+                defaultHand.SetActive(false);
+                rightHand.SetActive(true);
+                leftHand.SetActive(false);
+                //EmptyHand();
+            }
+
+            else if (!isRight)
+            {
+                defaultHand.SetActive(false);
+                rightHand.SetActive(false);
+                leftHand.SetActive(true);
+                //EmptyHand();
+            }
+
+            else if (isUpwards || !isUpwards)
+            {
+                defaultHand.SetActive(true);
+                rightHand.SetActive(false);
+                leftHand.SetActive(false);
+                //EmptyHand();
+            }
+
+            StartCoroutine("DisableItem");
+        }
+    }
+
+    public IEnumerator DisableItem()
+    {
+        yield return new WaitForSeconds(0.3f);
+        EmptyHand();
     }
 }
 

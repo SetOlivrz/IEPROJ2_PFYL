@@ -43,8 +43,8 @@ public class PlayerPlanting : MonoBehaviour
                                 soil.Till();
                             break;
                         case Tool.ToolTypes.WateringCan:
-                            if(soil.GetHasSeed())
-                                if(!soil.isGrowing)
+                            if(soil.GetHasSeed() && !soil.isGrowing)
+                                if(soil.GetHasSeed())
                                     soil.Water();
                             break;
                     }
@@ -64,18 +64,9 @@ public class PlayerPlanting : MonoBehaviour
 
                         foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
                         {
-                            if(itemsToAdd is Seed x)
+                            if(itemsToAdd is Seed drop)
                             {
-                                GameObject itemDrop = GameObject.Instantiate(soil.seedDrop, gameObject.transform);
-                                SeedDrop seedDrop = itemDrop.GetComponent<SeedDrop>();
-                                seedDrop.seedType = x.GetSeedType();
-
-                                itemDrop.GetComponent<SpriteRenderer>().sprite = seedDrop.seedDropList[(int)x.GetSeedType()].ItemIcon;
-                            }
-                            if(itemsToAdd is PlantProduce y)
-                            {
-                                GameObject itemDrop = GameObject.Instantiate(soil.plantProduceDrop, gameObject.transform);
-                                PlantProduceDrop produceDrop = itemDrop.GetComponent<PlantProduceDrop>();
+                                
                             }
                         }
 

@@ -19,7 +19,7 @@ public class Inventory
     {
         foreach(ItemStack stack in inventoryContents)
         {
-            if (stack.IsEmpty())
+            /*if (stack.IsEmpty())
             {
                 stack.SetStack(input);
                 return true;
@@ -40,6 +40,30 @@ public class Inventory
                         input.SetCount(difference);
                     }
                 }
+            }*/
+
+            if (ItemStack.AreItemsEqual(input, stack))
+            {
+                if (stack.CanAddToo(input.GetCount()))
+                {
+                    stack.IncreaseAmount(input.GetCount());
+                    return true;
+                }
+                else
+                {
+                    int difference = (stack.GetCount() + input.GetCount() - stack.GetItem().maxStackSize);
+                    stack.SetCount(stack.GetItem().maxStackSize);
+                    input.SetCount(difference);
+                }
+            }
+        }
+
+        foreach(ItemStack stack in inventoryContents)
+        {
+            if (stack.IsEmpty())
+            {
+                stack.SetStack(input);
+                return true;
             }
         }
         return false;
