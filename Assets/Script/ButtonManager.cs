@@ -391,6 +391,41 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    public void OptionsPopup()
+    {
+        if (this.optionsPanel.activeInHierarchy == false) // main panel disabled
+        {
+
+            this.optionsPanel.SetActive(true); // newgame pp
+           // this.optionsPanel.GetComponent<PanelOpener>().OpenPanel();
+        }
+        else
+        {
+            // this.optionsPanel.GetComponent<PanelOpener>().OpenPanel();
+            this.optionsPanel.SetActive(false); // newgame pp
+
+        }
+
+
+        if (blackPanel2.activeInHierarchy == false)
+        {
+            blackPanel2.SetActive(true);
+        }
+        else
+        {
+            blackPanel2.SetActive(false);
+        }
+        // checker for if and when the options menu is accessed in actual game
+        if (AudioManager.instance.isMuted)
+        {
+            Mute();
+        }
+        else
+        {
+            Unmute();
+        }
+    }
+
     public void Mute()
     {
         mute.gameObject.GetComponent<Button>().interactable = false;

@@ -15,10 +15,15 @@ public class GrowthTimerDisplay : MonoBehaviour
     Soil soilScript;
     float val = 0.0f;
 
+    private void Awake()
+    {
+        soilScript = soil.GetComponent<Soil>();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-       soilScript = soil.GetComponent<Soil>();
+       //soilScript = soil.GetComponent<Soil>();
        timerDisplay.fillAmount =0;
     }
 
