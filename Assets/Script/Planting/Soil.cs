@@ -21,6 +21,7 @@ public class Soil : MonoBehaviour
     public Plant plant;
     public List<ItemDrops> seedDrops;
     public GameObject seedDrop;
+    public GameObject produceDrop;
     SpriteRenderer plantSprite;
 
 

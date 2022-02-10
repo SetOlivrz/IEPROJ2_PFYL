@@ -64,9 +64,21 @@ public class PlayerPlanting : MonoBehaviour
 
                         foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
                         {
-                            if(itemsToAdd is Seed drop)
+                            if(itemsToAdd is Seed x)
                             {
-                                
+                                GameObject itemDrop = GameObject.Instantiate(soil.seedDrop, gameObject.transform);
+                                SeedDrop seedDrop = itemDrop.GetComponent<SeedDrop>();
+
+                                seedDrop.seedType = x.GetSeedType();
+                                itemDrop.GetComponent<SpriteRenderer>().sprite = seedDrop.seedDropList[(int)seedDrop.seedType].ItemIcon;
+                            }
+                            if(itemsToAdd is PlantProduce y)
+                            {
+                                GameObject itemDrop = GameObject.Instantiate(soil.produceDrop, gameObject.transform);
+                                PlantProduceDrop produceDrop = itemDrop.GetComponent<PlantProduceDrop>();
+
+                                produceDrop.produceType = y.GetProduceType();
+                                itemDrop.GetComponent<SpriteRenderer>().sprite = produceDrop.plantProduceList[(int)produceDrop.produceType].ItemIcon;
                             }
                         }
 

@@ -105,7 +105,8 @@ MonoBehaviour:
   Left: {fileID: 21300000, guid: e4e5bc1ad70a00d4c87f849429ea7bcf, type: 3}
   Up: {fileID: 21300000, guid: cb2491b3aaf4ae643ae6c6b68bd98a77, type: 3}
   Down: {fileID: 21300000, guid: 0ba72efc4eee8464bb5fce3dcae1888c, type: 3}
-  drop: {fileID: 3999984484442014506, guid: 1f19eceb6bdba6244b992dc8446ba784, type: 3}
+  drop: {fileID: 1257638612623051083, guid: 50e2340c169038649a3049bbc5199035, type: 3}
+  progress_bar: {fileID: 0}
   count: 0
 --- !u!65 &6465022281814330676
 BoxCollider:
