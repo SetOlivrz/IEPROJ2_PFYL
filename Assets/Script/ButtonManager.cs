@@ -393,12 +393,14 @@ public class ButtonManager : MonoBehaviour
 
     public void Mute()
     {
+        AudioManager.instance.OnMute(true);
         mute.gameObject.GetComponent<Button>().interactable = false;
         unmute.gameObject.GetComponent<Button>().interactable = true;
     }
 
     public void Unmute()
     {
+        AudioManager.instance.OnMute(false);
         mute.gameObject.GetComponent<Button>().interactable = true;
         unmute.gameObject.GetComponent<Button>().interactable = false;
     }
