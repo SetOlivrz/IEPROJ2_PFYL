@@ -195,7 +195,8 @@ public class EnemyBehavior : MonoBehaviour
         EnemySpawning.totalEnemyKilledInLevel++;
         count++;
         int dropRate = Random.Range(1, 101);
-        if (dropRate >= 1 && dropRate <= 30) Instantiate(drop, transform.position, transform.rotation);
+        if (dropRate >= 1 && dropRate <= 101) Instantiate(drop, transform.position, transform.rotation);
+        drop.GetComponent<SpriteRenderer>().sprite = drop.GetComponent<SeedDrop>().seedDropList[(int)drop.GetComponent<SeedDrop>().seedType].ItemIcon;
         //this.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
         Vector3 enemyLocation = transform.position;
         //gameObject.SetActive(false);

@@ -14,7 +14,7 @@ public class PlantProduce : Item
 
     [SerializeField] private ProduceTypes produceTypes;
 
-    public ProduceTypes GetToolType()
+    public ProduceTypes GetProduceType()
     {
         return produceTypes;
     }

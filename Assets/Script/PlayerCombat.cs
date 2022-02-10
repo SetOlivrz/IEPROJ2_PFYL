@@ -52,7 +52,7 @@ public class PlayerCombat : MonoBehaviour
         //Equipping weapon
         if (currentHeldItem.GetItem() is PlantProduce produce)
         {
-            switch (produce.GetToolType())
+            switch (produce.GetProduceType())
             {
                 case PlantProduce.ProduceTypes.RoseSword:
                     player.GetComponent<PlayerCombat>().equippedWeapon = PlayerCombat.Weapon.RoseDagger;
