@@ -252,12 +252,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 2849528}
   moveSpeed: 5
+  player: {fileID: 0}
   isShooting: 0
   isUpwards: 0
   isRight: 0
   animator: {fileID: 0}
-  mousePos: {x: 0, y: 0, z: 0}
-  cam: {fileID: 0}
 --- !u!114 &2849530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +275,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
   - {fileID: 11400000, guid: d2364f9ced4087a44a1292caabc87c60, type: 2}
   - {fileID: 11400000, guid: 9c99d1f4628f9e44dbf68a0c593a6ce5, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+  - {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
   myInventory:
     inventoryContents:
     - item: {fileID: 0}
@@ -751,8 +769,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107831647}
-  m_LocalRotation: {x: 0.3168474, y: -0.09949345, z: 0.03355105, w: 0.94264686}
-  m_LocalPosition: {x: 1.2616789, y: 2.5147185, z: -4.1078334}
+  m_LocalRotation: {x: 0.15582305, y: -0.12574859, z: 0.020155685, w: 0.97954077}
+  m_LocalPosition: {x: 4.472907, y: 4.0886774, z: -10.153916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -821,6 +839,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3174570418187072463, guid: b44377a0869c06648a82012277dc7115, type: 3}
+      propertyPath: seedDrop
+      value: 
+      objectReference: {fileID: 1257638612623051083, guid: 50e2340c169038649a3049bbc5199035, type: 3}
+    - target: {fileID: 3174570418187072463, guid: b44377a0869c06648a82012277dc7115, type: 3}
+      propertyPath: plantProduceDrop
+      value: 
+      objectReference: {fileID: 6741033332940660917, guid: 16e3049488c638e418d5ab839430e7a3, type: 3}
     - target: {fileID: 3174570418187072560, guid: b44377a0869c06648a82012277dc7115, type: 3}
       propertyPath: m_Name
       value: Soil
@@ -945,6 +971,14 @@ PrefabInstance:
     - target: {fileID: 6629390202944460775, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629390202944460775, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 443.55566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629390202944460775, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 268.22592
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
