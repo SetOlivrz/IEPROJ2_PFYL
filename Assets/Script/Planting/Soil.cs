@@ -14,6 +14,7 @@ public class Soil : MonoBehaviour
     public float plantGTime = 1.0f;
 
     [SerializeField] private GameObject canvas;
+    [SerializeField] private ParticleSystem particle;
 
     //seems redundant, will replace later when inventory system has been implemented
     public GameObject plantObject;
@@ -35,6 +36,7 @@ public class Soil : MonoBehaviour
     {
         isGrowing = false;
         canvas.SetActive(false);
+        particle.Stop();
         plant = plantObject.GetComponent<Plant>();
         plantSprite = plantObject.GetComponent<SpriteRenderer>();
 
@@ -58,6 +60,7 @@ public class Soil : MonoBehaviour
     {
         plantGTime = plant.GetGrowth();
 
+
         canvas.SetActive(true);
         for (int i = 1; i < 3; i++)
         {
@@ -73,6 +76,10 @@ public class Soil : MonoBehaviour
         isGrown = true;
         Debug.Log("Finished Growing");
         canvas.SetActive(false);
+        if (particle.isStopped)
+        {
+            particle.Play();
+        }
     }
 
     //Function used to harvest crop that is fully grown
@@ -87,6 +94,11 @@ public class Soil : MonoBehaviour
         isGrowing = false;
         gTicks = 0;
         Debug.Log("Harvested");
+
+        if(particle.isPlaying)
+        {
+            particle.Stop();
+        }
     }
 
     public void Till()

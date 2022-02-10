@@ -75,19 +75,19 @@ public class PlayerCombat : MonoBehaviour
         if (equippedWeapon == Weapon.RoseDagger)
         {
             ChangeEquippedSprite();
-            ChangeSlot();
 
             if (Input.GetMouseButtonDown(0) && !player.isOpen)
             {
+                ChangeSlot();
                 currentAction = Action.Attack;
             } 
 
             if(currentAction == Action.Attack)
             {
-                defaultHand.GetComponent<SpriteRenderer>().color = Color.red;
-                rightHand.GetComponent<SpriteRenderer>().color = Color.red;
-                leftHand.GetComponent<SpriteRenderer>().color = Color.red;
-                currentAction = Action.Cooldown;
+                //defaultHand.GetComponent<SpriteRenderer>().color = Color.red;
+                //rightHand.GetComponent<SpriteRenderer>().color = Color.red;
+                //leftHand.GetComponent<SpriteRenderer>().color = Color.red;
+                //currentAction = Action.Cooldown;
 
                 if (enemy != null)
                 {
@@ -111,26 +111,24 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
 
-            if (currentAction == Action.Cooldown)
-            {
-                ticks += Time.deltaTime;
-            }
+            //if (currentAction == Action.Cooldown)
+            //{
+            //    ticks += Time.deltaTime;
+            //}
 
-            if (ticks > INTERVAL)
-            {
-                defaultHand.GetComponent<SpriteRenderer>().color = Color.white;
-                rightHand.GetComponent<SpriteRenderer>().color = Color.white;
-                leftHand.GetComponent<SpriteRenderer>().color = Color.white;
-                ticks = 0.0f;
-                currentAction = Action.None;
-            }
+            //if (ticks > INTERVAL)
+            //{
+            //    defaultHand.GetComponent<SpriteRenderer>().color = Color.white;
+            //    rightHand.GetComponent<SpriteRenderer>().color = Color.white;
+            //    leftHand.GetComponent<SpriteRenderer>().color = Color.white;
+            //    ticks = 0.0f;
+            //    currentAction = Action.None;
+            //}
         }
 
         else
         {
-            defaultHand.SetActive(false);
-            rightHand.SetActive(false);
-            leftHand.SetActive(false);
+            EmptyHand();
         }
     }
 
@@ -168,6 +166,8 @@ public class PlayerCombat : MonoBehaviour
             rightHand.SetActive(false);
             leftHand.SetActive(false);
         }
+
+        StartCoroutine("DisableItem");
     }
 
     public void OnTriggerStay(Collider other)
@@ -181,5 +181,19 @@ public class PlayerCombat : MonoBehaviour
     public void OnTriggerExit()
     {
         enemy = null;
+    }
+
+    public IEnumerator DisableItem()
+    {
+        yield return new WaitForSeconds(0.3f);
+        EmptyHand();
+    }
+
+    void EmptyHand()
+    {
+        ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
+        defaultHand.SetActive(false);
+        rightHand.SetActive(false);
+        leftHand.SetActive(false);
     }
 }
