@@ -25,7 +25,6 @@ public class PlayerCombat : MonoBehaviour
     private float INTERVAL = 0.5f;
 
     //Sprites
-    [SerializeField] Sprite roseDagger;
     [SerializeField] Player player;
     [SerializeField] private PlayerController playerController;
 
@@ -73,17 +72,10 @@ public class PlayerCombat : MonoBehaviour
             equippedWeapon = Weapon.None;
         }
 
-        //Debug.Log(currentHeldItem.GetItem().name);
-
         if (equippedWeapon == Weapon.RoseDagger)
         {
-            defaultHand.GetComponent<SpriteRenderer>().sprite = roseDagger;
-            rightHand.GetComponent<SpriteRenderer>().sprite = roseDagger;
-            leftHand.GetComponent<SpriteRenderer>().sprite = roseDagger;
-
-            GameObject currentHand = defaultHand;
-
-            ChangeSlot(currentHand);
+            ChangeEquippedSprite();
+            ChangeSlot();
 
             if (Input.GetMouseButtonDown(0) && !player.isOpen)
             {
@@ -142,15 +134,25 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    void ChangeSlot(GameObject currentHand)
+    void ChangeEquippedSprite()
+    {
+        ItemStack currentHeldItem = player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()];
+
+        if (currentHeldItem.GetItem() != null)
+        {
+            defaultHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+            rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+            leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
+        }
+    }
+
+    void ChangeSlot()
     {
         if (playerController.isRight)
         {
             defaultHand.SetActive(false);
             rightHand.SetActive(true); 
             leftHand.SetActive(false);
-
-            currentHand = rightHand;
         }
 
         else if (!playerController.isRight)
@@ -158,8 +160,6 @@ public class PlayerCombat : MonoBehaviour
             defaultHand.SetActive(false);
             rightHand.SetActive(false);
             leftHand.SetActive(true);
-
-            currentHand = leftHand;
         }
 
         else if (playerController.isUpwards || !playerController.isUpwards)
@@ -167,8 +167,6 @@ public class PlayerCombat : MonoBehaviour
             defaultHand.SetActive(true);
             rightHand.SetActive(false);
             leftHand.SetActive(false);
-
-            currentHand = defaultHand;
         }
     }
 
@@ -182,10 +180,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void OnTriggerExit()
     {
-        //if (other.tag == "Enemy" && other.gameObject == enemy.gameObject)
-        //{
-            enemy = null;
-            //Debug.Log("Out of range!");
-        //}
+        enemy = null;
     }
 }
