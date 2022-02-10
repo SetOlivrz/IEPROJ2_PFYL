@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 5; // set to 5 for debugging
+    private float hour = 0; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -25,7 +25,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 10.0f; // 3f for debugging
+    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Light
     [SerializeField] GameObject sun;
@@ -70,7 +70,6 @@ public class TimeBehavior : MonoBehaviour
 
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
-            //AudioManager.instance.OnMusicStop();
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             hour = 0;
             Debug.Log("day: " + day);
@@ -90,8 +89,6 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
-            //AudioManager.instance.OnMusicStop();
-            //AudioManager.instance.OnMusicPlay(2);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);

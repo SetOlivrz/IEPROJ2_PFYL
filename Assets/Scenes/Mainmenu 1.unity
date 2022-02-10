@@ -14237,6 +14237,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217557085056425717, guid: 19a912040221871438e6b85bb854af40, type: 3}
+      propertyPath: mainMenu
+      value: 
+      objectReference: {fileID: 8300000, guid: abd669c070d055341a47285ec814d26a, type: 3}
+    - target: {fileID: 9217557085056425717, guid: 19a912040221871438e6b85bb854af40, type: 3}
       propertyPath: buttonClip
       value: 
       objectReference: {fileID: 8300000, guid: a93d51efe96861f45a9e150259db95f3, type: 3}
