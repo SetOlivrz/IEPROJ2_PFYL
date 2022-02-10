@@ -48,8 +48,6 @@ public class TimeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        day = 1;
-        hour = 0;
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
     }
 
