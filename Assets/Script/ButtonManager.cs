@@ -296,7 +296,7 @@ public class ButtonManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         Debug.Log("Tutorial Level");
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("Tutorial Scene");
         Time.timeScale = 1;
 
     }
