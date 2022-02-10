@@ -37,7 +37,6 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject optionsPanel;
     [SerializeField] GameObject mute;
     [SerializeField] GameObject unmute;
-    [SerializeField] Text sliderValue;
     public void NewGameConfimation()
     {
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
@@ -362,8 +361,16 @@ public class ButtonManager : MonoBehaviour
     //To fix UI update of buttons && slider
     public void Options()
     {
-        optionsPanel.SetActive(true);        
-        sliderValue.text = AudioManager.instance.mainAudio.volume.ToString();
+        optionsPanel.SetActive(true);
+        // checker for if and when the options menu is accessed in actual game
+        if (AudioManager.instance.isMuted)
+        {
+            Mute();
+        }
+        else
+        {
+            Unmute();
+        }
     }
 
     public void Mute()

@@ -12,7 +12,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 0; // set to 5 for debugging
+    private float hour = 5; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -39,10 +39,16 @@ public class TimeBehavior : MonoBehaviour
 
     [SerializeField] Text dayLabel;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip dayBGM;
+    [SerializeField] AudioClip nightBGM;
+    [SerializeField] AudioClip nightTimeShift;
+    [SerializeField] AudioClip daytimeShift;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
     }
 
     // Update is called once per frame
@@ -54,24 +60,6 @@ public class TimeBehavior : MonoBehaviour
 
             UpdateTicks();
             //transition for audio
-            if(minute < 60.0f && minute >= 40.0f)
-            {
-                //shift from day to night
-                if(hour + 1 == 6 && isDaytime)
-                {
-                    if(AudioManager.instance.isMorning && AudioManager.instance.isNightPlaying == false)
-                    {
-                        AudioManager.instance.OnMusicStop();
-                    }
-                    if (AudioManager.instance.mainAudio.isPlaying)
-                    {
-                        AudioManager.instance.OnMusicPlay(1);
-                    }
-                }
-            }
-
-
-            //transition for audio
             AudioTransitionChecker();
             UpdateHours();
         }
@@ -82,7 +70,8 @@ public class TimeBehavior : MonoBehaviour
 
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
-            AudioManager.instance.OnMusicStop();
+            //AudioManager.instance.OnMusicStop();
+            AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -101,8 +90,9 @@ public class TimeBehavior : MonoBehaviour
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
-            AudioManager.instance.OnMusicStop();
-            AudioManager.instance.OnMusicPlay(2);
+            //AudioManager.instance.OnMusicStop();
+            //AudioManager.instance.OnMusicPlay(2);
+            AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
@@ -141,21 +131,12 @@ public class TimeBehavior : MonoBehaviour
 
     private void AudioTransitionChecker()
     {
-        if (minute < 60.0f && minute >= 50.0f)
+        if (minute < 60.0f && minute >= 45.0f)
         {
             //shift from day to night for audio
             if (hour + 1 == 6 && isDaytime)
             {
-                if (AudioManager.instance.isMorning)
-                {
-                    AudioManager.instance.OnMusicStop();
-                }
-
-                if (!AudioManager.instance.mainAudio.isPlaying)
-                {
-                    AudioManager.instance.OnMusicPlay(1);
-
-                }
+                AudioManager.instance.PlayBGM(nightTimeShift, nightBGM);
             }
         }
     }
