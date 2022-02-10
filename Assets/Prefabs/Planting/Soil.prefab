@@ -317,6 +317,7 @@ MonoBehaviour:
   - items:
     - {fileID: 11400000, guid: 0bc8066bdbf22df438d8c5caa09e9cd3, type: 2}
     - {fileID: 11400000, guid: 0bc8066bdbf22df438d8c5caa09e9cd3, type: 2}
+  seedDrop: {fileID: 1257638612623051083, guid: 50e2340c169038649a3049bbc5199035, type: 3}
   plantSprites:
   - plantSprites:
     - {fileID: 21300000, guid: 9a78334ceccd47244af40b77b35bbe0d, type: 3}

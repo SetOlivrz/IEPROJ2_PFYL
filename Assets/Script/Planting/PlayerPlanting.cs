@@ -39,11 +39,13 @@ public class PlayerPlanting : MonoBehaviour
                     switch (tool.GetToolType())
                     {
                         case Tool.ToolTypes.Hoe:
-                            soil.Till();
+                            if(!soil.GetIsTilled())
+                                soil.Till();
                             break;
                         case Tool.ToolTypes.WateringCan:
                             if(soil.GetHasSeed() && !soil.isGrowing)
-                            soil.Water();
+                                if(soil.GetHasSeed())
+                                    soil.Water();
                             break;
                     }
                 }
@@ -53,12 +55,21 @@ public class PlayerPlanting : MonoBehaviour
                     //Check if inventory is full
                     if(player.myInventory.GetInventorySize() > player.myInventory.GetItemsCount())
                     {
-                        foreach(Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                        /*foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
                         {
                             player.myInventory.AddItem(new ItemStack(itemsToAdd, 1));
+                        }*/
+
+                        //GameObject.Instantiate(soil.seedDrop, gameObject.transform.parent);
+
+                        foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                        {
+                            if(itemsToAdd is Seed drop)
+                            {
+                                
+                            }
                         }
 
-                        //player.myInventory.AddItem(drops);
                         InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
                     }
                     else

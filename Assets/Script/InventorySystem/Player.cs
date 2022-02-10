@@ -100,4 +100,24 @@ public class Player : MonoBehaviour
             isOpen = false;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "SeedDrop")
+        {
+            SeedDrop drop = collision.gameObject.GetComponent<SeedDrop>();
+            myInventory.AddItem(new ItemStack(drop.seedDropList[(int)drop.seedType], 1));
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "PlantProduceDrop")
+        {
+            PlantProduceDrop drop = collision.gameObject.GetComponent<PlantProduceDrop>();
+            myInventory.AddItem(new ItemStack(drop.plantProduceList[(int)drop.produceType], 1));
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
+
+            Destroy(collision.gameObject);
+        }
+    }
 }
