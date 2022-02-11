@@ -107,6 +107,7 @@ MonoBehaviour:
   drop: {fileID: 1257638612623051083, guid: 50e2340c169038649a3049bbc5199035, type: 3}
   progress_bar: {fileID: 0}
   count: 0
+  playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
 --- !u!136 &2948237841518129434
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -16,7 +16,10 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Animator animator;
 
     [SerializeField] ButtonManager uiManager;
+    //Damage Animation
     bool displayed = false;
+    bool isDamaged = false;
+    float dticks = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,16 @@ public class PlayerData : MonoBehaviour
     {
         UpdateHP();
         UpdateGold();
+        if (isDamaged)
+        {
+            dticks += Time.deltaTime;
+            if(dticks > 1f)
+            {
+                dticks = 0;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                isDamaged = false;
+            }
+        }
     }
 
     void UpdateHP()
@@ -68,6 +81,8 @@ public class PlayerData : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currHP -= damage;
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        isDamaged = true;
     }
 
     public void addGold(int amnt)
