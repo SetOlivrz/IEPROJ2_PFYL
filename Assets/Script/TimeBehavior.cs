@@ -25,7 +25,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 10.0f; // 3f for debugging
+    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Light
     [SerializeField] GameObject sun;
@@ -87,6 +87,7 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
+            AssetChanger.instance.ChangeAssets(false);
         }
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
@@ -131,12 +132,11 @@ public class TimeBehavior : MonoBehaviour
 
     private void AudioTransitionChecker()
     {
-        if (minute < 60.0f && minute >= 45.0f)
+        if (minute < 60.0f && minute >= 40.0f)
         {
             //shift from day to night for audio
             if (hour + 1 == 6 && isDaytime)
             {
-                AssetChanger.instance.ChangeAssets(false);
                 AudioManager.instance.PlayBGM(nightTimeShift, nightBGM);
             }
         }
