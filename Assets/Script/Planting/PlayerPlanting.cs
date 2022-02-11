@@ -20,6 +20,37 @@ public class PlayerPlanting : MonoBehaviour
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
 
+        if (Input.GetMouseButton(1))
+        {
+            if (soil)
+            {
+                if (soil.GetIsGrown())
+                {
+                    foreach (Item itemsToAdd in soil.seedDrops[(int)soil.plant.GetPlantType()].items)
+                    {
+                        if (itemsToAdd is Seed x)
+                        {
+                            GameObject itemDrop = GameObject.Instantiate(soil.seedDrop, gameObject.transform);
+                            SeedDrop seedDrop = itemDrop.GetComponent<SeedDrop>();
+
+                            seedDrop.seedType = x.GetSeedType();
+                            itemDrop.GetComponent<SpriteRenderer>().sprite = seedDrop.seedDropList[(int)seedDrop.seedType].ItemIcon;
+                        }
+                        if (itemsToAdd is PlantProduce y)
+                        {
+                            GameObject itemDrop = GameObject.Instantiate(soil.produceDrop, gameObject.transform);
+                            PlantProduceDrop produceDrop = itemDrop.GetComponent<PlantProduceDrop>();
+
+                            produceDrop.produceType = y.GetProduceType();
+                            itemDrop.GetComponent<SpriteRenderer>().sprite = produceDrop.plantProduceList[(int)produceDrop.produceType].ItemIcon;
+                        }
+                    }
+
+                    soil.Harvest();
+                }
+            }
+        }
+
         if (Input.GetMouseButtonDown(0) && !player.isOpen)
         {
             Debug.Log("Mouse Clicked!");
