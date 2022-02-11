@@ -13,7 +13,7 @@ public class TimeBehavior : MonoBehaviour
 {
     //Time
     public static int day = 1;
-    private float hour = 0; // set to 5 for debugging
+    public static float hour = 0; // set to 5 for debugging
     private float minute = 0.0f;
     private float accumMins = 0.0f;
 
@@ -53,9 +53,7 @@ public class TimeBehavior : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-        day = 1;
-        hour = 0;
-        nightLight.SetActive(false);
+        AssetChanger.instance.ChangeAssets(true);
     }
 
     // Update is called once per frame
@@ -78,6 +76,7 @@ public class TimeBehavior : MonoBehaviour
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
+            AssetChanger.instance.ChangeAssets(true);
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -92,11 +91,12 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
-            nightLight.SetActive(true);
+            AssetChanger.instance.ChangeAssets(false);
         }
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
+            AssetChanger.instance.ChangeAssets(true);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
@@ -136,7 +136,7 @@ public class TimeBehavior : MonoBehaviour
 
     private void AudioTransitionChecker()
     {
-        if (minute < 60.0f && minute >= 45.0f)
+        if (minute < 60.0f && minute >= 40.0f)
         {
             //shift from day to night for audio
             if (hour + 1 == 6 && isDaytime)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -42,6 +43,12 @@ public class ButtonManager : MonoBehaviour
     //Enemy
     [SerializeField] GameObject enemySpawner;
 
+    void Update()
+    {
+        
+            //Assign
+            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
     public void NewGameConfimation()
     {
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
@@ -150,7 +157,11 @@ public class ButtonManager : MonoBehaviour
 
     public void ReturnToMainmenu()
     {
+        manager.gameState = Status.NEUTRAL;
         Time.timeScale = 1;
+        TimeBehavior.day = 1;
+        TimeBehavior.hour = 0;
+        manager.gameState = Status.NEUTRAL;
         Debug.Log("Return to Mainmenu");
         AudioManager.instance.OnMain();
         SceneManager.LoadScene("Mainmenu 1");
@@ -165,7 +176,8 @@ public class ButtonManager : MonoBehaviour
     public void StartLoadGame()
     {
         Debug.Log("Load Selected Game File");
-        SceneManager.LoadScene("Level 1");
+        manager.gameState = Status.NEUTRAL;
+        SceneManager.LoadScene("Level 1 - Test");
     }
 
     public void LoadConfimation()
@@ -476,6 +488,7 @@ public class ButtonManager : MonoBehaviour
         stageClearPopup.SetActive(false);
         enemySpawner.GetComponent<EnemySpawning>().ResetAll();
         TimeBehavior.day = 1;
+        TimeBehavior.hour = 0;
     }
 
     public void GameOverPopup()
