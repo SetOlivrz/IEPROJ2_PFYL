@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AssetChanger : MonoBehaviour
@@ -28,7 +29,29 @@ public class AssetChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().name == "Level 1 - Test")
+        {
+            //Assign
+            //if (TimeBehavior.isDaytime)
+            //{
+                dayAssets[0] = GameObject.FindGameObjectsWithTag("Assets")[0];
+                dayAssets[1] = GameObject.FindGameObjectsWithTag("Assets")[1];
+                dayAssets[2] = GameObject.FindGameObjectsWithTag("Assets")[2];
+            //}
+
+            //if (!TimeBehavior.isDaytime)
+            //{
+                nightAssets[0] = GameObject.FindGameObjectsWithTag("Assets")[0];
+                nightAssets[1] = GameObject.FindGameObjectsWithTag("Assets")[1];
+                nightAssets[2] = GameObject.FindGameObjectsWithTag("Assets")[2];
+            //}
+            
+            floor = GameObject.FindGameObjectWithTag("Ground");
+
+            if (GameObject.FindGameObjectWithTag("PointLight").activeInHierarchy)
+                playerLight = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
+            else playerLight = null;
+        }
     }
 
     public void ChangeAssets(bool isDaytime)

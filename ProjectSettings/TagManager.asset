@@ -8,6 +8,12 @@ TagManager:
   - Soil
   - Ground
   - Store
+  - SeedDrop
+  - PlantProduceDrop
+  - ButtonManager
+  - PointLight
+  - Assets
+  - GameManager
   layers:
   - Default
   - TransparentFX

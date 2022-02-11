@@ -2566,7 +2566,7 @@ GameObject:
   - component: {fileID: 137177165}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2960,7 +2960,7 @@ GameObject:
   - component: {fileID: 154617959}
   m_Layer: 0
   m_Name: N_ENVIRONMENT_Building_Home
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9652,7 +9652,7 @@ GameObject:
   - component: {fileID: 611165033}
   m_Layer: 0
   m_Name: store
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10317,7 +10317,7 @@ GameObject:
   - component: {fileID: 633700476}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18870,7 +18870,7 @@ Transform:
   - {fileID: 1768857624}
   - {fileID: 154617958}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1143287465 stripped
 Transform:
@@ -19518,7 +19518,7 @@ GameObject:
   - component: {fileID: 1203873997}
   m_Layer: 0
   m_Name: Button Manager
-  m_TagString: Untagged
+  m_TagString: ButtonManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20013,7 +20013,7 @@ GameObject:
   - component: {fileID: 1241001418}
   m_Layer: 0
   m_Name: house_placeholder
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22841,7 +22841,7 @@ GameObject:
   - component: {fileID: 1373793264}
   m_Layer: 0
   m_Name: N_ENVIRONMENT_Building_Shop
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29452,7 +29452,7 @@ GameObject:
   - component: {fileID: 1663936437}
   m_Layer: 0
   m_Name: Point Light
-  m_TagString: Untagged
+  m_TagString: PointLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31924,7 +31924,7 @@ GameObject:
   - component: {fileID: 1768857625}
   m_Layer: 0
   m_Name: N_ENVIRONMENT_Building_House_V1
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35593,7 +35593,7 @@ GameObject:
   - component: {fileID: 1963059841}
   m_Layer: 0
   m_Name: store (1)
-  m_TagString: Untagged
+  m_TagString: Assets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
