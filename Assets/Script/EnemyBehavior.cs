@@ -166,9 +166,10 @@ public class EnemyBehavior : MonoBehaviour
             if (ticks > ATTACK_INTERVAL)
             {
                 ticks = 0.0f;
-                playerData.TakeDamage(damage);
                 if(playerHit != null)
                     AudioManager.instance.PlaySound(playerHit);
+                playerData.TakeDamage(damage);
+                
                 Debug.Log("Attack!");
             }
         }
