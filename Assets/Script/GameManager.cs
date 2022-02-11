@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == Status.LOSE)
         {
-            uiManager.GameOverPopup();
-            gameState = Status.HOLD;
+            //uiManager.GameOverPopup();
+            //gameState = Status.HOLD;
             Debug.Log("Game paused manager");
         }
         else if (gameState == Status.WIN)
