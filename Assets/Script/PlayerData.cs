@@ -14,12 +14,17 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Text goldLabel;
     [SerializeField] Animator animator;
+
+    [SerializeField] ButtonManager uiManager;
+    bool displayed = false;
     // Start is called before the first frame update
     void Start()
     {
         currHP = maxHP;
         hpBar.maxValue = maxHP;
         hpBar.value = currHP;
+        uiManager = GameObject.FindGameObjectWithTag("ButtonManager").GetComponent<ButtonManager>();
+        displayed = false;
     }
 
     // Update is called once per frame
@@ -39,7 +44,12 @@ public class PlayerData : MonoBehaviour
             if (currHP <= 0)
             {
                 currHP = 0;
-                Debug.Log("Player died");
+                if (!displayed)
+                {
+                    Debug.Log("Player died");
+                    uiManager.GameOverPopup();
+                    displayed = true;
+                }
             }
         }
         

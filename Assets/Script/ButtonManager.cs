@@ -161,7 +161,6 @@ public class ButtonManager : MonoBehaviour
         Time.timeScale = 1;
         TimeBehavior.day = 1;
         TimeBehavior.hour = 0;
-        manager.gameState = Status.NEUTRAL;
         Debug.Log("Return to Mainmenu");
         AudioManager.instance.OnMain();
         SceneManager.LoadScene("Mainmenu 1");
