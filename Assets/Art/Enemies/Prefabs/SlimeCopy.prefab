@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321983839080006209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.6578865, y: 2.4509478, z: -0.00006952258}
-  m_LocalScale: {x: 1.8801975, y: 0.47810307, z: 1}
+  m_LocalPosition: {x: -0.431, y: 1.109, z: -0}
+  m_LocalScale: {x: 1, y: 0.22132523, z: 1}
   m_Children: []
   m_Father: {fileID: 4354928273000097499}
   m_RootOrder: 0
@@ -189,8 +189,9 @@ MonoBehaviour:
   Up: {fileID: 21300000, guid: cb2491b3aaf4ae643ae6c6b68bd98a77, type: 3}
   Down: {fileID: 21300000, guid: 0ba72efc4eee8464bb5fce3dcae1888c, type: 3}
   drop: {fileID: 1257638612623051083, guid: 50e2340c169038649a3049bbc5199035, type: 3}
-  progress_bar: {fileID: 0}
+  progress_bar: {fileID: 321983839080006209}
   count: 0
+  playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
 --- !u!65 &4354928273000097501
 BoxCollider:
   m_ObjectHideFlags: 0
