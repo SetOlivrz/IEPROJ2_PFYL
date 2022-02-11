@@ -45,9 +45,10 @@ public class ButtonManager : MonoBehaviour
 
     void Update()
     {
-        
-            //Assign
+        //Assign
+        if (SceneManager.GetActiveScene().name == "Level 1 - Test")
             manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        else manager = null;
     }
     public void NewGameConfimation()
     {
