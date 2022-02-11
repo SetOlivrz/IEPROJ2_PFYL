@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,9 @@ public class TimeBehavior : MonoBehaviour
     [SerializeField] GameObject sun;
     public static bool isDaytime = true;
 
+    [SerializeField]
+    GameObject nightLight;
+
     //Controls
     public static bool stageClear = false;
 
@@ -51,6 +55,7 @@ public class TimeBehavior : MonoBehaviour
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
         day = 1;
         hour = 0;
+        nightLight.SetActive(false);
     }
 
     // Update is called once per frame
@@ -87,6 +92,7 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
+            nightLight.SetActive(true);
         }
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
@@ -96,7 +102,7 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = true;
-
+            nightLight.SetActive(false);
         }
 
         //Debug.Log("Day: " + day + "  Hour: " + hour + " " + "Minutes: " + minute);
