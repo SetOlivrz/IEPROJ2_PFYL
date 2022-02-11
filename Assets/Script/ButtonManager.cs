@@ -26,6 +26,7 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField] GameObject pausePopUp;
     [SerializeField] GameObject gameOverPopup;
+    [SerializeField] GameObject stageClearPopup;
 
     [SerializeField] PlayerData playerData;
     [SerializeField] GameManager manager;
@@ -37,6 +38,10 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject optionsPanel;
     [SerializeField] GameObject mute;
     [SerializeField] GameObject unmute;
+
+    //Enemy
+    [SerializeField] GameObject enemySpawner;
+
     public void NewGameConfimation()
     {
         if (this.newGamePopup.activeInHierarchy == false) // main panel disabled
@@ -465,9 +470,12 @@ public class ButtonManager : MonoBehaviour
         manager.gameState = Status.NEUTRAL;
         
         Debug.Log("Restart Day");
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1 - Test");
         Time.timeScale = 1;
-
+        gameOverPopup.SetActive(false);
+        stageClearPopup.SetActive(false);
+        enemySpawner.GetComponent<EnemySpawning>().ResetAll();
+        TimeBehavior.day = 1;
     }
 
     public void GameOverPopup()

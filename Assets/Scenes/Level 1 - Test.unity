@@ -19249,12 +19249,14 @@ MonoBehaviour:
   loadConfirmationPopup: {fileID: 0}
   pausePopUp: {fileID: 1192431404}
   gameOverPopup: {fileID: 333671088}
+  stageClearPopup: {fileID: 243825484}
   playerData: {fileID: 27880568}
   manager: {fileID: 633700474}
   player: {fileID: 27880577}
   optionsPanel: {fileID: 2009370501}
   mute: {fileID: 322216226}
   unmute: {fileID: 2059703498}
+  enemySpawner: {fileID: 1639210513}
 --- !u!4 &1203873998
 Transform:
   m_ObjectHideFlags: 0

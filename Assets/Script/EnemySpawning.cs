@@ -94,6 +94,7 @@ public class EnemySpawning : MonoBehaviour
         if (currentWave >= waveMaxCount)
         {
             ResetAll();
+            Time.timeScale = 0;
             StageClearUI.SetActive(true);
         }
 
@@ -210,7 +211,7 @@ public class EnemySpawning : MonoBehaviour
         enemyList.Add(enemyCopy);
     }
 
-    void ResetAll()
+    public void ResetAll()
     {
         //Time
         ticks = 0.0f;
@@ -228,6 +229,17 @@ public class EnemySpawning : MonoBehaviour
         totalEnemyInLevel = 0;
         totalEnemyKilledInLevel = 0;
         RandomizeTotalEnemiesPerWave();
+
+        //Kill all
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].SetActive(false);
+            //Destroy(enemyList[i]);
+            enemyList[i].GetComponent<EnemyBehavior>().OnKill();
+        }
+        enemyList.Clear();
+
+        isCleared = true;
     }
 
 
