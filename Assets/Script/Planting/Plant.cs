@@ -6,6 +6,8 @@ public class Plant : MonoBehaviour
 {
     private float growthSpeed;
     private Seed.SeedTypes type;
+    //for future use, plant health
+    public int plantHealth { get; private set; }
 
     // Start is called before the first frame update
     void Start()

@@ -62,19 +62,12 @@ public class Shooting : MonoBehaviour
                 {
                     Shoot();
                 }
-                //flash red supposedly
-                /*else if (bulletCount <= 0)
-                {
-                    reloadImage.color = Color.red;
-                    
-                }*/
-
             }
         }
 
-        ticks += Time.deltaTime;
         if(bulletCount < 10)
         {
+            ticks += Time.deltaTime;
             //reloading ui
             reloadImage.fillAmount = ticks / 5.0f;
             if (ticks > INTERVAL)
