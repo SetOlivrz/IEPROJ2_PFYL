@@ -13,6 +13,7 @@ public class AssetChanger : MonoBehaviour
     [SerializeField] private Material dayMaterial;
     [SerializeField] private GameObject floor;
     [SerializeField] private Light playerLight;
+
     private void Awake()
     {
         if(instance == null)

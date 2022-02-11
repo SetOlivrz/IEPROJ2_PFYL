@@ -397,7 +397,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -836,7 +836,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -1563,7 +1563,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -1708,7 +1708,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -2159,7 +2159,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -2619,7 +2619,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -2764,7 +2764,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -3205,6 +3205,50 @@ RectTransform:
   m_AnchoredPosition: {x: 345.94, y: -181.239}
   m_SizeDelta: {x: 235.68, y: 98.455}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &554802361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554802362}
+  - component: {fileID: 554802363}
+  m_Layer: 0
+  m_Name: SFX Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &554802362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554802361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554802363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554802361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c469c972dee578458507e8925ea8d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClip: {fileID: 8300000, guid: a93d51efe96861f45a9e150259db95f3, type: 3}
 --- !u!1 &555581172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,7 +3519,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -3507,7 +3551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97628e4a8aef0044a88ecc45e9c7602c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4651ad138abf144d8766b2f81de4813, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3981,7 +4025,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -4410,7 +4454,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -6005,7 +6049,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -6779,7 +6823,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -7123,7 +7167,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -7931,7 +7975,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -7963,7 +8007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97628e4a8aef0044a88ecc45e9c7602c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4651ad138abf144d8766b2f81de4813, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8585,7 +8629,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -8818,7 +8862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -8972,7 +9016,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -9126,7 +9170,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -9715,7 +9759,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -10014,7 +10058,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -10159,7 +10203,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -10728,7 +10772,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -10760,7 +10804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97628e4a8aef0044a88ecc45e9c7602c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4651ad138abf144d8766b2f81de4813, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11217,7 +11261,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -11371,7 +11415,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -11516,7 +11560,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -12469,7 +12513,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -12635,7 +12679,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -12667,7 +12711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97628e4a8aef0044a88ecc45e9c7602c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4651ad138abf144d8766b2f81de4813, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12966,7 +13010,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -13197,7 +13241,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -13342,7 +13386,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -13487,7 +13531,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -13632,7 +13676,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -13865,7 +13909,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -14117,7 +14161,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2956238927945446490}
+      - m_Target: {fileID: 554802363}
         m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
         m_MethodName: ButtonSFX
         m_Mode: 1
@@ -14248,14 +14292,3 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: a93d51efe96861f45a9e150259db95f3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a912040221871438e6b85bb854af40, type: 3}
---- !u!114 &2956238927945446490 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9217557085056425717, guid: 19a912040221871438e6b85bb854af40, type: 3}
-  m_PrefabInstance: {fileID: 2956238927945446489}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c469c972dee578458507e8925ea8d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

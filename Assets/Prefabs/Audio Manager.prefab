@@ -137,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2956238926689702819}
   - component: {fileID: 2956238926689702818}
-  - component: {fileID: 9217557085056425717}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -178,19 +177,6 @@ MonoBehaviour:
   mainmenu: {fileID: 8300000, guid: abd669c070d055341a47285ec814d26a, type: 3}
   isMuted: 0
   volume: 1
---- !u!114 &9217557085056425717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956238926689702816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c469c972dee578458507e8925ea8d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonClip: {fileID: 8300000, guid: a93d51efe96861f45a9e150259db95f3, type: 3}
 --- !u!1 &8419037945100746431
 GameObject:
   m_ObjectHideFlags: 0
