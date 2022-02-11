@@ -46,12 +46,12 @@ public class AssetChanger : MonoBehaviour
                 nightAssets[1] = GameObject.FindGameObjectsWithTag("Assets")[1];
                 nightAssets[2] = GameObject.FindGameObjectsWithTag("Assets")[2];
             //}*/
-            
-            floor = GameObject.FindGameObjectWithTag("Ground");
+            if(floor == null)
+                floor = GameObject.FindGameObjectWithTag("Ground");
 
-            /*if (GameObject.FindGameObjectWithTag("PointLight").activeInHierarchy)
+            if (GameObject.FindGameObjectWithTag("PointLight").activeInHierarchy)
                 playerLight = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
-            else playerLight = null;*/
+            else playerLight = null;
         }
     }
 
