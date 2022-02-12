@@ -9,13 +9,16 @@ public class TutorialActionManager : MonoBehaviour
     // references: player, interactable GO, events for accomplishing steps in tutorial
 
     [SerializeField] GameObject player;
-
-    [SerializeField] public GameObject parentContainer;
-    [SerializeField] List<GameObject>itemsToPickup =  new List<GameObject>();
-
     [SerializeField] DialogueManager dialManager;
 
+    // variables for the player movement guide 
+    [SerializeField] public GameObject parentContainer;
+    [SerializeField] List<GameObject> itemsToPickup = new List<GameObject>();
     public int nPickedUpItems = 0;
+
+    // variables foe the equipment hoe tutorial
+    public bool hasUsedHoe = false;
+
 
     int currentStep = 0;
 
@@ -31,7 +34,7 @@ public class TutorialActionManager : MonoBehaviour
     {
         currentStep = dialManager.nTutorialIndex;
 
-        if (currentStep == 2)
+        if (currentStep == 4) // player movement tutorial
         {
             // check of the player picks up the items
 
@@ -54,6 +57,14 @@ public class TutorialActionManager : MonoBehaviour
                 dialManager.ProceedTutorial();
                 // add delay
                 // call the Proceed tutorial func
+            }
+        }
+        else if (currentStep == 6) // tutorial on how to use the hoe
+        {
+            if (hasUsedHoe == true)
+            {
+                Debug.Log(" the player has used the hoe tool");
+                dialManager.ProceedTutorial();
             }
         }
     }
