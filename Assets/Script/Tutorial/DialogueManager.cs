@@ -103,13 +103,25 @@ public class DialogueManager : MonoBehaviour
 
         if (nTutorialIndex == 1)// dial 2
         {
+            /* change dialogue 
+             * add delay
+             * enable next button
+             */
+
             dialogueText.text = "During day time, you can grow plants in preparation for the skirmishes of monsters during night time";
             startDelay = true;
             maxTicks = 2;
 
         }
         else if (nTutorialIndex == 2)// dial 3
-        {
+        { 
+            /* pause game 
+             * disable button
+             * change text
+             * add delay
+             * enable next button
+             */
+
             PauseGame();
             DisableButton(1);
             dialogueText.text = " but before anything else, why don't you help me gather some seeds ";
@@ -119,8 +131,13 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 3)// show video
         {
-            // off dialogue 
-            // on video
+            /* hide main dialogue popup
+             * update vid pop text
+             * pause game
+             * disable next button
+             * add dekay
+             * enable next button
+             * */
 
             popUp.SetActive(false);
 
@@ -137,19 +154,31 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex ==4) // execution for player movement
         {
+            /* hide video pop
+             * hide black panel
+             * resume game
+             * display seeds to pickup for player movement exec.
+             */
+
             videoPopup.SetActive(false);
             panel.SetActive(false);
-            // resume
             ResumeGame();
 
             // set the item to pick up to active (from TAmanager script)
             TAmanager.parentContainer.SetActive(true);
-
             // step 2, has to be checked in da TA manager
             
         }
         else if (nTutorialIndex == 5)// intro to planting after movement tutorial
         {
+            /* display main dialogue pop
+            * display black panel
+            * pause game
+            * disable button
+            * update text
+            * add delay
+            * enable button
+           */
 
             popUp.SetActive(true);
             panel.SetActive(true);
@@ -162,6 +191,11 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 6)// instruction on how to use a hoe
         {
+            /*change dialogue
+             * add delay
+             * enable button
+             */
+
             dialogueText.text = "Now that we have the seeds, let’s start planting";
             startDelay = true;
             maxTicks = 3;
@@ -169,16 +203,26 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 7)
         {
+            /*change dialogue
+             * add delay
+             * enable button
+             */
+
             dialogueText.text = "Planting can be intimidating at first but let me teach you the basics";
             startDelay = true;
             maxTicks = 3;
         }
         else if (nTutorialIndex == 8)
         {
+            /* hide pop
+             * update vid text
+             * display vid pop
+             * pause game
+             * disable button
+             * add delay
+             */
 
             popUp.SetActive(false);
-
-            // show video popup
             videoText.text = "Displayed on the lower left of you screen is your hotbar";
             videoPopup.SetActive(true);
             PauseGame();
@@ -189,6 +233,15 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex ==9)
         {
+            /* hide main dialogue pop
+             * update vid text
+             * show vid pop
+             * pause game
+             * disable button
+             * add delay
+             * enable button
+             */
+
             // change video
 
             popUp.SetActive(false);
@@ -202,8 +255,17 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 10)
         {
-            // video: show hwo to access the hotbar
-            videoText.text = " You can access these by pressing num 1-6 or simply using the mouse scroll wheel";
+            /*
+            * update vid text
+            * show vid pop
+            * pause game
+            * disable button
+            * add delay
+            * enable button
+            */
+
+           // video: show hwo to access the hotbar
+           videoText.text = " You can access these by pressing num 1-6 or simply using the mouse scroll wheel";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -213,6 +275,14 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 11)
         {
+            /*update vid text
+           *show vid pop
+           *pause game
+           * disable button
+           * add delay
+           * enable button
+           */
+
             // change video
             videoText.text = "You can equip the hoe by pressing ______";
             //videoPopup.SetActive(true);
@@ -224,6 +294,14 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 12)
         {
+           /*update vid text
+           *show vid pop
+           *pause game
+           * disable button
+           * add delay
+           * enable button
+           */
+
             // change video
             videoText.text = " While equipping the hoe, you can till a soil by right clicking on it. ";
             //videoPopup.SetActive(true);
@@ -235,6 +313,15 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 13)
         {
+            /* hide video pop
+             * update dial text
+             * display main dial pop
+             * pause game
+             * disable button
+             * add delay
+             * enable button
+             */
+
             // off videoPop up
             videoPopup.SetActive(false);
 
@@ -242,8 +329,6 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Tilling the soil comes first before anything else when planting.";
             popUp.SetActive(true);
 
-            startDelay = true;
-            maxTicks = 2;
             PauseGame();
             DisableButton(1);
 
@@ -252,11 +337,33 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 14)
         {
+            /*change dialogue
+            * add delay
+            * enable button
+            */
+
             dialogueText.text = "Now go ahead and try it out.";
-            startDelay = true;
-            maxTicks = 2;
+          
             PauseGame();
             DisableButton(1);
+
+            startDelay = true;
+            maxTicks = 2;
+        }
+        else if (nTutorialIndex == 15)
+        {
+            /* hide main dial pop
+             * hide panel pop
+             * resume game
+             * check if the player has tilled a soil
+             */
+
+            popUp.SetActive(false);
+            panel.SetActive(false);
+            ResumeGame();
+
+            // check if the player has tilled the soil in TA manager update func (index 15)
+
         }
         //// disables button when next if pressed
         //else if(nTutorialIndex == 8) //player uses a hoe
@@ -264,7 +371,7 @@ public class DialogueManager : MonoBehaviour
         //    popUp.SetActive(false);
         //    panel.SetActive(false);
         //    // resume
-        //    ResumeGame();
+        //    ResumeGame();d
 
         //    // player uses the hoe
         //    // set the item to pick up to active (from TAmanager script)

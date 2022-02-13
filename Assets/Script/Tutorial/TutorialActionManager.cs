@@ -59,7 +59,7 @@ public class TutorialActionManager : MonoBehaviour
                 // call the Proceed tutorial func
             }
         }
-        else if (currentStep == 6) // tutorial on how to use the hoe
+        else if (currentStep == 15) // tutorial on how to use the hoe
         {
             if (hasUsedHoe == true)
             {
