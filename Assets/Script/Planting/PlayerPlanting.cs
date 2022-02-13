@@ -22,6 +22,11 @@ public class PlayerPlanting : MonoBehaviour
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
 
+        if (manager != null)
+        {
+            manager.hasFullyGrown = soil.GetIsGrown();
+        }
+
         if (Input.GetMouseButton(1))
         {
             if (soil)
@@ -51,7 +56,7 @@ public class PlayerPlanting : MonoBehaviour
                     soil.Harvest();
 
                     // tutorial
-                    if (SceneManager.GetActiveScene().name  == "Tutorial Manager" && manager != null)
+                    if (manager != null)
                     {
                         manager.hasHarvested = true;
                     }
@@ -81,9 +86,9 @@ public class PlayerPlanting : MonoBehaviour
                             if(!soil.GetIsTilled())
                             {
                                 soil.Till();
-                                manager.hasUsedHoe = true;
+                               // manager.hasUsedHoe = true;
                                 // tutorial
-                                if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                                if (manager != null)
                                 {
                                     manager.hasUsedHoe = true;
                                 }
@@ -96,7 +101,7 @@ public class PlayerPlanting : MonoBehaviour
                                     soil.Water();
 
                                     // tutorial
-                                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                                    if (manager != null)
                                     {
                                         manager.hasWateredPlant = true;
                                     }
@@ -149,7 +154,7 @@ public class PlayerPlanting : MonoBehaviour
                     soil.Harvest();
 
                     // tutorial
-                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                    if (manager != null)
                     {
                         manager.hasHarvested = true;
                     }
@@ -166,12 +171,13 @@ public class PlayerPlanting : MonoBehaviour
 
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
-                    soil.Plant(seed);
-                    // tutorial
-                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                    if (manager != null)
                     {
                         manager.hasPlantedSeed = true;
                     }
+                    soil.Plant(seed);
+                    // tutorial
+                   
                 }
             }
         }
@@ -183,7 +189,6 @@ public class PlayerPlanting : MonoBehaviour
         {
             soil = other.gameObject.GetComponent<Soil>();
         }
-
         Debug.Log("In range!");
     }
 

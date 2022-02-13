@@ -84,7 +84,7 @@ public class DialogueManager : MonoBehaviour
         PauseGame();
         DisableButton(1);
 
-        maxTicks = 5.0f;
+        maxTicks = 1.0f;
         startDelay = true;
         // wait for 5 seconds
 
@@ -110,7 +110,7 @@ public class DialogueManager : MonoBehaviour
 
             dialogueText.text = "During day time, you can grow plants in preparation for the skirmishes of monsters during night time";
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
 
         }
         else if (nTutorialIndex == 2)// dial 3
@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = " but before anything else, why don't you help me gather some seeds ";
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 3)// show video
         {
@@ -142,13 +142,13 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
 
             // show video popup
-            videoText.text = " You saw 4 red thorny seed scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
+            videoText.text = " There are 4 red thorny seeds scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
 
 
         }
@@ -184,10 +184,10 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " Great! ";
+            dialogueText.text = "Great! ";
 
             startDelay = true;
-            maxTicks = 3;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 6)// instruction on how to use a hoe
         {
@@ -198,7 +198,7 @@ public class DialogueManager : MonoBehaviour
 
             dialogueText.text = "Now that we have the seeds, let’s start planting";
             startDelay = true;
-            maxTicks = 3;
+            maxTicks = 1;
 
         }
         else if (nTutorialIndex == 7)
@@ -210,7 +210,7 @@ public class DialogueManager : MonoBehaviour
 
             dialogueText.text = "Planting can be intimidating at first but let me teach you the basics";
             startDelay = true;
-            maxTicks = 3;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 8)
         {
@@ -229,7 +229,7 @@ public class DialogueManager : MonoBehaviour
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex ==9)
         {
@@ -251,7 +251,7 @@ public class DialogueManager : MonoBehaviour
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 10)
         {
@@ -265,13 +265,13 @@ public class DialogueManager : MonoBehaviour
             */
 
            // video: show hwo to access the hotbar
-           videoText.text = " You can access these by pressing num 1-6 or simply using the mouse scroll wheel";
+           videoText.text = " You can also access the inventory by pressed TAB or simply clicking the bag button found beside the hotbar";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 11)
         {
@@ -284,13 +284,13 @@ public class DialogueManager : MonoBehaviour
            */
 
             // change video
-            videoText.text = "You can equip the hoe by pressing ______";
+            videoText.text = "Equipping items and equipments can be done using both num keys and scroll wheel. You may also drag and drop items from you inventory to you hotbar";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 12)
         {
@@ -303,13 +303,13 @@ public class DialogueManager : MonoBehaviour
            */
 
             // change video
-            videoText.text = " While equipping the hoe, you can till a soil by right clicking on it. ";
+            videoText.text = " Pressign the left mouse button allows you to use the currently equiped item or equipment. ";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 13)
         {
@@ -326,14 +326,14 @@ public class DialogueManager : MonoBehaviour
             videoPopup.SetActive(false);
 
             // on popUp
-            dialogueText.text = "Tilling the soil comes first before anything else when planting.";
+            dialogueText.text = "In planting, tilling the soil comes first before anything else.";
             popUp.SetActive(true);
 
             PauseGame();
             DisableButton(1);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 14)
         {
@@ -342,13 +342,13 @@ public class DialogueManager : MonoBehaviour
             * enable button
             */
 
-            dialogueText.text = "Now go ahead and try it out.";
+            dialogueText.text = "Now why don't you try equipping a hoe and till some soil for your seeds";
           
             PauseGame();
             DisableButton(1);
 
             startDelay = true;
-            maxTicks = 2;
+            maxTicks = 1;
         }
         else if (nTutorialIndex == 15)
         {
@@ -380,7 +380,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = "There we go ";
+            dialogueText.text = "Well done";
 
             startDelay = true;
             maxTicks = 3;
@@ -397,7 +397,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " Now that you've tilled the soil, you can now plant a seed";
+            dialogueText.text = " Now that you've tilled the soil, you can now plant your seed";
 
             startDelay = true;
             maxTicks = 3;
@@ -415,7 +415,7 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
             videoPopup.SetActive(true);
 
-            videoText.text = " First, equip the seeds from your inventory. ";
+            videoText.text = " Equip the rose dagger seed from your inventory by pressing ___ ";
 
             DisableButton(2);
 
@@ -424,7 +424,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 19)
         {
-            videoText.text = " After doing so, move close to the tilled soil and play it by left clicking. ";
+            videoText.text = " After doing so, move close to the tilled soil and plant it by pressing the left mouse button. ";
 
             DisableButton(2);
 
@@ -436,7 +436,7 @@ public class DialogueManager : MonoBehaviour
             videoPopup.SetActive(false);
             popUp.SetActive(true);
 
-            dialogueText.text = " Now, try planting a red thorn seed. ";
+            dialogueText.text = " Now, go ahead and try planting one. ";
 
             DisableButton(1);
 
@@ -451,6 +451,69 @@ public class DialogueManager : MonoBehaviour
             ResumeGame();
 
             // check if the player has planted a seed in TA manager
+        }
+        else if (nTutorialIndex ==22)
+        {
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
+            DisableButton(1);
+            dialogueText.text = " Easy right?";
+
+            startDelay = true;
+            maxTicks = 3;
+        }
+        else if (nTutorialIndex == 23)
+        {
+            DisableButton(1);
+            dialogueText.text = " Now, what we need to do is water the plant. Equip the watering can from you r inventory and start watering the plant.";
+
+            startDelay = true;
+            maxTicks = 3;
+        }
+        else if (nTutorialIndex == 24)
+        {
+            popUp.SetActive(false);
+            panel.SetActive(false);
+
+            ResumeGame();
+
+            // check if the player has watered as plant
+        }
+        else if (nTutorialIndex == 25)
+        {
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
+            DisableButton(1);
+            dialogueText.text = " It will take time for the plant to fully grow. You can explore the farm while you wait.  ";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 26)
+        {
+            DisableButton(1);
+            dialogueText.text = " Premature plants will show a radial display that indicates its growth time. Meanwhile, plants that are ready for harvest has visiblepollen particles floating around them  ";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 27)
+        {
+            DisableButton(1);
+            dialogueText.text = " “Your crop has fully grown! When the plant is fully grown, you can harvest them by simply pressing the left mouse button while you are close to them ";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 28)
+        {
+            DisableButton(1);
+            dialogueText.text = " Now, go ahead and harvest what you've planted.  ";
+
+            startDelay = true;
+            maxTicks = 1;
         }
 
     }

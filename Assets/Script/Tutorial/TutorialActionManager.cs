@@ -21,10 +21,12 @@ public class TutorialActionManager : MonoBehaviour
     public bool hasUsedHoe = false;
     public bool hasPlantedSeed = false;
     public bool hasWateredPlant = false;
+    public bool hasFullyGrown = false;
+
     public bool hasHarvested = false;
 
 
-    int currentStep = 0;
+    public int currentStep = 0;
 
 
     void Start()
@@ -76,6 +78,13 @@ public class TutorialActionManager : MonoBehaviour
             if (hasPlantedSeed == true)
             {
                 Debug.Log(" planted seed");
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 24)
+        {
+            if (hasWateredPlant && hasFullyGrown)
+            {
                 dialManager.ProceedTutorial();
             }
         }

@@ -22888,7 +22888,11 @@ MonoBehaviour:
   - {fileID: 1281990441}
   - {fileID: 2092425660}
   nPickedUpItems: 0
+  inTutorial: 0
   hasUsedHoe: 0
+  hasPlantedSeed: 0
+  hasWateredPlant: 0
+  hasHarvested: 0
 --- !u!4 &2131883857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8114613024600856471, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
