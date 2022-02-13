@@ -71,5 +71,13 @@ public class TutorialActionManager : MonoBehaviour
                 dialManager.ProceedTutorial();
             }
         }
+        else if (currentStep == 21)
+        {
+            if (hasPlantedSeed == true)
+            {
+                Debug.Log(" planted seed");
+                dialManager.ProceedTutorial();
+            }
+        }
     }
 }

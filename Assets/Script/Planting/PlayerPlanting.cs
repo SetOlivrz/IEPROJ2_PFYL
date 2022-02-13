@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPlanting : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] TutorialActionManager manager;
     private Soil soil;
 
     void Start()
@@ -47,6 +49,12 @@ public class PlayerPlanting : MonoBehaviour
                     }
 
                     soil.Harvest();
+
+                    // tutorial
+                    if (SceneManager.GetActiveScene().name  == "Tutorial Manager" && manager != null)
+                    {
+                        manager.hasHarvested = true;
+                    }
                 }
             }
         }
@@ -73,12 +81,27 @@ public class PlayerPlanting : MonoBehaviour
                             if(!soil.GetIsTilled())
                             {
                                 soil.Till();
+                                manager.hasUsedHoe = true;
+                                // tutorial
+                                if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                                {
+                                    manager.hasUsedHoe = true;
+                                }
                             }
                             break;
                         case Tool.ToolTypes.WateringCan:
                             if(soil.GetHasSeed() && !soil.isGrowing)
                                 if(soil.GetHasSeed())
+                                {
                                     soil.Water();
+
+                                    // tutorial
+                                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                                    {
+                                        manager.hasWateredPlant = true;
+                                    }
+                                }
+                                   
                             break;
                     }
                 }
@@ -124,6 +147,12 @@ public class PlayerPlanting : MonoBehaviour
                     }
 
                     soil.Harvest();
+
+                    // tutorial
+                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                    {
+                        manager.hasHarvested = true;
+                    }
                 }
 
                 if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
@@ -138,6 +167,11 @@ public class PlayerPlanting : MonoBehaviour
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
                     soil.Plant(seed);
+                    // tutorial
+                    if (SceneManager.GetActiveScene().name == "Tutorial Manager" && manager != null)
+                    {
+                        manager.hasPlantedSeed = true;
+                    }
                 }
             }
         }

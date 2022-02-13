@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Soil : MonoBehaviour
 {
@@ -28,8 +27,6 @@ public class Soil : MonoBehaviour
 
     public List<PlantSprites> plantSprites = new List<PlantSprites>();
 
-    // tutorial var
-    [SerializeField] TutorialActionManager manager;
 
     private void Awake()
     {
@@ -44,20 +41,11 @@ public class Soil : MonoBehaviour
         plant = plantObject.GetComponent<Plant>();
         plantSprite = plantObject.GetComponent<SpriteRenderer>();
 
-        // for tutorial
-        Debug.Log(SceneManager.GetActiveScene().name);
-        if (SceneManager.GetActiveScene().name == "Tutorial Scene")
-        {
-            manager.inTutorial = true;
-        }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (canvas != null)
         {
             if (canvas.activeInHierarchy == true)
@@ -121,12 +109,6 @@ public class Soil : MonoBehaviour
 
         isTilled = true;
 
-        // tutorial
-        if (manager.inTutorial == true)
-        {
-            manager.hasUsedHoe = true;
-        }
-
         Debug.Log("You have tilled the soil");
     }
 
@@ -140,11 +122,6 @@ public class Soil : MonoBehaviour
         plantSprite.sprite = plantSprites[(int)plant.GetPlantType()].plantSprites[0];
         plantObject.SetActive(true);
 
-        // tutorial
-        if (manager.inTutorial == true)
-        {
-            manager.hasPlantedSeed = true;
-        }
         Debug.Log("You have planted something");
     }
 
@@ -158,12 +135,6 @@ public class Soil : MonoBehaviour
         //not sure what to do here
         // Plant will now start to grow
         StartCoroutine(Grow());
-
-        // tutorial
-        if (manager.inTutorial == true)
-        {
-            manager.hasWateredPlant = true;
-        }
 
         Debug.Log("Watered the soil");
     }
