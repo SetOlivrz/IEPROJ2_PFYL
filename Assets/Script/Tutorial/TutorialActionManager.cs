@@ -16,8 +16,12 @@ public class TutorialActionManager : MonoBehaviour
     [SerializeField] List<GameObject> itemsToPickup = new List<GameObject>();
     public int nPickedUpItems = 0;
 
+    public bool inTutorial = false;
     // variables foe the equipment hoe tutorial
     public bool hasUsedHoe = false;
+    public bool hasPlantedSeed = false;
+    public bool hasWateredPlant = false;
+    public bool hasHarvested = false;
 
 
     int currentStep = 0;

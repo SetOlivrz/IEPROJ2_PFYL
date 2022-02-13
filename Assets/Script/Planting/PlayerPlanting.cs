@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerPlanting : MonoBehaviour
 {
     [SerializeField] Player player;
-    [SerializeField] TutorialActionManager manager;
     private Soil soil;
 
     void Start()
@@ -74,7 +73,6 @@ public class PlayerPlanting : MonoBehaviour
                             if(!soil.GetIsTilled())
                             {
                                 soil.Till();
-                                manager.hasUsedHoe = true;
                             }
                             break;
                         case Tool.ToolTypes.WateringCan:
