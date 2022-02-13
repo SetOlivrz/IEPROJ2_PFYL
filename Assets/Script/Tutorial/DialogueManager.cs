@@ -52,14 +52,14 @@ public class DialogueManager : MonoBehaviour
 
             if (ticks >= maxTicks) // enables the button after the specified sec delay
             {
-                if (nTutorialIndex == 3 || nTutorialIndex >=8 && nTutorialIndex <13)
-                {
+                //if (nTutorialIndex == 3 || nTutorialIndex >=8 && nTutorialIndex <13)
+               // {
                     EnableButton(2);
-                }
-                else
-                {
+               // }
+               /// else
+               // {
                     EnableButton(1);
-                }
+               // }
 
                 startDelay = false;
                 ticks = 0;
@@ -365,31 +365,94 @@ public class DialogueManager : MonoBehaviour
             // check if the player has tilled the soil in TA manager update func (index 15)
 
         }
-        //// disables button when next if pressed
-        //else if(nTutorialIndex == 8) //player uses a hoe
-        //{
-        //    popUp.SetActive(false);
-        //    panel.SetActive(false);
-        //    // resume
-        //    ResumeGame();d
+        else if (nTutorialIndex == 16)
+        {
+            /* display main dialogue pop
+             * display black panel
+             * pause game
+             * disable button
+             * update text
+             * add delay
+             * enable button
+            */
 
-        //    // player uses the hoe
-        //    // set the item to pick up to active (from TAmanager script)
-        //    TAmanager.parentContainer.SetActive(true);
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
+            DisableButton(1);
+            dialogueText.text = "There we go ";
 
-        //    // step 2, has to be checked in da TA manager
-        //}
-        //else if (nTutorialIndex == 9) //instruction for planting seed
-        //{
-        //    popUp.SetActive(true);
-        //    panel.SetActive(true);
-        //    PauseGame();
-        //    DisableButton();
-        //    dialogueText.text = " Press _____ to open your inventory and drag the Rose Thorn Dagger seed to the hot bar ";
+            startDelay = true;
+            maxTicks = 3;
+        }
+        else if (nTutorialIndex == 17)
+        {
+            /* disable button
+             * update text
+             * add delay
+             * enable button
+            */
 
-        //    startDelay = true;
-        //    maxTicks = 5;
-        //}
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
+            DisableButton(1);
+            dialogueText.text = " Now that you've tilled the soil, you can now plant a seed";
+
+            startDelay = true;
+            maxTicks = 3;
+        }
+        else if (nTutorialIndex == 18)
+        {
+            /* hide dial pop
+             * show vid pop
+             * update vid text
+             * disable button
+             * add delay
+             * enable button
+             */
+
+            popUp.SetActive(false);
+            videoPopup.SetActive(true);
+
+            videoText.text = " First, equip the seeds from your inventory. ";
+
+            DisableButton(2);
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 19)
+        {
+            videoText.text = " After doing so, move close to the tilled soil and play it by left clicking. ";
+
+            DisableButton(2);
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 20)
+        {
+            videoPopup.SetActive(false);
+            popUp.SetActive(true);
+
+            dialogueText.text = " Now, try planting a red thorn seed. ";
+
+            DisableButton(1);
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 21)
+        {
+            popUp.SetActive(false);
+            panel.SetActive(false);
+
+            ResumeGame();
+
+            // check if the player has planted a seed in TA manager
+        }
+
     }
 
     public void  EnableButton(int key)
