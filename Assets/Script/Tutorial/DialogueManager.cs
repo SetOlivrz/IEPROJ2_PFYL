@@ -124,7 +124,7 @@ public class DialogueManager : MonoBehaviour
 
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " but before anything else, why don't you help me gather some seeds ";
+            dialogueText.text = "but before anything else, why don't you help me gather some seeds ";
 
             startDelay = true;
             maxTicks = 1;
@@ -142,7 +142,7 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
 
             // show video popup
-            videoText.text = " There are 4 red thorny seeds scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
+            videoText.text = "There are 4 red thorny seeds scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -265,7 +265,7 @@ public class DialogueManager : MonoBehaviour
             */
 
            // video: show hwo to access the hotbar
-           videoText.text = " You can also access the inventory by pressed TAB or simply clicking the bag button found beside the hotbar";
+           videoText.text = "You can also access the inventory by pressed TAB or simply clicking the bag button found beside the hotbar";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -303,7 +303,7 @@ public class DialogueManager : MonoBehaviour
            */
 
             // change video
-            videoText.text = " Pressign the left mouse button allows you to use the currently equiped item or equipment. ";
+            videoText.text = "Pressign the left mouse button allows you to use the currently equiped item or equipment. ";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -342,7 +342,7 @@ public class DialogueManager : MonoBehaviour
             * enable button
             */
 
-            dialogueText.text = "Now why don't you try equipping a hoe and till some soil for your seeds";
+            dialogueText.text = "Now why don't you try equipping a hoe and start tilling some soil";
           
             PauseGame();
             DisableButton(1);
@@ -360,6 +360,8 @@ public class DialogueManager : MonoBehaviour
 
             popUp.SetActive(false);
             panel.SetActive(false);
+
+            TAmanager.hasUsedHoe = false;
             ResumeGame();
 
             // check if the player has tilled the soil in TA manager update func (index 15)
@@ -397,7 +399,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " Now that you've tilled the soil, you can now plant your seed";
+            dialogueText.text = "Now that you've tilled the soil, you can now plant your seed";
 
             startDelay = true;
             maxTicks = 3;
@@ -415,7 +417,7 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
             videoPopup.SetActive(true);
 
-            videoText.text = " Equip the rose dagger seed from your inventory by pressing ___ ";
+            videoText.text = "Equip the rose dagger seed from your inventory by pressing ___ ";
 
             DisableButton(2);
 
@@ -424,7 +426,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 19)
         {
-            videoText.text = " After doing so, move close to the tilled soil and plant it by pressing the left mouse button. ";
+            videoText.text = "After doing so, move close to the tilled soil and plant it by pressing the left mouse button. ";
 
             DisableButton(2);
 
@@ -436,7 +438,7 @@ public class DialogueManager : MonoBehaviour
             videoPopup.SetActive(false);
             popUp.SetActive(true);
 
-            dialogueText.text = " Now, go ahead and try planting one. ";
+            dialogueText.text = "Now, go ahead and try planting one. ";
 
             DisableButton(1);
 
@@ -450,6 +452,7 @@ public class DialogueManager : MonoBehaviour
 
             ResumeGame();
 
+            TAmanager.hasPlantedSeed = false;
             // check if the player has planted a seed in TA manager
         }
         else if (nTutorialIndex ==22)
@@ -458,7 +461,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " Easy right?";
+            dialogueText.text = "Easy right?";
 
             startDelay = true;
             maxTicks = 3;
@@ -466,7 +469,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 23)
         {
             DisableButton(1);
-            dialogueText.text = " Now, what we need to do is water the plant. Equip the watering can from you r inventory and start watering the plant.";
+            dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from you r inventory and start watering the plant.";
 
             startDelay = true;
             maxTicks = 3;
@@ -486,7 +489,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = " It will take time for the plant to fully grow. You can explore the farm while you wait.  ";
+            dialogueText.text = "It will take time for the plant to fully grow. ";
 
             startDelay = true;
             maxTicks = 1;
@@ -494,7 +497,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 26)
         {
             DisableButton(1);
-            dialogueText.text = " Premature plants will show a radial display that indicates its growth time. Meanwhile, plants that are ready for harvest has visiblepollen particles floating around them  ";
+            dialogueText.text = "Premature plants will show a radial display that indicates its growth time. Meanwhile, plants that are ready for harvest has visiblepollen particles floating around them  ";
 
             startDelay = true;
             maxTicks = 1;
@@ -502,7 +505,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 27)
         {
             DisableButton(1);
-            dialogueText.text = " “Your crop has fully grown! When the plant is fully grown, you can harvest them by simply pressing the left mouse button while you are close to them ";
+            dialogueText.text = "Now that your crop has fully grown! You can harvest them by simply pressing the left mouse button while standing close to them ";
 
             startDelay = true;
             maxTicks = 1;
@@ -510,10 +513,23 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 28)
         {
             DisableButton(1);
-            dialogueText.text = " Now, go ahead and harvest what you've planted.  ";
+            dialogueText.text = "Now, go ahead and harvest what you've planted.  ";
 
             startDelay = true;
             maxTicks = 1;
+        }
+        else if (nTutorialIndex == 29)
+        {
+            popUp.SetActive(false);
+            panel.SetActive(false);
+
+            ResumeGame();
+
+            // check if the has picked up the plant
+        }
+        else if (nTutorialIndex == 30)
+        {
+
         }
 
     }

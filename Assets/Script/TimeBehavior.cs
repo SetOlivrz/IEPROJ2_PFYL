@@ -49,24 +49,59 @@ public class TimeBehavior : MonoBehaviour
     [SerializeField] AudioClip nightTimeShift;
     [SerializeField] AudioClip daytimeShift;
 
+    // variables for the tutorial
+    [SerializeField] TutorialActionManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (manager == null)
+        {
+            Debug.Log("Manager not Found");
+        }
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
         AssetChanger.instance.ChangeAssets(true);
+
     }
 
+    void BeginPlay()
+    {
+        if (manager == null)
+        {
+            Debug.Log("Manager not Found");
+        }
+        else
+        {
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-
+      
         if (!(day == maxDay && hour == 0 && minute >= 0)) //day == 7 && hour == 6 && minute >= 59.0f
         {
+            if (manager != null)
+            {
+                if (manager.currentStep >= 30)
+                {
+                    Debug.Log("call time beh");
+                    UpdateTicks();
+                    //transition for audio
+                    AudioTransitionChecker();
+                    UpdateHours();
+                }
+            }
+            else
+            {
+                Debug.Log("just do normal update");
+                UpdateTicks();
+                //transition for audio
+                AudioTransitionChecker();
+                UpdateHours();
 
-            UpdateTicks();
-            //transition for audio
-            AudioTransitionChecker();
-            UpdateHours();
+            }
+            
         }
 
         if (/*hour >= 2*/ stageClear)
@@ -112,7 +147,18 @@ public class TimeBehavior : MonoBehaviour
 
         dayLabel.text = "DAY " + day.ToString();
 
-        UpdateClock();
+        if (manager != null)
+        {
+            if (manager.currentStep >= 29)
+            {
+                UpdateClock();
+            }
+        }
+        else
+        {
+            UpdateClock();
+
+        }
 
 
         // update light

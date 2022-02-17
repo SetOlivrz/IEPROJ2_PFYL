@@ -85,12 +85,19 @@ public class PlayerPlanting : MonoBehaviour
                         case Tool.ToolTypes.Hoe:
                             if(!soil.GetIsTilled())
                             {
-                                soil.Till();
-                               // manager.hasUsedHoe = true;
                                 // tutorial
-                                if (manager != null)
+                                if (manager != null) // in tutorial
                                 {
-                                    manager.hasUsedHoe = true;
+                                    if (manager.currentStep == 15)
+                                    {
+                                        manager.hasUsedHoe = true;
+                                        soil.Till();
+                                    }
+                                }
+                                else // not in tutorial
+                                {
+                                    Debug.Log("hala not empty?");
+                                    soil.Till();
                                 }
                             }
                             break;

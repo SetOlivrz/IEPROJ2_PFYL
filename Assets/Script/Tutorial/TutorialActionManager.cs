@@ -88,5 +88,13 @@ public class TutorialActionManager : MonoBehaviour
                 dialManager.ProceedTutorial();
             }
         }
+        else if ( currentStep == 29)
+        {
+            if(hasHarvested == true)
+            {
+                Debug.Log(" the player has harvested the plant :D");
+                dialManager.ProceedTutorial();
+            }
+        }
     }
 }
