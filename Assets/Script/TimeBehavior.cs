@@ -85,7 +85,6 @@ public class TimeBehavior : MonoBehaviour
             {
                 if (manager.currentStep >= 30)
                 {
-                    Debug.Log("call time beh");
                     UpdateTicks();
                     //transition for audio
                     AudioTransitionChecker();

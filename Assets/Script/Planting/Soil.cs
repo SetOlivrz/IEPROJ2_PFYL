@@ -25,7 +25,6 @@ public class Soil : MonoBehaviour
     public GameObject produceDrop;
     SpriteRenderer plantSprite;
 
-
     public List<PlantSprites> plantSprites = new List<PlantSprites>();
 
 
@@ -81,6 +80,8 @@ public class Soil : MonoBehaviour
         if(manager != null)
         {
             manager.hasFullyGrown = true;
+            Debug.Log("Update");
+
 
         }
 

@@ -8,10 +8,21 @@ public class PlayerPlanting : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] TutorialActionManager manager;
     private Soil soil;
+    bool check = false;
 
     void Start()
     {
         player = gameObject.GetComponent<Player>();
+
+        if (manager == null)
+        {
+            check = false;
+        }
+        else
+        {
+            check = true;
+        }
+
     }
 
     void Update()
@@ -22,10 +33,14 @@ public class PlayerPlanting : MonoBehaviour
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
 
-        if (manager != null)
+        if (check == true)
         {
-            manager.hasFullyGrown = soil.GetIsGrown();
+            if (manager != null)
+            {
+                manager.hasFullyGrown = soil.GetIsGrown();
+            }
         }
+        
 
         if (Input.GetMouseButton(1))
         {
@@ -155,9 +170,14 @@ public class PlayerPlanting : MonoBehaviour
                     soil.Harvest();
 
                     // tutorial
-                    if (manager != null)
+                   
+
+                    if (check == true)
                     {
-                        manager.hasHarvested = true;
+                        if (manager != null)
+                        {
+                            manager.hasHarvested = true;
+                        }
                     }
                 }
 
@@ -172,9 +192,13 @@ public class PlayerPlanting : MonoBehaviour
 
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
-                    if (manager != null)
+ 
+                    if (check == true)
                     {
-                        manager.hasPlantedSeed = true;
+                        if (manager != null)
+                        {
+                            manager.hasPlantedSeed = true;
+                        }
                     }
                     soil.Plant(seed);
                     // tutorial

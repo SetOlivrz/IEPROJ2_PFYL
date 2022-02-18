@@ -20,6 +20,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public Text dialogueText;
     [SerializeField] public Text videoText;
 
+
+    [SerializeField] private GameObject image;
+    [SerializeField] private List<Sprite> TutorialSpriteList;
+
     public int nTutorialIndex = 0;
 
     public float ticks = 0;
@@ -33,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TutorialSpriteList = new List<Sprite>();
         nTutorialIndex = 0;
         panel.SetActive(false);
         popUp.SetActive(false);
@@ -144,6 +149,7 @@ public class DialogueManager : MonoBehaviour
             // show video popup
             videoText.text = "There are 4 red thorny seeds scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
             videoPopup.SetActive(true);
+            ChangeImage("01_WASD");
             PauseGame();
             DisableButton(2);
 
@@ -224,6 +230,7 @@ public class DialogueManager : MonoBehaviour
 
             popUp.SetActive(false);
             videoText.text = "Displayed on the lower left of you screen is your hotbar";
+            ChangeImage("02_Hotbar");
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -246,6 +253,7 @@ public class DialogueManager : MonoBehaviour
 
             popUp.SetActive(false);
             videoText.text = "Found inside are your equipment and items";
+            ChangeImage("03_Equipments");
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -266,6 +274,7 @@ public class DialogueManager : MonoBehaviour
 
            // video: show hwo to access the hotbar
            videoText.text = "You can also access the inventory by pressid TAB or simply clicking the bag button found beside the hotbar. You may also drag and drop items from you inventory to you hotbar";
+            ChangeImage("04_Inventory");
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -285,7 +294,7 @@ public class DialogueManager : MonoBehaviour
 
             // change video
             videoText.text = "You can equip item by using num keys and scroll wheel.";
-            //videoPopup.SetActive(true);
+            ChangeImage("05_Equiping item");
             PauseGame();
             DisableButton(2);
 
@@ -416,6 +425,7 @@ public class DialogueManager : MonoBehaviour
 
             popUp.SetActive(false);
             videoPopup.SetActive(true);
+            ChangeImage("06_Equip seed");
 
             videoText.text = "Equip the rose dagger seed from your inventory by pressing num key 3 or using the scroll wheel ";
 
@@ -427,6 +437,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 19)
         {
             videoText.text = "After doing so, move close to the tilled soil and plant it by pressing the left mouse button. ";
+            ChangeImage("07_Plant seed");
 
             DisableButton(2);
 
@@ -653,6 +664,31 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
         EnableButton(1);
+    }
+
+    public void ChangeImage(string element)
+    {
+        Image imageComp = image.GetComponent<Image>();
+
+        if (imageComp != null)
+        {
+            for (int i = 0; i < TutorialSpriteList.Count; i++)
+            {
+                if(element == TutorialSpriteList[i].name)
+                {
+                    imageComp.sprite = TutorialSpriteList[i];
+                    Debug.Log("HAS FOUND: " + element);
+                    return;
+                }
+            }
+            Debug.Log("Kennat find comp");
+
+        }
+        else
+        {
+            Debug.Log("cannot find comp");
+
+        }
     }
 }
     
