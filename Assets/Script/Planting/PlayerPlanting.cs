@@ -54,12 +54,6 @@ public class PlayerPlanting : MonoBehaviour
                     }
 
                     soil.Harvest();
-
-                    // tutorial
-                    if (manager != null)
-                    {
-                        manager.hasHarvested = true;
-                    }
                 }
             }
         }

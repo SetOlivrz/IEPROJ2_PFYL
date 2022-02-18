@@ -265,7 +265,7 @@ public class DialogueManager : MonoBehaviour
             */
 
            // video: show hwo to access the hotbar
-           videoText.text = "You can also access the inventory by pressed TAB or simply clicking the bag button found beside the hotbar";
+           videoText.text = "You can also access the inventory by pressid TAB or simply clicking the bag button found beside the hotbar. You may also drag and drop items from you inventory to you hotbar";
             videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -284,7 +284,7 @@ public class DialogueManager : MonoBehaviour
            */
 
             // change video
-            videoText.text = "Equipping items and equipments can be done using both num keys and scroll wheel. You may also drag and drop items from you inventory to you hotbar";
+            videoText.text = "You can equip item by using num keys and scroll wheel.";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -303,7 +303,7 @@ public class DialogueManager : MonoBehaviour
            */
 
             // change video
-            videoText.text = "Pressign the left mouse button allows you to use the currently equiped item or equipment. ";
+            videoText.text = "Press the left mouse button to use the currently equiped item. ";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -417,7 +417,7 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
             videoPopup.SetActive(true);
 
-            videoText.text = "Equip the rose dagger seed from your inventory by pressing ___ ";
+            videoText.text = "Equip the rose dagger seed from your inventory by pressing num key 3 or using the scroll wheel ";
 
             DisableButton(2);
 
@@ -469,7 +469,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 23)
         {
             DisableButton(1);
-            dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from you r inventory and start watering the plant.";
+            dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from your inventory and start watering the plant.";
 
             startDelay = true;
             maxTicks = 3;
@@ -497,28 +497,41 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 26)
         {
             DisableButton(1);
-            dialogueText.text = "Premature plants will show a radial display that indicates its growth time. Meanwhile, plants that are ready for harvest has visiblepollen particles floating around them  ";
+            dialogueText.text = "Premature plants will display a timer that indicates its growth time. Meanwhile, plants that are ready for harvest has visible pollen particles floating around them  ";
 
             startDelay = true;
             maxTicks = 1;
         }
         else if (nTutorialIndex == 27)
         {
-            DisableButton(1);
-            dialogueText.text = "Now that your crop has fully grown! You can harvest them by simply pressing the left mouse button while standing close to them ";
+            popUp.SetActive(false);
+            panel.SetActive(false);
+            ResumeGame();
 
-            startDelay = true;
-            maxTicks = 1;
+            // check
+          
         }
         else if (nTutorialIndex == 28)
         {
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
             DisableButton(1);
-            dialogueText.text = "Now, go ahead and harvest what you've planted.  ";
+            dialogueText.text = "Your crop has fully grown! Harvest them by pressing the left mouse button while standing close to them.";
 
             startDelay = true;
             maxTicks = 1;
         }
         else if (nTutorialIndex == 29)
+        {
+       
+            DisableButton(1);
+            dialogueText.text = "Stock up your weapons and resources before night time begins so don't forget to pick up the drops as well";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 30)
         {
             popUp.SetActive(false);
             panel.SetActive(false);
@@ -527,9 +540,83 @@ public class DialogueManager : MonoBehaviour
 
             // check if the has picked up the plant
         }
-        else if (nTutorialIndex == 30)
+        else if (nTutorialIndex == 31)
         {
+            popUp.SetActive(true);
+            panel.SetActive(true);
+            PauseGame();
+            DisableButton(1);
+            dialogueText.text = "Oh no! The monsters are coming!. ";
 
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 32)
+        {
+            popUp.SetActive(false);
+            videoPopup.SetActive(true);
+
+            DisableButton(1);
+            videoText.text = "During night time, monsters will come to your farm and attack you (insert night image).";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 33)
+        {
+            DisableButton(1);
+            videoText.text = "(insert night image with monster).";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 34)
+        {
+            DisableButton(1);
+            videoText.text = "You can kill monsters using a gun and a knife";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex ==35)
+        {
+            DisableButton(1);
+            videoText.text = "Guns are good for ranged but takes time to reload";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 36)
+        {
+            DisableButton(1);
+            videoText.text = "Knives however are good for close combat. It can one hit an enemy but gets destroyed upon single use ";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 37)
+        {
+            DisableButton(1);
+            videoText.text = " both equipments are used upon pressing the left mouse button";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 38)
+        {
+            DisableButton(1);
+            videoText.text = "Monster deal damage once they get close enough to you";
+
+            startDelay = true;
+            maxTicks = 1;
+        }
+        else if (nTutorialIndex == 39)
+        {
+            DisableButton(1);
+            videoText.text = "So equip yourself with those weapons and get those monsters before they get you.";
+
+            startDelay = true;
+            maxTicks = 1;
         }
 
     }

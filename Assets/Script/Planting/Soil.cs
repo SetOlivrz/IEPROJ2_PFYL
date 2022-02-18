@@ -15,6 +15,7 @@ public class Soil : MonoBehaviour
 
     [SerializeField] private GameObject canvas;
     [SerializeField] private ParticleSystem particle;
+    [SerializeField] private TutorialActionManager manager;
 
     //seems redundant, will replace later when inventory system has been implemented
     public GameObject plantObject;
@@ -76,6 +77,13 @@ public class Soil : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material.color = new Color32(212, 212, 212, 255);
         isGrown = true;
         Debug.Log("Finished Growing");
+
+        if(manager != null)
+        {
+            manager.hasFullyGrown = true;
+
+        }
+
         canvas.SetActive(false);
         if (particle.isStopped)
         {

@@ -56,7 +56,7 @@ public class TutorialActionManager : MonoBehaviour
             }
             // remove from the array/list once the item is picked up by the player
 
-            if(itemsToPickup.Count == 0)
+            if (itemsToPickup.Count == 0)
             {
                 Debug.Log("Picked up all items: " + itemsToPickup.Count);
                 itemsToPickup.Clear();
@@ -83,16 +83,32 @@ public class TutorialActionManager : MonoBehaviour
         }
         else if (currentStep == 24)
         {
-            if (hasWateredPlant && hasFullyGrown)
+            if (hasWateredPlant)
+            {
+                dialManager.ProceedTutorial();
+            }
+
+        }
+        else if (currentStep == 27)
+        {
+            if (hasFullyGrown == true)
             {
                 dialManager.ProceedTutorial();
             }
         }
-        else if ( currentStep == 29)
+        else if (currentStep == 29)
         {
-            if(hasHarvested == true)
+            if (hasHarvested == true)
             {
                 Debug.Log(" the player has harvested the plant :D");
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 30)
+        {
+            if (TimeBehavior.isDaytime == false)
+            {
+                Debug.Log(" Make it nightttttt");
                 dialManager.ProceedTutorial();
             }
         }
