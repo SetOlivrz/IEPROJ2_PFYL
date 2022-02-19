@@ -26,7 +26,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 20.0f; // 3f for debugging
+    private const float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Light
     [SerializeField] GameObject sun;
