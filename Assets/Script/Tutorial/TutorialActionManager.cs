@@ -24,9 +24,9 @@ public class TutorialActionManager : MonoBehaviour
     public bool hasFullyGrown = false;
 
     public bool hasHarvested = false;
-
-
     public int currentStep = 0;
+
+    bool locked = false;
 
 
     void Start()
@@ -40,77 +40,102 @@ public class TutorialActionManager : MonoBehaviour
     {
         currentStep = dialManager.nTutorialIndex;
 
-        if (currentStep == 4) // player movement tutorial
+        if (locked == false)
         {
-            // check of the player picks up the items
-
-            for (int i = 0; i < itemsToPickup.Count; i++)
-            {
-                if (itemsToPickup[i] == null)
+            if (currentStep == 4) // player movement tutorial
                 {
-                    itemsToPickup.RemoveAt(i);
-                    nPickedUpItems++;
-                    Debug.Log("Picked up");
+                // check of the player picks up the items
 
+                for (int i = 0; i < itemsToPickup.Count; i++)
+                {
+                    if (itemsToPickup[i] == null)
+                    {
+                        itemsToPickup.RemoveAt(i);
+                        nPickedUpItems++;
+                        Debug.Log("Picked up");
+
+                    }
+                }
+                // remove from the array/list once the item is picked up by the player
+
+                if (itemsToPickup.Count == 0 && locked == false)
+                {
+                    Debug.Log("Picked up all items: " + itemsToPickup.Count);
+                    itemsToPickup.Clear();
+                    // dialManager.ProceedTutorial();
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
                 }
             }
-            // remove from the array/list once the item is picked up by the player
+            else if (currentStep == 15) // tutorial on how to use the hoe
+            {
+                if (hasUsedHoe == true)
+                {
+                    Debug.Log(" the player has used the hoe tool");
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
+            }
+            else if (currentStep == 21)
+            {
+                if (hasPlantedSeed == true)
+                {
+                    Debug.Log(" planted seed");
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
+            }
+            else if (currentStep == 24)
+            {
+                if (hasWateredPlant)
+                {
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
 
-            if (itemsToPickup.Count == 0)
+            }
+            else if (currentStep == 27)
             {
-                Debug.Log("Picked up all items: " + itemsToPickup.Count);
-                itemsToPickup.Clear();
-                dialManager.ProceedTutorial();
-                // add delay
-                // call the Proceed tutorial func
+                if (hasFullyGrown == true)
+                {
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
+            }
+            else if (currentStep == 29)
+            {
+                if (hasHarvested == true)
+                {
+                    Debug.Log(" the player has harvested the plant :D");
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
+            }
+            else if (currentStep == 30)
+            {
+                if (TimeBehavior.isDaytime == false)
+                {
+                    Debug.Log(" Make it nightttttt");
+                    locked = true;
+                    StartCoroutine(PopUpDelay());
+                }
             }
         }
-        else if (currentStep == 15) // tutorial on how to use the hoe
-        {
-            if (hasUsedHoe == true)
-            {
-                Debug.Log(" the player has used the hoe tool");
-                dialManager.ProceedTutorial();
-            }
-        }
-        else if (currentStep == 21)
-        {
-            if (hasPlantedSeed == true)
-            {
-                Debug.Log(" planted seed");
-                dialManager.ProceedTutorial();
-            }
-        }
-        else if (currentStep == 24)
-        {
-            if (hasWateredPlant)
-            {
-                dialManager.ProceedTutorial();
-            }
+       
+    }
+    IEnumerator PopUpDelay(float sec)
+    {
+        yield return new WaitForSecondsRealtime(sec);
+        dialManager.ProceedTutorial();
+        Debug.Log("call next phase");
+        locked = false;
+    }
 
-        }
-        else if (currentStep == 27)
-        {
-            if (hasFullyGrown == true)
-            {
-                dialManager.ProceedTutorial();
-            }
-        }
-        else if (currentStep == 29)
-        {
-            if (hasHarvested == true)
-            {
-                Debug.Log(" the player has harvested the plant :D");
-                dialManager.ProceedTutorial();
-            }
-        }
-        else if (currentStep == 30)
-        {
-            if (TimeBehavior.isDaytime == false)
-            {
-                Debug.Log(" Make it nightttttt");
-                dialManager.ProceedTutorial();
-            }
-        }
+    IEnumerator PopUpDelay()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        dialManager.ProceedTutorial();
+        Debug.Log("call next phase");
+        locked = false;
     }
 }
