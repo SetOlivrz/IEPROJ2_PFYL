@@ -568,6 +568,8 @@ public class DialogueManager : MonoBehaviour
             videoPopup.SetActive(true);
 
             DisableButton(1);
+            ChangeImage("10_Night time");
+
             videoText.text = "During night time, monsters will come to your farm and attack you (insert night image).";
 
             startDelay = true;
@@ -576,7 +578,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 33)
         {
             DisableButton(1);
-            videoText.text = "(insert night image with monster).";
+            ChangeImage("11_Enemy");
 
             startDelay = true;
             maxTicks = 1;
@@ -585,7 +587,7 @@ public class DialogueManager : MonoBehaviour
         {
             DisableButton(1);
             videoText.text = "You can kill monsters using a gun and a knife";
-
+            ChangeImage("12_Weapons");
             startDelay = true;
             maxTicks = 1;
         }
@@ -593,6 +595,7 @@ public class DialogueManager : MonoBehaviour
         {
             DisableButton(1);
             videoText.text = "Guns are good for ranged but takes time to reload";
+            ChangeImage("13_Shoot");
 
             startDelay = true;
             maxTicks = 1;
@@ -600,7 +603,8 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 36)
         {
             DisableButton(1);
-            videoText.text = "Knives however are good for close combat. It can one hit an enemy but gets destroyed upon single use ";
+            videoText.text = "Knives however are good for close combat. It can deal massive damage but gets destroyed upon single use ";
+            ChangeImage("14_Slash");
 
             startDelay = true;
             maxTicks = 1;
@@ -617,6 +621,8 @@ public class DialogueManager : MonoBehaviour
         {
             DisableButton(1);
             videoText.text = "Monster deal damage once they get close enough to you";
+            ChangeImage("15_Hurt");
+
 
             startDelay = true;
             maxTicks = 1;
@@ -624,7 +630,9 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 39)
         {
             DisableButton(1);
-            videoText.text = "So equip yourself with those weapons and get those monsters before they get you.";
+            videoPopup.SetActive(false);
+            popUp.SetActive(true);
+            dialogueText.text = "Now, go equip yourself with weapons and get those monsters before they get you.";
 
             startDelay = true;
             maxTicks = 1;
@@ -632,8 +640,10 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 40)
         {
             panel.SetActive(false);
-            videoPopup.SetActive(false);
+            popUp.SetActive(false);
             ResumeGame();
+
+            // check if the player has finished the stage
         }
 
     }

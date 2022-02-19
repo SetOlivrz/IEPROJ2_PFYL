@@ -22843,6 +22843,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 40481ab7ba432f74eab6f1c92c400e5c, type: 3}
   - {fileID: 21300000, guid: b942f2d6b23018b488e46622e7f56473, type: 3}
   - {fileID: 21300000, guid: 3a8056cd6b029704c9d9ccd2585091c7, type: 3}
+  - {fileID: 21300000, guid: 3f640827f7ede1049ad68b9c9e852ae6, type: 3}
+  - {fileID: 21300000, guid: 56140dbaf5f6fa84d9a1c3dbe7571683, type: 3}
+  - {fileID: 21300000, guid: 4747afb7dd3baa0449d1c20db4b8f6fd, type: 3}
+  - {fileID: 21300000, guid: c3381f35057c0834789365f0e50b04b4, type: 3}
+  - {fileID: 21300000, guid: 5e07b010df867374da07e31099802a2d, type: 3}
+  - {fileID: 21300000, guid: 7b6e26044c6eeee40bedba4304a52b09, type: 3}
   nTutorialIndex: 29
   ticks: 0
   maxTicks: 0
