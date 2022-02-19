@@ -299,11 +299,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 17)
         {
-            /* disable button
-             * update text
-             * add delay
-             * enable button
-            */
+
 
             popUp.SetActive(true);
             panel.SetActive(true);

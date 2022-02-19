@@ -542,7 +542,7 @@ MonoBehaviour:
   hpBar: {fileID: 1380463456}
   goldLabel: {fileID: 439780916}
   animator: {fileID: 27880574}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1203873997}
 --- !u!114 &27880569
 MonoBehaviour:
   m_ObjectHideFlags: 0

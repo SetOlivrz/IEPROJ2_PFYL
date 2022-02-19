@@ -305,6 +305,7 @@ MonoBehaviour:
   plantGTime: 0
   canvas: {fileID: 1278353415516142644}
   particle: {fileID: 8876376544159736281}
+  manager: {fileID: 0}
   plantObject: {fileID: 3174570418234078935}
   plant: {fileID: 0}
   seedDrops:
@@ -438,7 +439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3174570418234078935}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e78ab2832ee2d44b9382535816d34f3, type: 3}
   m_Name: 
