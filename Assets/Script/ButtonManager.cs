@@ -329,20 +329,6 @@ public class ButtonManager : MonoBehaviour
     // game proper ui functions
     public void PauseGame()
     {
-        //if (pausePopUp.activeInHierarchy == false)
-        //{
-        //    Debug.Log("Game Paused");
-
-        //    Time.timeScale = 0;
-        //    this.blackPanel.SetActive(true);
-        //    this.pausePopUp.SetActive(true);
-        //}
-        //else
-        //{
-        //    this.blackPanel.SetActive(false);
-        //    this.pausePopUp.SetActive(false);
-        //}
-
 
         if (this.pausePopUp.activeInHierarchy == false) // main panel disabled
         {

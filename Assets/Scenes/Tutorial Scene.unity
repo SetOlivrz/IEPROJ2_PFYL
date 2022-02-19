@@ -6959,6 +6959,7 @@ MonoBehaviour:
   player: {fileID: 27880566}
   playerData: {fileID: 27880568}
   uiManager: {fileID: 1203873997}
+  buttonText: {fileID: 1706084889}
   gameState: 0
 --- !u!4 &633700475
 Transform:
@@ -20861,7 +20862,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1203873997}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: RestartDay
+        m_MethodName: StartNormalLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21595,7 +21596,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1203873997}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: RestartDay
+        m_MethodName: StartNormalLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
