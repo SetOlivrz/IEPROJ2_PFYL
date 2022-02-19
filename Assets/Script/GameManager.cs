@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum Status
 {
@@ -16,11 +17,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField]PlayerData playerData;
     [SerializeField] ButtonManager uiManager;
+
+    [SerializeField] Text buttonText;
+
     public Status gameState = Status.NEUTRAL;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Tutorial Scene")
+        {
+            buttonText.text = "Start game";
+        }
+
         gameState = Status.NEUTRAL;
         if (player == null)
         {

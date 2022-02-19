@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerData : MonoBehaviour
@@ -23,6 +24,10 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Tutorial Scene")
+        {
+            maxHP = 500;
+        }
         currHP = maxHP;
         hpBar.maxValue = maxHP;
         hpBar.value = currHP;
@@ -56,12 +61,19 @@ public class PlayerData : MonoBehaviour
             animator.SetBool("hurt", true);
             if (currHP <= 0)
             {
-                currHP = 0;
-                if (!displayed)
+                if (SceneManager.GetActiveScene().name == "Tutorial Scene")
                 {
-                    Debug.Log("Player died");
-                    uiManager.GameOverPopup();
-                    displayed = true;
+                    currHP = maxHP;
+                }
+                else
+                {
+                    currHP = 0;
+                    if (!displayed)
+                    {
+                        Debug.Log("Player died");
+                        uiManager.GameOverPopup();
+                        displayed = true;
+                    }
                 }
             }
         }

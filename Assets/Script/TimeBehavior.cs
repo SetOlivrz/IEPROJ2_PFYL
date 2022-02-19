@@ -51,6 +51,7 @@ public class TimeBehavior : MonoBehaviour
 
     // variables for the tutorial
     [SerializeField] TutorialActionManager manager;
+    [SerializeField] AssetChanger changer;
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +60,10 @@ public class TimeBehavior : MonoBehaviour
         {
             Debug.Log("Manager not Found");
         }
+        Debug.Log("START");
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-        AssetChanger.instance.ChangeAssets(true);
-
+        //AssetChanger.instance.ChangeAssets(true);
+        changer.ChangeAssets(true);
     }
 
     void BeginPlay()
@@ -83,7 +85,7 @@ public class TimeBehavior : MonoBehaviour
         {
             if (manager != null)
             {
-                if (manager.currentStep >= 30)
+                if (manager.currentStep >= 29)
                 {
                     UpdateTicks();
                     //transition for audio
@@ -110,7 +112,8 @@ public class TimeBehavior : MonoBehaviour
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-            AssetChanger.instance.ChangeAssets(true);
+            //AssetChanger.instance.ChangeAssets(true);
+            changer.ChangeAssets(true);
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -125,12 +128,14 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
-            AssetChanger.instance.ChangeAssets(false);
+            changer.ChangeAssets(false);
+            //AssetChanger.instance.ChangeAssets(false);
         }
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
-            AssetChanger.instance.ChangeAssets(true);
+            changer.ChangeAssets(true);
+            //AssetChanger.instance.ChangeAssets(true);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);
@@ -211,7 +216,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-            //Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
+            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         
@@ -223,7 +228,7 @@ public class TimeBehavior : MonoBehaviour
             Quaternion target = Quaternion.Euler(0, 0, angle);
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime);
 
-             Debug.Log("night: killed " + EnemySpawning.totalEnemyKilledInLevel + "/: " + EnemySpawning.totalEnemyInLevel);
+             //Debug.Log("night: killed " + EnemySpawning.totalEnemyKilledInLevel + "/: " + EnemySpawning.totalEnemyInLevel);
 
         }
 

@@ -97,7 +97,7 @@ public class PlayerPlanting : MonoBehaviour
                                 // tutorial
                                 if (manager != null) // in tutorial
                                 {
-                                    if (manager.currentStep == 15)
+                                    if (manager.currentStep == 15 || manager.currentStep >= 30)
                                     {
                                         manager.hasUsedHoe = true;
                                         soil.Till();
@@ -105,7 +105,6 @@ public class PlayerPlanting : MonoBehaviour
                                 }
                                 else // not in tutorial
                                 {
-                                    Debug.Log("hala not empty?");
                                     soil.Till();
                                 }
                             }
