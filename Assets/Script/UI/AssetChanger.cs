@@ -46,12 +46,12 @@ public class AssetChanger : MonoBehaviour
                 nightAssets[1] = GameObject.FindGameObjectsWithTag("Assets")[1];
                 nightAssets[2] = GameObject.FindGameObjectsWithTag("Assets")[2];
             //}*/
-            
-            floor = GameObject.FindGameObjectWithTag("Ground");
+            if(floor == null)
+                floor = GameObject.FindGameObjectWithTag("Ground");
 
-            /*if (GameObject.FindGameObjectWithTag("PointLight").activeInHierarchy)
+            if (GameObject.FindGameObjectWithTag("PointLight").activeInHierarchy)
                 playerLight = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
-            else playerLight = null;*/
+            else playerLight = null;
         }
     }
 
@@ -71,6 +71,7 @@ public class AssetChanger : MonoBehaviour
             playerLight.gameObject.SetActive(false);
             //change to day lights (R,G,B, Intensity)
             RenderSettings.ambientLight = new Color32(144, 142,110, 0);
+            Camera.main.backgroundColor = new Color32(69, 73, 52, 255);
         }
         else
         {
@@ -87,6 +88,7 @@ public class AssetChanger : MonoBehaviour
             playerLight.gameObject.SetActive(true);
             //change to night lights (R,G,B, Intensity)
             RenderSettings.ambientLight = new Color32(49, 16, 191, 1);
+            Camera.main.backgroundColor = new Color32(27, 29, 29, 255);
         }
     }
 }
