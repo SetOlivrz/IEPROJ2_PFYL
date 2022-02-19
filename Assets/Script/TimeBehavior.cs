@@ -4,6 +4,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -26,7 +27,7 @@ public class TimeBehavior : MonoBehaviour
     private float lighTicks = 0.0f;
     private float maxLightAngle = 30.0f;
 
-    private const float TIME_MULTIPLIER = 20.0f; // 3f for debugging
+    private float TIME_MULTIPLIER = 2.0f; // 3f for debugging
 
     //Light
     [SerializeField] GameObject sun;
@@ -56,6 +57,15 @@ public class TimeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Tutorial Scene")
+        {
+            TIME_MULTIPLIER = 20.0f;
+        }
+        else // normal level
+        {
+            TIME_MULTIPLIER = 2.0f;
+        }
+
         if (manager == null)
         {
             Debug.Log("Manager not Found");
