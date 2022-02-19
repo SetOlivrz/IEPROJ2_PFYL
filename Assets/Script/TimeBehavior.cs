@@ -59,6 +59,7 @@ public class TimeBehavior : MonoBehaviour
         {
             Debug.Log("Manager not Found");
         }
+        Debug.Log("START");
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
         AssetChanger.instance.ChangeAssets(true);
 

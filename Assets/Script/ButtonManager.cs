@@ -158,7 +158,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ReturnToMainmenu()
     {
-        manager.gameState = Status.NEUTRAL;
+        //manager.gameState = Status.NEUTRAL;
         Time.timeScale = 1;
         TimeBehavior.day = 1;
         TimeBehavior.hour = 0;
