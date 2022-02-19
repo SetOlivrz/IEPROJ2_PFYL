@@ -9,15 +9,24 @@ public class TutorialActionManager : MonoBehaviour
     // references: player, interactable GO, events for accomplishing steps in tutorial
 
     [SerializeField] GameObject player;
-
-    [SerializeField] public GameObject parentContainer;
-    [SerializeField] List<GameObject>itemsToPickup =  new List<GameObject>();
-
     [SerializeField] DialogueManager dialManager;
 
+    // variables for the player movement guide 
+    [SerializeField] public GameObject parentContainer;
+    [SerializeField] List<GameObject> itemsToPickup = new List<GameObject>();
     public int nPickedUpItems = 0;
 
-    int currentStep = 0;
+    public bool inTutorial = false;
+    // variables foe the equipment hoe tutorial
+    public bool hasUsedHoe = false;
+    public bool hasPlantedSeed = false;
+    public bool hasWateredPlant = false;
+    public bool hasFullyGrown = false;
+
+    public bool hasHarvested = false;
+
+
+    public int currentStep = 0;
 
 
     void Start()
@@ -31,7 +40,7 @@ public class TutorialActionManager : MonoBehaviour
     {
         currentStep = dialManager.nTutorialIndex;
 
-        if (currentStep == 2)
+        if (currentStep == 4) // player movement tutorial
         {
             // check of the player picks up the items
 
@@ -47,13 +56,60 @@ public class TutorialActionManager : MonoBehaviour
             }
             // remove from the array/list once the item is picked up by the player
 
-            if(itemsToPickup.Count == 0)
+            if (itemsToPickup.Count == 0)
             {
                 Debug.Log("Picked up all items: " + itemsToPickup.Count);
                 itemsToPickup.Clear();
                 dialManager.ProceedTutorial();
                 // add delay
                 // call the Proceed tutorial func
+            }
+        }
+        else if (currentStep == 15) // tutorial on how to use the hoe
+        {
+            if (hasUsedHoe == true)
+            {
+                Debug.Log(" the player has used the hoe tool");
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 21)
+        {
+            if (hasPlantedSeed == true)
+            {
+                Debug.Log(" planted seed");
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 24)
+        {
+            if (hasWateredPlant)
+            {
+                dialManager.ProceedTutorial();
+            }
+
+        }
+        else if (currentStep == 27)
+        {
+            if (hasFullyGrown == true)
+            {
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 29)
+        {
+            if (hasHarvested == true)
+            {
+                Debug.Log(" the player has harvested the plant :D");
+                dialManager.ProceedTutorial();
+            }
+        }
+        else if (currentStep == 30)
+        {
+            if (TimeBehavior.isDaytime == false)
+            {
+                Debug.Log(" Make it nightttttt");
+                dialManager.ProceedTutorial();
             }
         }
     }

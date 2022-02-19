@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPlanting : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] TutorialActionManager manager;
     private Soil soil;
+    bool check = false;
 
     void Start()
     {
         player = gameObject.GetComponent<Player>();
+
+        if (manager == null)
+        {
+            check = false;
+        }
+        else
+        {
+            check = true;
+        }
+
     }
 
     void Update()
@@ -19,6 +32,15 @@ public class PlayerPlanting : MonoBehaviour
             player.myInventory.AddItem(new ItemStack(player.myInventory.itemsToAdd[0], 1));
             InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
         }*/
+
+        if (check == true)
+        {
+            if (manager != null&& manager.currentStep==30)
+            {
+                manager.hasFullyGrown = soil.GetIsGrown();
+            }
+        }
+        
 
         if (Input.GetMouseButton(1))
         {
@@ -71,12 +93,36 @@ public class PlayerPlanting : MonoBehaviour
                     {
                         case Tool.ToolTypes.Hoe:
                             if(!soil.GetIsTilled())
-                                soil.Till();
+                            {
+                                // tutorial
+                                if (manager != null) // in tutorial
+                                {
+                                    if (manager.currentStep == 15)
+                                    {
+                                        manager.hasUsedHoe = true;
+                                        soil.Till();
+                                    }
+                                }
+                                else // not in tutorial
+                                {
+                                    Debug.Log("hala not empty?");
+                                    soil.Till();
+                                }
+                            }
                             break;
                         case Tool.ToolTypes.WateringCan:
                             if(soil.GetHasSeed() && !soil.isGrowing)
                                 if(soil.GetHasSeed())
+                                {
                                     soil.Water();
+
+                                    // tutorial
+                                    if (manager != null)
+                                    {
+                                        manager.hasWateredPlant = true;
+                                    }
+                                }
+                                   
                             break;
                     }
                 }
@@ -122,6 +168,17 @@ public class PlayerPlanting : MonoBehaviour
                     }
 
                     soil.Harvest();
+
+                    // tutorial
+                   
+
+                    if (check == true)
+                    {
+                        if (manager != null)
+                        {
+                            manager.hasHarvested = true;
+                        }
+                    }
                 }
 
                 if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
@@ -135,7 +192,17 @@ public class PlayerPlanting : MonoBehaviour
 
                     InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
 
+ 
+                    if (check == true)
+                    {
+                        if (manager != null)
+                        {
+                            manager.hasPlantedSeed = true;
+                        }
+                    }
                     soil.Plant(seed);
+                    // tutorial
+                   
                 }
             }
         }
@@ -147,7 +214,6 @@ public class PlayerPlanting : MonoBehaviour
         {
             soil = other.gameObject.GetComponent<Soil>();
         }
-
         Debug.Log("In range!");
     }
 
