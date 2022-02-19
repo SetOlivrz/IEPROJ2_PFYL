@@ -37675,6 +37675,18 @@ PrefabInstance:
       propertyPath: bulletCountText
       value: 
       objectReference: {fileID: 1660628469}
+    - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: itemsToAdd.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: itemsToAdd.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 909b434c2c99b50418f2f4f2d03f7719, type: 2}
+    - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: itemsToAdd.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a5158ef47e2488d4fbd81efce565190e, type: 2}
     - target: {fileID: 5582039781409909786, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
