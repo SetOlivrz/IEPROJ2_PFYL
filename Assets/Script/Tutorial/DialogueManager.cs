@@ -120,13 +120,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 2)// dial 3
         { 
-            /* pause game 
-             * disable button
-             * change text
-             * add delay
-             * enable next button
-             */
-
+     
             PauseGame();
             DisableButton(1);
             dialogueText.text = "but before anything else, why don't you help me gather some seeds ";
@@ -136,13 +130,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 3)// show video
         {
-            /* hide main dialogue popup
-             * update vid pop text
-             * pause game
-             * disable next button
-             * add dekay
-             * enable next button
-             * */
 
             popUp.SetActive(false);
 
@@ -160,12 +147,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex ==4) // execution for player movement
         {
-            /* hide video pop
-             * hide black panel
-             * resume game
-             * display seeds to pickup for player movement exec.
-             */
-
             videoPopup.SetActive(false);
             panel.SetActive(false);
             ResumeGame();
@@ -177,14 +158,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 5)// intro to planting after movement tutorial
         {
-            /* display main dialogue pop
-            * display black panel
-            * pause game
-            * disable button
-            * update text
-            * add delay
-            * enable button
-           */
 
             popUp.SetActive(true);
             panel.SetActive(true);
@@ -197,10 +170,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 6)// instruction on how to use a hoe
         {
-            /*change dialogue
-             * add delay
-             * enable button
-             */
 
             dialogueText.text = "Now that we have the seeds, let’s start planting";
             startDelay = true;
@@ -209,24 +178,13 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 7)
         {
-            /*change dialogue
-             * add delay
-             * enable button
-             */
-
+ 
             dialogueText.text = "Planting can be intimidating at first but let me teach you the basics";
             startDelay = true;
             maxTicks = 1;
         }
         else if (nTutorialIndex == 8)
         {
-            /* hide pop
-             * update vid text
-             * display vid pop
-             * pause game
-             * disable button
-             * add delay
-             */
 
             popUp.SetActive(false);
             videoText.text = "Displayed on the lower left of you screen is your hotbar";
@@ -240,16 +198,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex ==9)
         {
-            /* hide main dialogue pop
-             * update vid text
-             * show vid pop
-             * pause game
-             * disable button
-             * add delay
-             * enable button
-             */
-
-            // change video
 
             popUp.SetActive(false);
             videoText.text = "Found inside are your equipment and items";
@@ -263,15 +211,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 10)
         {
-            /*
-            * update vid text
-            * show vid pop
-            * pause game
-            * disable button
-            * add delay
-            * enable button
-            */
-
+ 
            // video: show hwo to access the hotbar
            videoText.text = "You can also access the inventory by pressid TAB or simply clicking the bag button found beside the hotbar. You may also drag and drop items from you inventory to you hotbar";
             ChangeImage("04_Inventory");
@@ -284,13 +224,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 11)
         {
-            /*update vid text
-           *show vid pop
-           *pause game
-           * disable button
-           * add delay
-           * enable button
-           */
 
             // change video
             videoText.text = "You can equip item by using num keys and scroll wheel.";
@@ -303,13 +236,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 12)
         {
-           /*update vid text
-           *show vid pop
-           *pause game
-           * disable button
-           * add delay
-           * enable button
-           */
+
 
             // change video
             videoText.text = "Press the left mouse button to use the currently equiped item. ";
@@ -322,14 +249,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 13)
         {
-            /* hide video pop
-             * update dial text
-             * display main dial pop
-             * pause game
-             * disable button
-             * add delay
-             * enable button
-             */
+
 
             // off videoPop up
             videoPopup.SetActive(false);
@@ -346,10 +266,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 14)
         {
-            /*change dialogue
-            * add delay
-            * enable button
-            */
 
             dialogueText.text = "Now why don't you try equipping a hoe and start tilling some soil";
           
@@ -361,12 +277,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 15)
         {
-            /* hide main dial pop
-             * hide panel pop
-             * resume game
-             * check if the player has tilled a soil
-             */
-
             popUp.SetActive(false);
             panel.SetActive(false);
 
@@ -378,15 +288,6 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 16)
         {
-            /* display main dialogue pop
-             * display black panel
-             * pause game
-             * disable button
-             * update text
-             * add delay
-             * enable button
-            */
-
             popUp.SetActive(true);
             panel.SetActive(true);
             PauseGame();
