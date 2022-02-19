@@ -629,6 +629,12 @@ public class DialogueManager : MonoBehaviour
             startDelay = true;
             maxTicks = 1;
         }
+        else if (nTutorialIndex == 40)
+        {
+            panel.SetActive(false);
+            videoPopup.SetActive(false);
+            ResumeGame();
+        }
 
     }
 

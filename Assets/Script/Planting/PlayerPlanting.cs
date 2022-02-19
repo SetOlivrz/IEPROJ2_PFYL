@@ -35,7 +35,7 @@ public class PlayerPlanting : MonoBehaviour
 
         if (check == true)
         {
-            if (manager != null)
+            if (manager != null&& manager.currentStep==30)
             {
                 manager.hasFullyGrown = soil.GetIsGrown();
             }
