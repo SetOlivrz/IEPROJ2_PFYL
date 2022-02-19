@@ -81,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         // wait for 3 seconds
         yield return new WaitForSeconds(3);
 
-        dialogueText.text = "Hello there Nephew, intro ...";
+        dialogueText.text = "Hello there nephew!";
         // display the first popup
         panel.SetActive(true);
         popUp.SetActive(true);
@@ -134,7 +134,7 @@ public class DialogueManager : MonoBehaviour
             popUp.SetActive(false);
 
             // show video popup
-            videoText.text = "There are 4 red thorny seeds scattered around your farm. Press WASD to walk around and pick up the seeds.  ";
+            videoText.text = "There are four red thorny seeds scattered around the farm. Press WASD to walk around and collect the seeds.  ";
             videoPopup.SetActive(true);
             ChangeImage("01_WASD");
             PauseGame();
@@ -187,7 +187,7 @@ public class DialogueManager : MonoBehaviour
         {
 
             popUp.SetActive(false);
-            videoText.text = "Displayed on the lower left of you screen is your hotbar";
+            videoText.text = "Displayed on the lower left of the screen is your hotbar";
             ChangeImage("02_Hotbar");
             videoPopup.SetActive(true);
             PauseGame();
@@ -200,7 +200,7 @@ public class DialogueManager : MonoBehaviour
         {
 
             popUp.SetActive(false);
-            videoText.text = "Found inside are your equipment and items";
+            videoText.text = "Found inside are your equipments and items";
             ChangeImage("03_Equipments");
             videoPopup.SetActive(true);
             PauseGame();
@@ -213,7 +213,7 @@ public class DialogueManager : MonoBehaviour
         {
  
            // video: show hwo to access the hotbar
-           videoText.text = "You can also access the inventory by pressid TAB or simply clicking the bag button found beside the hotbar. You may also drag and drop items from you inventory to you hotbar";
+           videoText.text = "You can also access the inventory by pressing TAB or simply clicking the bag button found beside the hotbar. You may also drag and drop items from you inventory to you hotbar";
             ChangeImage("04_Inventory");
             videoPopup.SetActive(true);
             PauseGame();
@@ -226,7 +226,7 @@ public class DialogueManager : MonoBehaviour
         {
 
             // change video
-            videoText.text = "You can equip item by using num keys and scroll wheel.";
+            videoText.text = "You can equip item by using num keys and the scroll wheel.";
             ChangeImage("05_Equiping item");
             PauseGame();
             DisableButton(2);
@@ -239,7 +239,7 @@ public class DialogueManager : MonoBehaviour
 
 
             // change video
-            videoText.text = "Press the left mouse button to use the currently equiped item. ";
+            videoText.text = "Press the left mouse button to use the currently equipped item. ";
             //videoPopup.SetActive(true);
             PauseGame();
             DisableButton(2);
@@ -267,7 +267,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 14)
         {
 
-            dialogueText.text = "Now why don't you try equipping a hoe and start tilling some soil";
+            dialogueText.text = "Now why don't you try equipping the hoe tool and start tilling some soil";
           
             PauseGame();
             DisableButton(1);
@@ -305,7 +305,7 @@ public class DialogueManager : MonoBehaviour
             panel.SetActive(true);
             PauseGame();
             DisableButton(1);
-            dialogueText.text = "Now that you've tilled the soil, you can now plant your seed";
+            dialogueText.text = "Now that you've tilled the soil, you can now plant the seed";
 
             startDelay = true;
             maxTicks = 3;
@@ -333,7 +333,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (nTutorialIndex == 19)
         {
-            videoText.text = "After doing so, move close to the tilled soil and plant it by pressing the left mouse button. ";
+            videoText.text = "After doing so, plant the seed in the tilled soil by pressing the left mouse button. ";
             ChangeImage("07_Plant seed");
 
             DisableButton(2);
@@ -346,7 +346,7 @@ public class DialogueManager : MonoBehaviour
             videoPopup.SetActive(false);
             popUp.SetActive(true);
 
-            dialogueText.text = "Now, go ahead and try planting one. ";
+            dialogueText.text = "Now, go ahead and try it. ";
 
             DisableButton(1);
 
@@ -377,7 +377,7 @@ public class DialogueManager : MonoBehaviour
         else if (nTutorialIndex == 23)
         {
             DisableButton(1);
-            dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from your inventory and start watering the plant.";
+            dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from your inventory and start watering planted seed.";
 
             startDelay = true;
             maxTicks = 0;
