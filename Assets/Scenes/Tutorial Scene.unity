@@ -583,6 +583,7 @@ MonoBehaviour:
   nightTimeShift: {fileID: 8300000, guid: cbec32ddb6f27b342a4e3b390a211d67, type: 3}
   daytimeShift: {fileID: 8300000, guid: c36f169763d07b944b19a385842c99ac, type: 3}
   manager: {fileID: 2131196317}
+  changer: {fileID: 674577217}
 --- !u!114 &27880571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,6 +2006,7 @@ Transform:
   - {fileID: 2131196315}
   - {fileID: 1183734763}
   - {fileID: 1425698158}
+  - {fileID: 674577216}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6943,7 +6945,6 @@ GameObject:
   m_Component:
   - component: {fileID: 633700475}
   - component: {fileID: 633700474}
-  - component: {fileID: 633700473}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6951,24 +6952,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &633700473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633700472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69311152ddbeaf1489c7428412218449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayAssets: []
-  nightAssets: []
-  nightMaterial: {fileID: 2100000, guid: 1b0e138904184774a804256cd4af3d90, type: 2}
-  dayMaterial: {fileID: 2100000, guid: 5403b1c0c1bbfb64c958212eb4dfdd6e, type: 2}
-  floor: {fileID: 137177160}
-  playerLight: {fileID: 207862739}
 --- !u!114 &633700474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7316,6 +7299,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+--- !u!1 &674577215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674577216}
+  - component: {fileID: 674577217}
+  m_Layer: 0
+  m_Name: Asset Changer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &674577216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674577215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 128034992}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674577217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674577215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69311152ddbeaf1489c7428412218449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightMaterial: {fileID: 2100000, guid: 1b0e138904184774a804256cd4af3d90, type: 2}
+  dayMaterial: {fileID: 2100000, guid: 5403b1c0c1bbfb64c958212eb4dfdd6e, type: 2}
+  floor: {fileID: 137177160}
+  playerLight: {fileID: 207862739}
 --- !u!4 &678869167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2940540319566454720, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}

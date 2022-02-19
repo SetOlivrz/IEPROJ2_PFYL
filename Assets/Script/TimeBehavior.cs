@@ -51,6 +51,7 @@ public class TimeBehavior : MonoBehaviour
 
     // variables for the tutorial
     [SerializeField] TutorialActionManager manager;
+    [SerializeField] AssetChanger changer;
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +62,8 @@ public class TimeBehavior : MonoBehaviour
         }
         Debug.Log("START");
         AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-        AssetChanger.instance.ChangeAssets(true);
-
+        //AssetChanger.instance.ChangeAssets(true);
+        changer.ChangeAssets(true);
     }
 
     void BeginPlay()
@@ -111,7 +112,8 @@ public class TimeBehavior : MonoBehaviour
             EnemySpawning.totalEnemyInLevel = 0;
             EnemySpawning.totalEnemyKilledInLevel = 0;
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-            AssetChanger.instance.ChangeAssets(true);
+            //AssetChanger.instance.ChangeAssets(true);
+            changer.ChangeAssets(true);
             hour = 0;
             Debug.Log("day: " + day);
             stageClear = false;
@@ -126,12 +128,14 @@ public class TimeBehavior : MonoBehaviour
             Vector3 nightLightRotation = new Vector3(-10, -30, 0);
             sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
-            AssetChanger.instance.ChangeAssets(false);
+            changer.ChangeAssets(false);
+            //AssetChanger.instance.ChangeAssets(false);
         }
 
         if (hour == 0 && !isDaytime) // if hours = 0  and its do set night time to day time
         {
-            AssetChanger.instance.ChangeAssets(true);
+            changer.ChangeAssets(true);
+            //AssetChanger.instance.ChangeAssets(true);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
             Debug.Log("Good Morning");
             Vector3 nightLightRotation = new Vector3(50, -30, 0);

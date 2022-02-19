@@ -32247,14 +32247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69311152ddbeaf1489c7428412218449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayAssets:
-  - {fileID: 1241001415}
-  - {fileID: 611165029}
-  - {fileID: 1963059840}
-  nightAssets:
-  - {fileID: 1373793262}
-  - {fileID: 1768857623}
-  - {fileID: 154617957}
   nightMaterial: {fileID: 2100000, guid: 1b0e138904184774a804256cd4af3d90, type: 2}
   dayMaterial: {fileID: 2100000, guid: 5403b1c0c1bbfb64c958212eb4dfdd6e, type: 2}
   floor: {fileID: 137177160}
@@ -37635,6 +37627,10 @@ PrefabInstance:
       propertyPath: clock
       value: 
       objectReference: {fileID: 1362612099}
+    - target: {fileID: 5582039781294458236, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: changer
+      value: 
+      objectReference: {fileID: 1847856778}
     - target: {fileID: 5582039781294458236, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: dayLabel
       value: 
