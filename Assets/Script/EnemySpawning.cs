@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawning : MonoBehaviour
 {
@@ -221,9 +222,18 @@ public class EnemySpawning : MonoBehaviour
         //Wave
         total = 0;
         currentWave = 0;
-        waveMaxCount = 5;
-        waveMinEnemies = 5;//5
-        waveMaxEnemies = 10;//10
+        if (SceneManager.GetActiveScene().name == "Tutorial Scene") // minimum enemy count for tutorial stage
+        {
+            waveMaxCount = 2;
+            waveMinEnemies = 1;//5
+            waveMaxEnemies = 2;//10
+        }
+        else
+        {
+            waveMaxCount = 5;
+            waveMinEnemies = 5;//5
+            waveMaxEnemies = 10;//10
+        }
         releaseWave = false;
         isCleared = true;
         totalEnemyInLevel = 0;
@@ -245,14 +255,15 @@ public class EnemySpawning : MonoBehaviour
 
     public void RandomizeTotalEnemiesPerWave()
     {
+        Debug.Log("CURRENT ACTIVE SCENE: " + SceneManager.GetActiveScene().name);
+
         for (int i = 0; i < waveMaxCount; i++)
         {
             nMaxEnemyPerWave[i] = Random.Range(waveMinEnemies, waveMaxEnemies + (i + 1));
-             totalEnemyInLevel += nMaxEnemyPerWave[i];
+            totalEnemyInLevel += nMaxEnemyPerWave[i];
             Debug.Log("Num: " + nMaxEnemyPerWave[i]);
         }
-         Debug.Log("total number of enemies: " + totalEnemyInLevel);
-
+        Debug.Log("total number of enemies: " + totalEnemyInLevel);
     }
 }
 

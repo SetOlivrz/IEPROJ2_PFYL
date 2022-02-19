@@ -83,7 +83,7 @@ public class TimeBehavior : MonoBehaviour
         {
             if (manager != null)
             {
-                if (manager.currentStep >= 30)
+                if (manager.currentStep >= 29)
                 {
                     UpdateTicks();
                     //transition for audio
@@ -211,7 +211,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-            //Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
+            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         
@@ -223,7 +223,7 @@ public class TimeBehavior : MonoBehaviour
             Quaternion target = Quaternion.Euler(0, 0, angle);
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime);
 
-             Debug.Log("night: killed " + EnemySpawning.totalEnemyKilledInLevel + "/: " + EnemySpawning.totalEnemyInLevel);
+             //Debug.Log("night: killed " + EnemySpawning.totalEnemyKilledInLevel + "/: " + EnemySpawning.totalEnemyInLevel);
 
         }
 

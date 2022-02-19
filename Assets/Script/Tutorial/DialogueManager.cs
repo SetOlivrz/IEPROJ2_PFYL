@@ -329,7 +329,7 @@ public class DialogueManager : MonoBehaviour
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 19)
         {
@@ -339,7 +339,7 @@ public class DialogueManager : MonoBehaviour
             DisableButton(2);
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 20)
         {
@@ -351,7 +351,7 @@ public class DialogueManager : MonoBehaviour
             DisableButton(1);
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 21)
         {
@@ -372,7 +372,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Easy right?";
 
             startDelay = true;
-            maxTicks = 3;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 23)
         {
@@ -380,7 +380,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Now, what we need to do is water the plant. Equip the watering can from your inventory and start watering the plant.";
 
             startDelay = true;
-            maxTicks = 3;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 24)
         {
@@ -400,7 +400,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "It will take time for the plant to fully grow. ";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 26)
         {
@@ -408,7 +408,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Premature plants will display a timer that indicates its growth time. Meanwhile, plants that are ready for harvest has visible pollen particles floating around them  ";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 27)
         {
@@ -428,7 +428,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Your crop has fully grown! Harvest them by pressing the left mouse button while standing close to them.";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 29)
         {
@@ -437,7 +437,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Stock up your weapons and resources before night time begins so don't forget to pick up the drops as well";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 30)
         {
@@ -457,7 +457,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Oh no! The monsters are coming!. ";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 32)
         {
@@ -470,7 +470,7 @@ public class DialogueManager : MonoBehaviour
             videoText.text = "During night time, monsters will come to your farm and attack you (insert night image).";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 33)
         {
@@ -478,7 +478,7 @@ public class DialogueManager : MonoBehaviour
             ChangeImage("11_Enemy");
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 34)
         {
@@ -486,7 +486,7 @@ public class DialogueManager : MonoBehaviour
             videoText.text = "You can kill monsters using a gun and a knife";
             ChangeImage("12_Weapons");
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex ==35)
         {
@@ -495,7 +495,7 @@ public class DialogueManager : MonoBehaviour
             ChangeImage("13_Shoot");
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 36)
         {
@@ -504,7 +504,7 @@ public class DialogueManager : MonoBehaviour
             ChangeImage("14_Slash");
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 37)
         {
@@ -512,7 +512,7 @@ public class DialogueManager : MonoBehaviour
             videoText.text = " both equipments are used upon pressing the left mouse button";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 38)
         {
@@ -522,7 +522,7 @@ public class DialogueManager : MonoBehaviour
 
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 39)
         {
@@ -532,7 +532,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = "Now, go equip yourself with weapons and get those monsters before they get you.";
 
             startDelay = true;
-            maxTicks = 1;
+            maxTicks = 0;
         }
         else if (nTutorialIndex == 40)
         {
