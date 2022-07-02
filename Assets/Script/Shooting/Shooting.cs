@@ -54,11 +54,22 @@ public class Shooting : MonoBehaviour
         
         if (player.isShooting)
         {
+            // Mouse
             if (Input.GetMouseButtonDown(0))
             {
                 //ChangeEquippedSprite();
                 ChangeSlot();
                 if (bulletCount > 0)
+                {   
+                    Shoot();
+                }
+            }
+            // Android Touch
+            else
+            {
+                if (Input.touchCount == 0) return;
+
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     Shoot();
                 }
@@ -82,19 +93,17 @@ public class Shooting : MonoBehaviour
     }
     void Shoot()
     {
-        bulletCount -= 1;
-
-        GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
+            GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Bullet bullet = bulletSphere.GetComponent<Bullet>();
             Vector3 playerPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
             bulletSphere.transform.LookAt(playerPos);
+            bulletCount -= 1;
         }
-
     }
 
     //void ChangeEquippedSprite()
