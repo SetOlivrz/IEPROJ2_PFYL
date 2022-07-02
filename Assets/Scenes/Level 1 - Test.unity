@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.66180134, g: 0.7033675, b: 0.8301887, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.05
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.34671292, g: 0.34189212, b: 0.3679245, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2232,6 +2232,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (44)
@@ -4239,6 +4243,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (26)
@@ -5655,6 +5663,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (45)
@@ -6227,6 +6239,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54eb0a120887874597ce77bd0674e96, type: 3}
+--- !u!1 &358967032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358967034}
+  - component: {fileID: 358967033}
+  m_Layer: 1
+  m_Name: Post-process
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &358967033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358967032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 82a368eec83711c40a587a76eeb8f882, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &358967034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358967032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &359119104
 GameObject:
   m_ObjectHideFlags: 0
@@ -7533,6 +7593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (32)
@@ -9161,6 +9225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (72)
@@ -10523,6 +10591,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (34)
@@ -13661,6 +13733,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (48)
@@ -14145,6 +14221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (49)
@@ -14582,7 +14662,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14820,6 +14900,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (25)
@@ -15336,6 +15420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (33)
@@ -18087,6 +18175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (55)
@@ -20666,6 +20758,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (50)
@@ -22090,6 +22186,7 @@ MonoBehaviour:
   progress_bar: {fileID: 2118520345}
   count: 0
   playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
+  deathVFX: {fileID: 0}
 --- !u!212 &1306289812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23108,6 +23205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 1343912674404909806, guid: d54eb0a120887874597ce77bd0674e96, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5687742085784215120, guid: d54eb0a120887874597ce77bd0674e96, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 3 (3)
@@ -27992,6 +28093,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (10)
@@ -29264,6 +29369,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (54)
@@ -29320,6 +29429,10 @@ PrefabInstance:
     - target: {fileID: 2940540319566454720, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
@@ -32560,6 +32673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (43)
@@ -33573,6 +33690,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583152642684797527, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7983076727117903227, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 1 (53)
@@ -33895,6 +34016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 153583685404979068, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7249798883806900163, guid: 2ce5e540f315c444d9c6f70885bf7812, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 2 (30)
@@ -34000,6 +34125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515799451}
     m_Modifications:
+    - target: {fileID: 1343912674404909806, guid: d54eb0a120887874597ce77bd0674e96, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5687742085784215120, guid: d54eb0a120887874597ce77bd0674e96, type: 3}
       propertyPath: m_Name
       value: ENVIRONMENT_Tree_Var 3 (2)
