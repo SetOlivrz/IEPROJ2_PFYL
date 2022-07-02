@@ -16,17 +16,13 @@ public class Container
         OpenContainer();
     }
 
-    public void AddSlotToContainer(Inventory inventory, int slotID, float x, float y, int slotSize)
+    public void AddSlotToContainer(Inventory inventory, int slotID, int containerIndex)
     {
         GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab);
         Slot slot = spawnedSlot.GetComponent<Slot>();
-        RectTransform slotRT = slot.GetComponent<RectTransform>();
         slot.SetSlot(inventory, slotID, this);
-        spawnedSlot.transform.SetParent(spawnedContainerPrefab.transform);
+        spawnedSlot.transform.SetParent(spawnedContainerPrefab.transform.GetChild(containerIndex));
         spawnedSlot.transform.SetAsFirstSibling();
-        slotRT.anchoredPosition = new Vector2(x, y);
-        slotRT.sizeDelta = Vector2.one * slotSize;
-        slotRT.localScale = Vector3.one;
         slots.Add(slot);
     }
 

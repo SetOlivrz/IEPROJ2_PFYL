@@ -8,7 +8,7 @@ public class ContainerPlayerHotbar : Container
     {
         for(int i = 0; i < 6; i++)
         {
-            AddSlotToContainer(playerInventory, i, -137 + (55 * i), 0, 50);
+            AddSlotToContainer(playerInventory, i, 0);
         }
     }
 
