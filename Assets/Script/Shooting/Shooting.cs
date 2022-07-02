@@ -28,9 +28,9 @@ public class Shooting : MonoBehaviour
     {
         reloadImage.fillAmount = 0;
         playerClass = gameObject.GetComponent<Player>();
-        defaultHand = player.transform.GetChild(6).gameObject;
+/*        defaultHand = player.transform.GetChild(6).gameObject;
         rightHand = player.transform.GetChild(7).gameObject;
-        leftHand = player.transform.GetChild(8).gameObject;
+        leftHand = player.transform.GetChild(8).gameObject;*/
     }
 
     // Update is called once per frame
@@ -85,11 +85,9 @@ public class Shooting : MonoBehaviour
         {
             ticks += Time.deltaTime;
             //reloading ui
-            Debug.Log($"Reloading: {ticks}");
             reloadImage.fillAmount = ticks / 5.0f;
             if (ticks > INTERVAL)
             {
-                Debug.Log("Bullet Reloaded");
                 bulletCount++;
                 ticks = 0.0f;
                 reloadImage.fillAmount = 0;
@@ -110,7 +108,8 @@ public class Shooting : MonoBehaviour
             bulletCount -= 1;
             
             Animator animator = this.GetComponent<Animator>();
-            
+            Debug.Log($"Hit Point: {hit.point} & Transform: {transform.position}");
+
             if (hit.point.z > transform.position.z)
             {
                 animator.SetBool("back", true);
@@ -132,7 +131,7 @@ public class Shooting : MonoBehaviour
 
     void ChangeSlot()
     {
-        if (player.isRight)
+        /*if (player.isRight)
         {
             defaultHand.SetActive(false);
             rightHand.SetActive(true);
@@ -151,7 +150,7 @@ public class Shooting : MonoBehaviour
             defaultHand.SetActive(true);
             rightHand.SetActive(false);
             leftHand.SetActive(false);
-        }
+        }*/
 
         StartCoroutine("DisableItem");
     }
@@ -165,8 +164,8 @@ public class Shooting : MonoBehaviour
     void EmptyHand()
     {
         ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
-        defaultHand.SetActive(false);
+        /*defaultHand.SetActive(false);
         rightHand.SetActive(false);
-        leftHand.SetActive(false);
+        leftHand.SetActive(false);*/
     }
 }
