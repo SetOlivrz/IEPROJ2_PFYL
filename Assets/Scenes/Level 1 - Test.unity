@@ -40086,6 +40086,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 697431880}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1203873997}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AccessInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SFXManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753472456837001334, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3160279696563994187, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
