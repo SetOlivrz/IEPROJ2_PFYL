@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8430738454822995408}
   - component: {fileID: 8430738454822995415}
   - component: {fileID: 8430738454822995414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'BossSlimeCopy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}

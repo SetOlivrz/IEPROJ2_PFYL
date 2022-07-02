@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6691196455725435963}
   - component: {fileID: 8050478403236708519}
   - component: {fileID: 2948237841518129434}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeakerGolem
   m_TagString: Enemy
   m_Icon: {fileID: 0}

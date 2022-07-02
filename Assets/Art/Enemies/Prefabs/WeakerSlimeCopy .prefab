@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6465022281814330683}
   - component: {fileID: 6465022281814330676}
   - component: {fileID: 6465022281814330677}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'WeakerSlimeCopy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}

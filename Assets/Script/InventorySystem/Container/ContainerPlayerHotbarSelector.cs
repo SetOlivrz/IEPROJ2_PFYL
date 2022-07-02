@@ -25,12 +25,15 @@ public class ContainerPlayerHotbarSelector : MonoBehaviour
     {
         if(player != null && container != null)
         {
-            for(int i = 0; i < 6; i++)
+            int selectedIndex = player.GetSelectedHotbarIndex();
+            if (items.Count == 0) return;
+
+            for(int i = 0; i < items.Count; i++)
             {
                 items[i].ToggleSelector(false);
             }
 
-            items[player.GetSelectedHotbarIndex()].ToggleSelector(true);
+            items[selectedIndex].ToggleSelector(true);
         }
     }
 }

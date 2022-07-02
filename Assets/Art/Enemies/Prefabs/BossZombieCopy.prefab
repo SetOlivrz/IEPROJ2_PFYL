@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1984063499056719593}
   - component: {fileID: 1984063499056719598}
   - component: {fileID: 1984063499056719599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossZombieCopy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

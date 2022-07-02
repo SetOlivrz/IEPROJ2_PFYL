@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2498740195885104668}
   - component: {fileID: 897923166045893885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8363945654205104523}
   - component: {fileID: 8363945654205104522}
   - component: {fileID: 8363945654205104521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ZombieCopy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
