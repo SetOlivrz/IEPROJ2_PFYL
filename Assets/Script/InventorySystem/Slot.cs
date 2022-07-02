@@ -12,6 +12,12 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     private ItemStack myStack;
     private Container attachedContainer;
     private InventoryManager inventoryManager;
+    private GameObject selector;
+
+    public void Start()
+    {
+        selector = gameObject.transform.GetChild(2).gameObject;
+    }
 
     public void SetSlot(Inventory attachedInventory, int slotID, Container attachedContainer)
     {
@@ -170,5 +176,10 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void OnPointerExit(PointerEventData eventData)
     {
         SetToolTip(string.Empty);
+    }
+
+    public void ToggleSelector(bool active)
+    {
+        selector.SetActive(active);
     }
 }
