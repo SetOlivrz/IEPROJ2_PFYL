@@ -49,9 +49,6 @@ public class EnemyBehavior : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioClip playerHit;
 
-    [Header("VFX")]
-    [SerializeField] GameObject deathVFX;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -196,13 +193,6 @@ public class EnemyBehavior : MonoBehaviour
 
     public void OnKill()
     {
-        // Create and destroy particles
-        if (deathVFX)
-        {
-            Destroy(Instantiate(deathVFX, transform.position, transform.rotation), 1.0f);
-            Debug.Log("VFX");
-        }
-
         //dropItem = true;
         playerData.addGold(10);
         EnemySpawning.totalEnemyKilledInLevel++;
@@ -216,6 +206,5 @@ public class EnemyBehavior : MonoBehaviour
         enemyLocation.y = -20;
         this.transform.position = enemyLocation;
         Destroy(this.gameObject);
-        
     }
 }

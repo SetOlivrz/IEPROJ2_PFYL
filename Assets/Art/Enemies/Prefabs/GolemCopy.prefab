@@ -106,10 +106,7 @@ MonoBehaviour:
   Up: {fileID: 21300000, guid: ee2028cfdd30dc849a39765852b945d5, type: 3}
   Down: {fileID: 21300000, guid: fd31988279c1460499175faaca384256, type: 3}
   drop: {fileID: 3999984484442014506, guid: 1f19eceb6bdba6244b992dc8446ba784, type: 3}
-  progress_bar: {fileID: 0}
   count: 0
-  playerHit: {fileID: 0}
-  deathVFX: {fileID: 7936732115390944027, guid: 5ba2eb8b92c785d4695e10b8e1b2a042, type: 3}
 --- !u!65 &5644725950407690740
 BoxCollider:
   m_ObjectHideFlags: 0
