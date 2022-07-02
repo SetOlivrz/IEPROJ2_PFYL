@@ -6963,7 +6963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &399796894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8561,7 +8561,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37876,11 +37876,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4220630364995386504, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220630364995386504, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220630365179527022, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -38053,6 +38053,10 @@ PrefabInstance:
     - target: {fileID: 4220630366281181314, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220630366281181314, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4220630366281181325, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_Camera

@@ -106,10 +106,27 @@ public class Shooting : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Bullet bullet = bulletSphere.GetComponent<Bullet>();
-            Vector3 playerPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
-            bulletSphere.transform.LookAt(playerPos);
+            bulletSphere.transform.LookAt(new Vector3(hit.point.x, 0.5f, hit.point.z));
             bulletCount -= 1;
+            
+            Animator animator = this.GetComponent<Animator>();
+            
+            if (hit.point.z > transform.position.z)
+            {
+                animator.SetBool("back", true);
+            }
+            if (hit.point.z < transform.position.z)
+            {
+                animator.SetBool("front", true);
+            }
+            if (hit.point.x > transform.position.x)
+            {
+                animator.SetBool("right", true);
+            }
+            else if (hit.point.x < transform.position.x)
+            {
+                animator.SetBool("left", true);
+            }
         }
     }
 
