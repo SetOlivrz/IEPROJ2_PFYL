@@ -442,6 +442,18 @@ public class ButtonManager : MonoBehaviour
         mute.gameObject.GetComponent<Button>().interactable = true;
         unmute.gameObject.GetComponent<Button>().interactable = false;
     }
+
+    public void MuteButton()
+    {
+        if (AudioManager.instance.isMuted)
+        {
+            AudioManager.instance.OnMute(false);
+        }
+        else
+        {
+            AudioManager.instance.OnMute(true);
+        }
+    }
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
