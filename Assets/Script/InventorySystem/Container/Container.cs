@@ -21,7 +21,7 @@ public class Container
         GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab, spawnedContainerPrefab.transform.GetChild(containerIndex));
         Slot slot = spawnedSlot.GetComponent<Slot>();
         slot.SetSlot(inventory, slotID, this);
-        spawnedSlot.transform.SetAsFirstSibling();
+        //spawnedSlot.transform.SetAsFirstSibling();
         slots.Add(slot);
     }
 
