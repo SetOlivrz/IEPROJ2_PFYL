@@ -9,20 +9,12 @@ public class ContainerPlayerInventory : Container
         
         for(int i = 0; i < 6; i++)
         {
-            AddSlotToContainer(playerInventory, i, -137 + (55 * i), -90, 50); // hotbarslots inside the player inventory // default offset = -125
+            AddSlotToContainer(playerInventory, i, 1); // hotbarslots inside the player inventory // default offset = -125
         }
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 6; i < 24; i++)
         {
-            AddSlotToContainer(playerInventory, 6 + i, -137 + (55 * i), 95, 50);// adjustment : 90 ->-95
-        }
-        for (int i = 0; i < 6; i++)
-        {
-            AddSlotToContainer(playerInventory, 12 + i, -137 + (55 * i), 40, 50);
-        }
-        for (int i = 0; i < 6; i++)
-        {
-            AddSlotToContainer(playerInventory, 18 + i, -137 + (55 * i), -15, 50); // adjustment : -10 ->-15
+            AddSlotToContainer(playerInventory, i, 0);// for container
         }
     }
 

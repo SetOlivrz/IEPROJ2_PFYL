@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 9093451203173387937}
   - component: {fileID: 9093451203173387942}
   - component: {fileID: 9093451203173387943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'WeakerZombieCopy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9093451203173387940
 Transform:
   m_ObjectHideFlags: 0

@@ -569,6 +569,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   goldLabel: {fileID: 0}
   animator: {fileID: 5582039781294458232}
+  playerHit: {fileID: 8300000, guid: e88f8d23a4826974097c13366b327b97, type: 3}
   uiManager: {fileID: 0}
 --- !u!114 &5582039781294458239
 MonoBehaviour:

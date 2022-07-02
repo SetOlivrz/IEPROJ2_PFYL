@@ -133,10 +133,6 @@ public class PlayerController : MonoBehaviour
         {
             isShooting = true;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            ShootHandler();
-        }
 
         if (isShooting && !(player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool notGun && notGun.GetToolType() == Tool.ToolTypes.Gun))
         {
@@ -169,40 +165,6 @@ public class PlayerController : MonoBehaviour
         {
             isUpwards = false;
             isRight = true;
-        }
-    }
-
-    //Handles the shooting for the player
-    void ShootHandler()
-    {
-        if (isShooting)
-        {
-            //animator.SetTrigger("Shoot");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                if (hit.point.z > transform.position.z)
-                {
-                    ResetBool();
-                    animator.SetBool("back", true);
-                }
-                if (hit.point.z < transform.position.z)
-                {
-                    ResetBool();
-                    animator.SetBool("front", true);
-                }
-                if (hit.point.x > transform.position.x)
-                {
-                    ResetBool();
-                    animator.SetBool("right", true);
-                }
-                else if (hit.point.x < transform.position.x)
-                {
-                    ResetBool();
-                    animator.SetBool("left", true);
-                }
-            }
         }
     }
 

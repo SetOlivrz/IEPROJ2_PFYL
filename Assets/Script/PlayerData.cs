@@ -15,6 +15,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Text goldLabel;
     [SerializeField] Animator animator;
+    [SerializeField] AudioClip playerHit;
 
     [SerializeField] ButtonManager uiManager;
     //Damage Animation
@@ -58,7 +59,7 @@ public class PlayerData : MonoBehaviour
         hpBar.value = currHP;
         if(currHP <= 10)
         {
-            animator.SetBool("hurt", true);
+            //animator.SetBool("hurt", true);
             if (currHP <= 0)
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial Scene")
@@ -93,8 +94,22 @@ public class PlayerData : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currHP -= damage;
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        //this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         isDamaged = true;
+        StartCoroutine("PlayHurtAnimation");
+    }
+
+    IEnumerator PlayHurtAnimation()
+    {
+        if (playerHit != null)
+            AudioManager.instance.PlaySound(playerHit);
+        animator.SetBool("left", false);
+        animator.SetBool("right", false);
+        animator.SetBool("front", false);
+        animator.SetBool("back", false);
+        animator.SetBool("hurt", true);
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("hurt", false);
     }
 
     public void addGold(int amnt)
