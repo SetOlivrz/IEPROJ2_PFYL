@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1984063499056719593}
   - component: {fileID: 1984063499056719598}
   - component: {fileID: 1984063499056719599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossZombieCopy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   progress_bar: {fileID: 0}
   count: 0
   playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
+  deathVFX: {fileID: 7936732115390944027, guid: 5ba2eb8b92c785d4695e10b8e1b2a042, type: 3}
 --- !u!65 &1984063499056719598
 BoxCollider:
   m_ObjectHideFlags: 0

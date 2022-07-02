@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7688224686546523714}
   - component: {fileID: 7594922403293206280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4354928273000097502}
   - component: {fileID: 4354928273000097501}
   - component: {fileID: 4354928273000097500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SlimeCopy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   progress_bar: {fileID: 321983839080006209}
   count: 0
   playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
+  deathVFX: {fileID: 7936732115390944027, guid: 5ba2eb8b92c785d4695e10b8e1b2a042, type: 3}
 --- !u!65 &4354928273000097501
 BoxCollider:
   m_ObjectHideFlags: 0

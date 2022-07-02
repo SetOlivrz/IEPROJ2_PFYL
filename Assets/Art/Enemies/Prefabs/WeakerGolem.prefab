@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6691196455725435963}
   - component: {fileID: 8050478403236708519}
   - component: {fileID: 2948237841518129434}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeakerGolem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   progress_bar: {fileID: 0}
   count: 0
   playerHit: {fileID: 8300000, guid: 5f38b8cdceba4f54ca0a4b7f5658df06, type: 3}
+  deathVFX: {fileID: 7936732115390944027, guid: 5ba2eb8b92c785d4695e10b8e1b2a042, type: 3}
 --- !u!136 &2948237841518129434
 CapsuleCollider:
   m_ObjectHideFlags: 0

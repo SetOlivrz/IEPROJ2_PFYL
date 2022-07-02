@@ -100,7 +100,7 @@ public class TimeBehavior : MonoBehaviour
             }
             else
             {
-                Debug.Log("just do normal update");
+                //Debug.Log("just do normal update");
                 UpdateTicks();
                 //transition for audio
                 AudioTransitionChecker();
