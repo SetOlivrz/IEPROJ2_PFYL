@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17922,6 +17922,26 @@ PrefabInstance:
       propertyPath: m_ScaleFactor
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: containers.Array.data[0].containerName
+      value: PlayerInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: containers.Array.data[1].containerName
+      value: PlayerHotbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: containers.Array.data[0].containerPrefab
+      value: 
+      objectReference: {fileID: 7387384152189818283, guid: 1ad90f3f02ca2dd4f9052df748d85f66, type: 3}
+    - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: containers.Array.data[1].containerPrefab
+      value: 
+      objectReference: {fileID: 425698032277400108, guid: 22bf7acd235615648be6c39593b76b1a, type: 3}
+    - target: {fileID: 6629390201071090991, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6629390201071090994, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -31974,6 +31994,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2940540319566454720, guid: 010e2deba57d9ff4a9d178e92fc1d6b8, type: 3}
   m_PrefabInstance: {fileID: 1313921689}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1604238307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6629390202944460774, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
+  m_PrefabInstance: {fileID: 882778795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1604834853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3174570418187072459, guid: b44377a0869c06648a82012277dc7115, type: 3}
@@ -42684,6 +42709,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1669641882}
+    - target: {fileID: 4220630366281181327, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4220630366617015410, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -43300,8 +43329,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1785041937}
     - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: toolTip
+      value: 
+      objectReference: {fileID: 1604238307}
+    - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: itemsToAdd.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: itemsToAdd.Array.data[3]
@@ -43311,6 +43344,10 @@ PrefabInstance:
       propertyPath: itemsToAdd.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: a5158ef47e2488d4fbd81efce565190e, type: 2}
+    - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: itemsToAdd.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ccedeb09e028d704e8ffc8710fc55743, type: 2}
     - target: {fileID: 5582039781409909786, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

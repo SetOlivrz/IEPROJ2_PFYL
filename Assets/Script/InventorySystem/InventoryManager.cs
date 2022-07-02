@@ -34,7 +34,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(container.containerName == name)
             {
-                return container.containerpPrefab;
+                return container.containerPrefab;
             }
         }
         return null;
@@ -78,5 +78,5 @@ public class InventoryManager : MonoBehaviour
 public class ContainerGetter
 {
     public string containerName;
-    public GameObject containerpPrefab;
+    public GameObject containerPrefab;
 }
