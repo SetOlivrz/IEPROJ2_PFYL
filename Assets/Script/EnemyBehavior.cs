@@ -50,6 +50,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] AudioClip playerHit;
 
     [Header("VFX")]
+    [SerializeField] GameObject spawnVFX;
     [SerializeField] GameObject deathVFX;
 
     // Start is called before the first frame update
@@ -83,6 +84,12 @@ public class EnemyBehavior : MonoBehaviour
             this.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
 
+        // Create and destroy particles
+        if (spawnVFX)
+        {
+            Destroy(Instantiate(spawnVFX, transform.position, transform.rotation), 3.0f);
+            Debug.Log("VFX");
+        }
     }
 
     // Update is called once per frame
