@@ -548,6 +548,7 @@ MonoBehaviour:
   nightTimeShift: {fileID: 8300000, guid: cbec32ddb6f27b342a4e3b390a211d67, type: 3}
   daytimeShift: {fileID: 8300000, guid: c36f169763d07b944b19a385842c99ac, type: 3}
   manager: {fileID: 0}
+  changer: {fileID: 0}
 --- !u!114 &5582039781294458238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +567,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   goldLabel: {fileID: 0}
   animator: {fileID: 5582039781294458232}
+  playerHit: {fileID: 8300000, guid: e88f8d23a4826974097c13366b327b97, type: 3}
   uiManager: {fileID: 0}
 --- !u!114 &5582039781294458239
 MonoBehaviour:
