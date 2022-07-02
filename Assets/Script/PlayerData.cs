@@ -16,6 +16,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] Text goldLabel;
     [SerializeField] Animator animator;
     [SerializeField] AudioClip playerHit;
+    [SerializeField] ParticleSystem hurtParticle;
 
     [SerializeField] ButtonManager uiManager;
     //Damage Animation
@@ -101,6 +102,7 @@ public class PlayerData : MonoBehaviour
 
     IEnumerator PlayHurtAnimation()
     {
+        hurtParticle.Play();
         if (playerHit != null)
             AudioManager.instance.PlaySound(playerHit);
         animator.SetBool("left", false);
