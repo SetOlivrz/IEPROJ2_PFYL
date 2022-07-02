@@ -25,6 +25,16 @@ public class Container
         slots.Add(slot);
     }
 
+    public void AddHotbarSlotToContainer(Inventory inventory, int slotID, int containerIndex)
+    {
+        GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab, spawnedContainerPrefab.transform.GetChild(containerIndex));
+        spawnedSlot.tag = "Hotbar";
+        Slot slot = spawnedSlot.GetComponent<Slot>();
+        slot.SetSlot(inventory, slotID, this);
+        //spawnedSlot.transform.SetAsFirstSibling();
+        slots.Add(slot);
+    }
+
     public void UpdateSlots()
     {
         foreach(Slot slot in slots)

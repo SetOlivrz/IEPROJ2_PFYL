@@ -13,10 +13,30 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     private Container attachedContainer;
     private InventoryManager inventoryManager;
     private GameObject selector;
+    private GameObject[] hotbar;
 
     public void Start()
     {
         selector = gameObject.transform.GetChild(2).gameObject;
+        hotbar = GameObject.FindGameObjectsWithTag("Hotbar");
+    }
+
+    public void Update()
+    {
+        if(Input.touchCount == 1)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                foreach (GameObject hotbar in hotbar)
+                {
+                    hotbar.GetComponent<Slot>().ToggleSelector(false);
+                }
+
+                ToggleSelector(true);
+            }
+        }
     }
 
     public void SetSlot(Inventory attachedInventory, int slotID, Container attachedContainer)
