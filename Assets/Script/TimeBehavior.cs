@@ -24,10 +24,10 @@ public class TimeBehavior : MonoBehaviour
     private const int maxDay = 8; // one full week cycle
 
     // lights
-    private float lighTicks = 0.0f;
-    private float maxLightAngle = 30.0f;
+/*    private float lighTicks = 0.0f;
+    private float maxLightAngle = 30.0f;*/
 
-    private float TIME_MULTIPLIER = 2.0f; // 3f for debugging
+    private float TIME_MULTIPLIER = 2.0f; // 3f for debugging // 2.0f normal
 
     //Light
     [SerializeField] GameObject sun;
@@ -226,7 +226,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
+           // Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         

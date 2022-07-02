@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isShooting)
         {
-            animator.SetTrigger("Shoot");
+            //animator.SetTrigger("Shoot");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))

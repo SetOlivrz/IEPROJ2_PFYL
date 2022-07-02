@@ -76,13 +76,20 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        if(bulletCount < 10)
+
+    }
+    /*TEMP FIX RELOADING NOT WORKING IN UPDATE*/
+    private void FixedUpdate()
+    {
+        if (bulletCount < 10)
         {
             ticks += Time.deltaTime;
             //reloading ui
+            Debug.Log($"Reloading: {ticks}");
             reloadImage.fillAmount = ticks / 5.0f;
             if (ticks > INTERVAL)
             {
+                Debug.Log("Bullet Reloaded");
                 bulletCount++;
                 ticks = 0.0f;
                 reloadImage.fillAmount = 0;
@@ -105,18 +112,6 @@ public class Shooting : MonoBehaviour
             bulletCount -= 1;
         }
     }
-
-    //void ChangeEquippedSprite()
-    //{
-    //    ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
-
-    //    if (currentHeldItem.GetItem() != null)
-    //    {
-    //        defaultHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //        rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //        leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //    }
-    //}
 
     void ChangeSlot()
     {
