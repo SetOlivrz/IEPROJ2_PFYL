@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     private GameObject rightHand;
     private GameObject leftHand;
 
+    // Mobile controls
+    [SerializeField] private bool useMobileControls = false;
+    [SerializeField] private OnScreenJoystick joystick = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,11 @@ public class PlayerController : MonoBehaviour
         defaultHand = player.transform.GetChild(3).gameObject;
         rightHand = player.transform.GetChild(4).gameObject;
         leftHand = player.transform.GetChild(5).gameObject;
+
+        if (useMobileControls && !joystick)
+        {
+            joystick = FindObjectOfType<OnScreenJoystick>();
+        }
     }
 
     // Update is called once per frame
@@ -45,6 +54,31 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMoveAnimation()
     {
+        // Mobile only
+        if (useMobileControls && moveInput.sqrMagnitude > 0.0f)
+        {
+            ResetBool();
+
+            Vector2 normalInput = moveInput.normalized;
+            float horizontalDot = Vector2.Dot(normalInput, Vector2.right);
+            float verticalDot = Vector2.Dot(normalInput, Vector2.up);
+
+            if (Mathf.Abs(horizontalDot) > 0.866f)
+            {
+                bool facingRight = horizontalDot > 0.0f;
+                animator.SetBool("left", !facingRight);
+                animator.SetBool("right", facingRight);
+            }
+            else
+            {
+                bool facingFront = verticalDot < 0.0f;
+                animator.SetBool("front", facingFront);
+                animator.SetBool("back", !facingFront);
+            }
+
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             ResetBool();
@@ -69,9 +103,17 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize();
+        if (useMobileControls)
+        {
+            moveInput = joystick.axis;
+        }
+        else
+        {
+            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            //moveInput.x = Input.GetAxisRaw("Horizontal");
+            //moveInput.y = Input.GetAxisRaw("Vertical");
+            //moveInput.Normalize();
+        }
 
         RB.velocity = new Vector3(moveInput.x * moveSpeed, RB.velocity.y, moveInput.y * moveSpeed);
     }
