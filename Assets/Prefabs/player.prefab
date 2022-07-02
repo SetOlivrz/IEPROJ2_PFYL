@@ -527,6 +527,8 @@ MonoBehaviour:
   isUpwards: 0
   isRight: 0
   animator: {fileID: 5582039781294458232}
+  useMobileControls: 0
+  joystick: {fileID: 0}
 --- !u!114 &5582039781294458236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +550,7 @@ MonoBehaviour:
   nightTimeShift: {fileID: 8300000, guid: cbec32ddb6f27b342a4e3b390a211d67, type: 3}
   daytimeShift: {fileID: 8300000, guid: c36f169763d07b944b19a385842c99ac, type: 3}
   manager: {fileID: 0}
+  changer: {fileID: 0}
 --- !u!114 &5582039781294458238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +900,7 @@ GameObject:
   - component: {fileID: 5582039781795831708}
   - component: {fileID: 5582039781795831711}
   - component: {fileID: 5582039781795831710}
+  - component: {fileID: 227363866400118288}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1065,6 +1069,66 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &227363866400118288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582039781795831697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 5582039781795831709}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 2
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &5582039781805854389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,8 +1172,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9528302, g: 0.8940746, b: 0.38203096, a: 1}
-  m_Intensity: 10
-  m_Range: 1.9
+  m_Intensity: 5
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1150,7 +1214,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
