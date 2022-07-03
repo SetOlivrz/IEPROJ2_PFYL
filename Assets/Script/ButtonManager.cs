@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -385,14 +386,14 @@ public class ButtonManager : MonoBehaviour
             BPfadeOut(blackPanel);
         }
         // checker for if and when the options menu is accessed in actual game
-        if (AudioManager.instance.isMuted)
-        {
-            Mute();
-        }
-        else
-        {
-            Unmute();
-        }
+        //if (AudioManager.instance.isMuted)
+        //{
+        //    Mute();
+        //}
+        //else
+        //{
+        //    Unmute();
+        //}
     }
 
 
@@ -421,39 +422,41 @@ public class ButtonManager : MonoBehaviour
             blackPanel2.SetActive(false);
         }
         // checker for if and when the options menu is accessed in actual game
-        if (AudioManager.instance.isMuted)
-        {
-            Mute();
-        }
-        else
-        {
-            Unmute();
-        }
+        //if (AudioManager.instance.isMuted)
+        //{
+        //    Mute();
+        //}
+        //else
+        //{
+        //    Unmute();
+        //}
+
+        UpdateMuteToggleButton();
     }
 
-    public void Mute()
-    {
-        mute.gameObject.GetComponent<Button>().interactable = false;
-        unmute.gameObject.GetComponent<Button>().interactable = true;
-    }
+    //public void Mute()
+    //{
+    //    mute.gameObject.GetComponent<Button>().interactable = false;
+    //    unmute.gameObject.GetComponent<Button>().interactable = true;
+    //}
 
-    public void Unmute()
-    {
-        mute.gameObject.GetComponent<Button>().interactable = true;
-        unmute.gameObject.GetComponent<Button>().interactable = false;
-    }
+    //public void Unmute()
+    //{
+    //    mute.gameObject.GetComponent<Button>().interactable = true;
+    //    unmute.gameObject.GetComponent<Button>().interactable = false;
+    //}
 
-    public void MuteButton()
-    {
-        if (AudioManager.instance.isMuted)
-        {
-            AudioManager.instance.OnMute(false);
-        }
-        else
-        {
-            AudioManager.instance.OnMute(true);
-        }
-    }
+    //public void MuteButton()
+    //{
+    //    if (AudioManager.instance.isMuted)
+    //    {
+    //        AudioManager.instance.OnMute(false);
+    //    }
+    //    else
+    //    {
+    //        AudioManager.instance.OnMute(true);
+    //    }
+    //}
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
@@ -506,4 +509,18 @@ public class ButtonManager : MonoBehaviour
     {
         obj.GetComponent<FadeVFX>().panelState = FadeVFX.PanelState.FadeOut;
     }
+
+    public void EnableMusic(bool flag)
+    {
+        AudioManager.instance.SetMute(flag);
+        UpdateMuteToggleButton();
+    }
+
+    private void UpdateMuteToggleButton()
+    {
+        mute.gameObject.GetComponent<Button>().interactable = !(AudioManager.instance.isMuted); // not interactable when umuted
+        unmute.gameObject.GetComponent<Button>().interactable = AudioManager.instance.isMuted; // interactable when muted
+    }
+
+
 }
