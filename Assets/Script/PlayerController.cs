@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 moveInput;
 
+    public bool[] _inputs;
+
     //Hand
     private GameObject defaultHand;
     private GameObject rightHand;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _inputs = new bool[4];
         player = gameObject.GetComponent<Player>();
         defaultHand = player.transform.GetChild(3).gameObject;
         rightHand = player.transform.GetChild(4).gameObject;
@@ -79,26 +82,64 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            _inputs[0] = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            _inputs[1] = false;
+
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            _inputs[2] = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            _inputs[3] = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             ResetBool();
             animator.SetBool("back", true);
+            _inputs[0] = true;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             ResetBool();
             animator.SetBool("left", true);
+            _inputs[1] = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             ResetBool();
             animator.SetBool("right", true);
+            _inputs[2] = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             ResetBool();
             animator.SetBool("front", true);
+            _inputs[3] = true;
+
         }
+
+
+        for (int i = 0; i< _inputs.Length; i++)
+        {
+            if (_inputs[i])
+            {
+                animator.SetBool("isWalking", true);
+                return;
+            }
+        }
+
+        animator.SetBool("isWalking", false);
+
     }
 
     private void Move()
