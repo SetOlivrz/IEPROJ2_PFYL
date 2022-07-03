@@ -88,6 +88,11 @@ public class Player : MonoBehaviour
             selectedHotbarIndex -= 6;
     }
 
+    public void SetHotbarIndex(int index)
+    {
+        selectedHotbarIndex = index;
+    }
+
     public int GetSelectedHotbarIndex()
     {
         return selectedHotbarIndex;

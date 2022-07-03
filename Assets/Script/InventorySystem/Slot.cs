@@ -215,6 +215,11 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         for(int i = 0; i < hotbar.Length; i++)
         {
             hotbar[i].GetComponent<Slot>().ToggleSelector(false);
+
+            if(hotbar[i] == gameObject)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetHotbarIndex(i);
+            }
         }
     }
 }
