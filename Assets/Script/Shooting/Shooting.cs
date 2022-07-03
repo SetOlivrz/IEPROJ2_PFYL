@@ -24,6 +24,9 @@ public class Shooting : MonoBehaviour
     private GameObject rightHand;
     private GameObject leftHand;
 
+    //Current tool
+    private ItemStack currentHeldItem;
+
     private void Start()
     {
         reloadImage.fillAmount = 0;
@@ -36,7 +39,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
+         currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
 
         //Equipping weapon
         if (currentHeldItem.GetItem() != null)
@@ -59,20 +62,7 @@ public class Shooting : MonoBehaviour
             {
                 //ChangeEquippedSprite();
                 ChangeSlot();
-                if (bulletCount > 0)
-                {   
-                    Shoot();
-                }
-            }
-            // Android Touch
-            else
-            {
-                if (Input.touchCount == 0) return;
-
-                if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                {
-                    Shoot();
-                }
+                ShootRaycast();
             }
         }
 
@@ -96,8 +86,15 @@ public class Shooting : MonoBehaviour
 
         bulletCountText.GetComponent<Text>().text = bulletCount.ToString();
     }
-    void Shoot()
+    public void ShootRaycast()
     {
+        if (currentHeldItem.GetItem() != null)
+            if (currentHeldItem.GetItem().ItemName != "Gun")
+                return;
+
+        if (bulletCount <= 0)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -110,7 +107,7 @@ public class Shooting : MonoBehaviour
             Animator animator = this.GetComponent<Animator>();
             //Debug.Log($"Hit Point: {hit.point} & Transform: {transform.position}");
 
-            if (hit.point.z > transform.position.z)
+            /*if (hit.point.z > transform.position.z)
             {
                 animator.SetBool("back", true);
             }
@@ -125,8 +122,24 @@ public class Shooting : MonoBehaviour
             else if (hit.point.x < transform.position.x)
             {
                 animator.SetBool("left", true);
-            }
+            }*/
         }
+    }
+
+    public void ShootInDirection(Vector2 direction)
+    {
+        if (currentHeldItem.GetItem() != null)
+            if (currentHeldItem.GetItem().ItemName != "Gun")
+                return;
+
+        if (bulletCount <= 0)
+            return;
+
+        GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        //bulletSphere.transform.LookAt(new Vector3(direction.x, 0.5f, direction.y));
+        Vector3 dir3d = new Vector3(-direction.x, 0.5f, -direction.y);
+        bulletSphere.transform.rotation = Quaternion.LookRotation(dir3d);
+        bulletCount -= 1;
     }
 
     void ChangeSlot()
