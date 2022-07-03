@@ -394,6 +394,8 @@ public class ButtonManager : MonoBehaviour
         //{
         //    Unmute();
         //}
+        UpdateMuteToggleButton();
+
     }
 
 
@@ -434,29 +436,6 @@ public class ButtonManager : MonoBehaviour
         UpdateMuteToggleButton();
     }
 
-    //public void Mute()
-    //{
-    //    mute.gameObject.GetComponent<Button>().interactable = false;
-    //    unmute.gameObject.GetComponent<Button>().interactable = true;
-    //}
-
-    //public void Unmute()
-    //{
-    //    mute.gameObject.GetComponent<Button>().interactable = true;
-    //    unmute.gameObject.GetComponent<Button>().interactable = false;
-    //}
-
-    //public void MuteButton()
-    //{
-    //    if (AudioManager.instance.isMuted)
-    //    {
-    //        AudioManager.instance.OnMute(false);
-    //    }
-    //    else
-    //    {
-    //        AudioManager.instance.OnMute(true);
-    //    }
-    //}
     public void AccessInventory()
     {
         Debug.Log("Open Inventory");
@@ -518,7 +497,7 @@ public class ButtonManager : MonoBehaviour
 
     private void UpdateMuteToggleButton()
     {
-        mute.gameObject.GetComponent<Button>().interactable = !(AudioManager.instance.isMuted); // not interactable when umuted
+        mute.gameObject.GetComponent<Button>().interactable = !(AudioManager.instance.isMuted); // not interactable when unmuted
         unmute.gameObject.GetComponent<Button>().interactable = AudioManager.instance.isMuted; // interactable when muted
     }
 
