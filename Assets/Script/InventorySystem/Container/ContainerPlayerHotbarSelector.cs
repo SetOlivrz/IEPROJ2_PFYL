@@ -7,6 +7,7 @@ public class ContainerPlayerHotbarSelector : MonoBehaviour
     private Player player;
     private GameObject container;
     [SerializeField]private List<Slot> items;
+    [SerializeField] private bool isMobile;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class ContainerPlayerHotbarSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player != null && container != null)
+        if(player != null && container != null && !isMobile)
         {
             int selectedIndex = player.GetSelectedHotbarIndex();
             if (items.Count == 0) return;

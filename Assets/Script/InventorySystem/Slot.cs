@@ -12,18 +12,24 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     private ItemStack myStack;
     private Container attachedContainer;
     private InventoryManager inventoryManager;
-    private GameObject selector;
-    private GameObject[] hotbar;
+    [SerializeField] private GameObject selector;
+    [SerializeField] private GameObject[] hotbar;
+    private GameObject button;
 
     public void Start()
     {
-        selector = gameObject.transform.GetChild(2).gameObject;
         hotbar = GameObject.FindGameObjectsWithTag("Hotbar");
+
+        if(gameObject.tag == "Hotbar")
+        {
+            button = transform.GetChild(3).gameObject;
+            button.SetActive(true);
+        }
     }
 
     public void Update()
     {
-        if(Input.touchCount == 1)
+        /*if(Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -36,7 +42,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
 
                 ToggleSelector(true);
             }
-        }
+        }*/
     }
 
     public void SetSlot(Inventory attachedInventory, int slotID, Container attachedContainer)
@@ -201,5 +207,14 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void ToggleSelector(bool active)
     {
         selector.SetActive(active);
+    }
+
+    public void Select()
+    {
+        Debug.Log("Test");
+        for(int i = 0; i < hotbar.Length; i++)
+        {
+            hotbar[i].GetComponent<Slot>().ToggleSelector(false);
+        }
     }
 }
