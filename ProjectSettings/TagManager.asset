@@ -14,6 +14,7 @@ TagManager:
   - PointLight
   - Assets
   - GameManager
+  - Hotbar
   layers:
   - Default
   - TransparentFX

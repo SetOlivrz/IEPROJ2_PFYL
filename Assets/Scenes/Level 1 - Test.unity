@@ -17937,7 +17937,7 @@ PrefabInstance:
     - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: containers.Array.data[1].containerPrefab
       value: 
-      objectReference: {fileID: 425698032277400108, guid: 22bf7acd235615648be6c39593b76b1a, type: 3}
+      objectReference: {fileID: 425698032277400108, guid: ee889116769cdc44eb11bf409e2824bc, type: 3}
     - target: {fileID: 6629390201071090991, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: m_Enabled
       value: 0
