@@ -26217,7 +26217,7 @@ MonoBehaviour:
   - {fileID: 852378224}
   - {fileID: 1073511639}
   - {fileID: 524479689}
-  StageClearUI: {fileID: 0}
+  StageClearUI: {fileID: 4220630366444980363}
 --- !u!4 &1639210515
 Transform:
   m_ObjectHideFlags: 0

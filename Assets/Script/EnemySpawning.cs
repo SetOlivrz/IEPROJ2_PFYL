@@ -243,9 +243,8 @@ public class EnemySpawning : MonoBehaviour
         //Kill all
         for (int i = 0; i < enemyList.Count; i++)
         {
-            enemyList[i].SetActive(false);
-            //Destroy(enemyList[i]);
-            enemyList[i].GetComponent<EnemyBehavior>().OnKill();
+            if(enemyList[i] != null)
+                enemyList[i].GetComponent<EnemyBehavior>().OnKill();
         }
         enemyList.Clear();
 

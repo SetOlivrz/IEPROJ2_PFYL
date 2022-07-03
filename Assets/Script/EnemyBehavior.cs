@@ -176,16 +176,16 @@ public class EnemyBehavior : MonoBehaviour
             this.ticks += Time.deltaTime;
             if (ticks > ATTACK_INTERVAL)
             {
-                ticks = 0.0f;
-                //if(playerHit != null)
-                //    AudioManager.instance.PlaySound(playerHit);
-                playerData.TakeDamage(damage);
-
                 //Play VFX
                 if (attackVFX)
                 {
                     Destroy(Instantiate(attackVFX, collider.transform.position, Quaternion.LookRotation(collider.transform.position - transform.position)), 2.0f);
                 }
+                ticks = 0.0f;
+                //if(playerHit != null)
+                //    AudioManager.instance.PlaySound(playerHit);
+                playerData.TakeDamage(damage);
+                
 
                 Debug.Log("Attack!");
             }
