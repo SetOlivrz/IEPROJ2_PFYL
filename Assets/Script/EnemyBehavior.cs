@@ -51,6 +51,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] GameObject spawnVFX;
+    [SerializeField] GameObject attackVFX;
     [SerializeField] GameObject deathVFX;
 
     // Start is called before the first frame update
@@ -179,7 +180,13 @@ public class EnemyBehavior : MonoBehaviour
                 //if(playerHit != null)
                 //    AudioManager.instance.PlaySound(playerHit);
                 playerData.TakeDamage(damage);
-                
+
+                //Play VFX
+                if (attackVFX)
+                {
+                    Destroy(Instantiate(attackVFX, collider.transform.position, Quaternion.LookRotation(collider.transform.position - transform.position)), 2.0f);
+                }
+
                 Debug.Log("Attack!");
             }
         }
