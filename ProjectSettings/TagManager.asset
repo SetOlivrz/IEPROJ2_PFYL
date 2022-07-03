@@ -14,15 +14,16 @@ TagManager:
   - PointLight
   - Assets
   - GameManager
+  - Hotbar
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Projectile
+  - Enemy
   - 
   - 
   - 

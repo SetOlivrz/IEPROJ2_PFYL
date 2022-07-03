@@ -172,7 +172,7 @@ public class EnemySpawning : MonoBehaviour
             Debug.Log("current wave = " + (currentWave+1) + " waveMaxCount" + waveMaxCount);
 
             //Add bosses + weaker boss + condition
-            if ((currentWave + 1) % difficulty == 0 && TimeBehavior.day == 5) SpawnEnemy(bossGolemCopy);
+            if ((currentWave + 1) % difficulty == 0 && TimeBehavior.day == 1) SpawnEnemy(bossGolemCopy);
 
             if (currentWave > difficulty && TimeBehavior.day == 5)
             {
@@ -243,9 +243,8 @@ public class EnemySpawning : MonoBehaviour
         //Kill all
         for (int i = 0; i < enemyList.Count; i++)
         {
-            enemyList[i].SetActive(false);
-            //Destroy(enemyList[i]);
-            enemyList[i].GetComponent<EnemyBehavior>().OnKill();
+            if(enemyList[i] != null)
+                enemyList[i].GetComponent<EnemyBehavior>().OnKill();
         }
         enemyList.Clear();
 

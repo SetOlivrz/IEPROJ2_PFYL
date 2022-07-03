@@ -16,17 +16,22 @@ public class Container
         OpenContainer();
     }
 
-    public void AddSlotToContainer(Inventory inventory, int slotID, float x, float y, int slotSize)
+    public void AddSlotToContainer(Inventory inventory, int slotID, int containerIndex)
     {
-        GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab);
+        GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab, spawnedContainerPrefab.transform.GetChild(containerIndex));
         Slot slot = spawnedSlot.GetComponent<Slot>();
-        RectTransform slotRT = slot.GetComponent<RectTransform>();
         slot.SetSlot(inventory, slotID, this);
-        spawnedSlot.transform.SetParent(spawnedContainerPrefab.transform);
-        spawnedSlot.transform.SetAsFirstSibling();
-        slotRT.anchoredPosition = new Vector2(x, y);
-        slotRT.sizeDelta = Vector2.one * slotSize;
-        slotRT.localScale = Vector3.one;
+        //spawnedSlot.transform.SetAsFirstSibling();
+        slots.Add(slot);
+    }
+
+    public void AddHotbarSlotToContainer(Inventory inventory, int slotID, int containerIndex)
+    {
+        GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab, spawnedContainerPrefab.transform.GetChild(containerIndex));
+        spawnedSlot.tag = "Hotbar";
+        Slot slot = spawnedSlot.GetComponent<Slot>();
+        slot.SetSlot(inventory, slotID, this);
+        //spawnedSlot.transform.SetAsFirstSibling();
         slots.Add(slot);
     }
 

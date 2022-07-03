@@ -18,18 +18,30 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 moveInput;
 
+    public bool[] _inputs;
+
     //Hand
     private GameObject defaultHand;
     private GameObject rightHand;
     private GameObject leftHand;
 
+    // Mobile controls
+    [SerializeField] private bool useMobileControls = false;
+    [SerializeField] private OnScreenJoystick joystick = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        _inputs = new bool[4];
         player = gameObject.GetComponent<Player>();
         defaultHand = player.transform.GetChild(3).gameObject;
         rightHand = player.transform.GetChild(4).gameObject;
         leftHand = player.transform.GetChild(5).gameObject;
+
+        if (useMobileControls && !joystick)
+        {
+            joystick = FindObjectOfType<OnScreenJoystick>();
+        }
     }
 
     // Update is called once per frame
@@ -45,33 +57,104 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMoveAnimation()
     {
+        // Mobile only
+        if (useMobileControls && moveInput.sqrMagnitude > 0.0f)
+        {
+            ResetBool();
+
+            Vector2 normalInput = moveInput.normalized;
+            float horizontalDot = Vector2.Dot(normalInput, Vector2.right);
+            float verticalDot = Vector2.Dot(normalInput, Vector2.up);
+
+            if (Mathf.Abs(horizontalDot) > 0.866f)
+            {
+                bool facingRight = horizontalDot > 0.0f;
+                animator.SetBool("left", !facingRight);
+                animator.SetBool("right", facingRight);
+            }
+            else
+            {
+                bool facingFront = verticalDot < 0.0f;
+                animator.SetBool("front", facingFront);
+                animator.SetBool("back", !facingFront);
+            }
+
+            return;
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            _inputs[0] = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            _inputs[1] = false;
+
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            _inputs[2] = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            _inputs[3] = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             ResetBool();
             animator.SetBool("back", true);
+            _inputs[0] = true;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             ResetBool();
             animator.SetBool("left", true);
+            _inputs[1] = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             ResetBool();
             animator.SetBool("right", true);
+            _inputs[2] = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             ResetBool();
             animator.SetBool("front", true);
+            _inputs[3] = true;
+
         }
+
+
+        for (int i = 0; i< _inputs.Length; i++)
+        {
+            if (_inputs[i])
+            {
+                animator.SetBool("isWalking", true);
+                return;
+            }
+        }
+
+        animator.SetBool("isWalking", false);
+
     }
 
     private void Move()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize();
+        if (useMobileControls)
+        {
+            moveInput = joystick.axis;
+        }
+        else
+        {
+            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            //moveInput.x = Input.GetAxisRaw("Horizontal");
+            //moveInput.y = Input.GetAxisRaw("Vertical");
+            //moveInput.Normalize();
+        }
 
         RB.velocity = new Vector3(moveInput.x * moveSpeed, RB.velocity.y, moveInput.y * moveSpeed);
     }
@@ -90,10 +173,6 @@ public class PlayerController : MonoBehaviour
         if (!isShooting && player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool gun && gun.GetToolType() == Tool.ToolTypes.Gun)
         {
             isShooting = true;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            ShootHandler();
         }
 
         if (isShooting && !(player.myInventory.GetInventoryStacks()[player.GetSelectedHotbarIndex()].GetItem() is Tool notGun && notGun.GetToolType() == Tool.ToolTypes.Gun))
@@ -127,40 +206,6 @@ public class PlayerController : MonoBehaviour
         {
             isUpwards = false;
             isRight = true;
-        }
-    }
-
-    //Handles the shooting for the player
-    void ShootHandler()
-    {
-        if (isShooting)
-        {
-            animator.SetTrigger("Shoot");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                if (hit.point.z > transform.position.z)
-                {
-                    ResetBool();
-                    animator.SetBool("back", true);
-                }
-                if (hit.point.z < transform.position.z)
-                {
-                    ResetBool();
-                    animator.SetBool("front", true);
-                }
-                if (hit.point.x > transform.position.x)
-                {
-                    ResetBool();
-                    animator.SetBool("right", true);
-                }
-                else if (hit.point.x < transform.position.x)
-                {
-                    ResetBool();
-                    animator.SetBool("left", true);
-                }
-            }
         }
     }
 

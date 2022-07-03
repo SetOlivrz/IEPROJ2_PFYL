@@ -28,9 +28,9 @@ public class Shooting : MonoBehaviour
     {
         reloadImage.fillAmount = 0;
         playerClass = gameObject.GetComponent<Player>();
-        defaultHand = player.transform.GetChild(6).gameObject;
+/*        defaultHand = player.transform.GetChild(6).gameObject;
         rightHand = player.transform.GetChild(7).gameObject;
-        leftHand = player.transform.GetChild(8).gameObject;
+        leftHand = player.transform.GetChild(8).gameObject;*/
     }
 
     // Update is called once per frame
@@ -54,18 +54,34 @@ public class Shooting : MonoBehaviour
         
         if (player.isShooting)
         {
+            // Mouse
             if (Input.GetMouseButtonDown(0))
             {
                 //ChangeEquippedSprite();
                 ChangeSlot();
                 if (bulletCount > 0)
+                {   
+                    Shoot();
+                }
+            }
+            // Android Touch
+            else
+            {
+                if (Input.touchCount == 0) return;
+
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     Shoot();
                 }
             }
         }
 
-        if(bulletCount < 10)
+
+    }
+    /*TEMP FIX RELOADING NOT WORKING IN UPDATE*/
+    private void FixedUpdate()
+    {
+        if (bulletCount < 10)
         {
             ticks += Time.deltaTime;
             //reloading ui
@@ -82,36 +98,40 @@ public class Shooting : MonoBehaviour
     }
     void Shoot()
     {
-        bulletCount -= 1;
-
-        GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
-            Bullet bullet = bulletSphere.GetComponent<Bullet>();
-            Vector3 playerPos = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
-            bulletSphere.transform.LookAt(playerPos);
+            GameObject bulletSphere = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bulletSphere.transform.LookAt(new Vector3(hit.point.x, 0.5f, hit.point.z));
+            bulletCount -= 1;
+            
+            Animator animator = this.GetComponent<Animator>();
+            Debug.Log($"Hit Point: {hit.point} & Transform: {transform.position}");
+
+            if (hit.point.z > transform.position.z)
+            {
+                animator.SetBool("back", true);
+            }
+            if (hit.point.z < transform.position.z)
+            {
+                animator.SetBool("front", true);
+            }
+            if (hit.point.x > transform.position.x)
+            {
+                animator.SetBool("right", true);
+            }
+            else if (hit.point.x < transform.position.x)
+            {
+                animator.SetBool("left", true);
+            }
         }
-
     }
-
-    //void ChangeEquippedSprite()
-    //{
-    //    ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
-
-    //    if (currentHeldItem.GetItem() != null)
-    //    {
-    //        defaultHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //        rightHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //        leftHand.GetComponent<SpriteRenderer>().sprite = currentHeldItem.item.ItemIcon;
-    //    }
-    //}
 
     void ChangeSlot()
     {
-        if (player.isRight)
+        /*if (player.isRight)
         {
             defaultHand.SetActive(false);
             rightHand.SetActive(true);
@@ -130,7 +150,7 @@ public class Shooting : MonoBehaviour
             defaultHand.SetActive(true);
             rightHand.SetActive(false);
             leftHand.SetActive(false);
-        }
+        }*/
 
         StartCoroutine("DisableItem");
     }
@@ -144,8 +164,8 @@ public class Shooting : MonoBehaviour
     void EmptyHand()
     {
         ItemStack currentHeldItem = playerClass.myInventory.GetInventoryStacks()[playerClass.GetSelectedHotbarIndex()];
-        defaultHand.SetActive(false);
+        /*defaultHand.SetActive(false);
         rightHand.SetActive(false);
-        leftHand.SetActive(false);
+        leftHand.SetActive(false);*/
     }
 }

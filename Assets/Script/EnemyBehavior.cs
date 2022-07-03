@@ -49,6 +49,11 @@ public class EnemyBehavior : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioClip playerHit;
 
+    [Header("VFX")]
+    [SerializeField] GameObject spawnVFX;
+    [SerializeField] GameObject attackVFX;
+    [SerializeField] GameObject deathVFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +85,12 @@ public class EnemyBehavior : MonoBehaviour
             this.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
 
+        // Create and destroy particles
+        if (spawnVFX)
+        {
+            Destroy(Instantiate(spawnVFX, transform.position, transform.rotation), 3.0f);
+            Debug.Log("VFX");
+        }
     }
 
     // Update is called once per frame
@@ -165,11 +176,17 @@ public class EnemyBehavior : MonoBehaviour
             this.ticks += Time.deltaTime;
             if (ticks > ATTACK_INTERVAL)
             {
+                //Play VFX
+                if (attackVFX)
+                {
+                    Destroy(Instantiate(attackVFX, collider.transform.position, Quaternion.LookRotation(collider.transform.position - transform.position)), 2.0f);
+                }
                 ticks = 0.0f;
-                if(playerHit != null)
-                    AudioManager.instance.PlaySound(playerHit);
+                //if(playerHit != null)
+                //    AudioManager.instance.PlaySound(playerHit);
                 playerData.TakeDamage(damage);
                 
+
                 Debug.Log("Attack!");
             }
         }
@@ -193,6 +210,13 @@ public class EnemyBehavior : MonoBehaviour
 
     public void OnKill()
     {
+        // Create and destroy particles
+        if (deathVFX)
+        {
+            Destroy(Instantiate(deathVFX, transform.position, transform.rotation), 1.0f);
+            Debug.Log("VFX");
+        }
+
         //dropItem = true;
         playerData.addGold(10);
         EnemySpawning.totalEnemyKilledInLevel++;
@@ -206,5 +230,6 @@ public class EnemyBehavior : MonoBehaviour
         enemyLocation.y = -20;
         this.transform.position = enemyLocation;
         Destroy(this.gameObject);
+        
     }
 }

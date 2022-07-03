@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
     public Inventory myInventory = new Inventory(24);
     public bool isOpen { get; private set; }
     private int selectedHotbarIndex = 0;
+    [SerializeField] GameObject toolTip;
+
     private void Start()
     {
         foreach(Item item in itemsToAdd)
@@ -33,6 +36,8 @@ public class Player : MonoBehaviour
             {
                 InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, myInventory));
                 isOpen = false;
+                toolTip.GetComponent<Image>().enabled = false;
+                toolTip.transform.GetChild(0).GetComponent<Text>().text = "";
             }
         }
 
@@ -81,6 +86,11 @@ public class Player : MonoBehaviour
 
         while (selectedHotbarIndex >= 6)
             selectedHotbarIndex -= 6;
+    }
+
+    public void SetHotbarIndex(int index)
+    {
+        selectedHotbarIndex = index;
     }
 
     public int GetSelectedHotbarIndex()

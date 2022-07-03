@@ -23,14 +23,9 @@ public class TimeBehavior : MonoBehaviour
 
     private const int maxDay = 8; // one full week cycle
 
-    // lights
-    private float lighTicks = 0.0f;
-    private float maxLightAngle = 30.0f;
-
-    private float TIME_MULTIPLIER = 2.0f; // 3f for debugging
+    private float TIME_MULTIPLIER = 2.0f; // 3f for debugging // 2.0f normal
 
     //Light
-    [SerializeField] GameObject sun;
     public static bool isDaytime = true;
 
     [SerializeField]
@@ -105,7 +100,7 @@ public class TimeBehavior : MonoBehaviour
             }
             else
             {
-                Debug.Log("just do normal update");
+                //Debug.Log("just do normal update");
                 UpdateTicks();
                 //transition for audio
                 AudioTransitionChecker();
@@ -135,8 +130,6 @@ public class TimeBehavior : MonoBehaviour
         if (hour == maxHours && isDaytime == true) // set to night when the hours needed is met
         {
             Debug.Log("Good Evening");
-            Vector3 nightLightRotation = new Vector3(-10, -30, 0);
-            sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = false;
             changer.ChangeAssets(false);
             //AssetChanger.instance.ChangeAssets(false);
@@ -147,9 +140,6 @@ public class TimeBehavior : MonoBehaviour
             changer.ChangeAssets(true);
             //AssetChanger.instance.ChangeAssets(true);
             AudioManager.instance.PlayBGM(daytimeShift, dayBGM);
-            Debug.Log("Good Morning");
-            Vector3 nightLightRotation = new Vector3(50, -30, 0);
-            sun.transform.localEulerAngles = nightLightRotation;
             isDaytime = true;
             nightLight.SetActive(false);
         }
@@ -226,7 +216,7 @@ public class TimeBehavior : MonoBehaviour
 
             clock.transform.rotation = Quaternion.Slerp(clock.transform.rotation, target, Time.deltaTime * 5.0f);
 
-            Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
+           // Debug.Log("AM: " + accumMins + "/" + (maxMins * maxHours));
         }
         
         

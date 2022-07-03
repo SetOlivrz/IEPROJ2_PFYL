@@ -5,21 +5,36 @@ using UnityEngine;
 public class ContainerPlayerHotbarSelector : MonoBehaviour
 {
     private Player player;
-    private RectTransform myTransform;
+    private GameObject container;
+    [SerializeField]private List<Slot> items;
+    [SerializeField] private bool isMobile;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
-        myTransform = GetComponent<RectTransform>();
+
+        container = transform.parent.GetChild(0).gameObject;
+
+        foreach (Transform child in container.transform)
+        {
+            items.Add(child.GetComponent<Slot>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player != null)
+        if(player != null && container != null && !isMobile)
         {
-            Vector2 pos = new Vector2((player.GetSelectedHotbarIndex() * 55) - 137, 0);
-            myTransform.anchoredPosition = pos;
+            int selectedIndex = player.GetSelectedHotbarIndex();
+            if (items.Count == 0) return;
+
+            for(int i = 0; i < items.Count; i++)
+            {
+                items[i].ToggleSelector(false);
+            }
+
+            items[selectedIndex].ToggleSelector(true);
         }
     }
 }
