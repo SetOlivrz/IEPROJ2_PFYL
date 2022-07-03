@@ -108,7 +108,7 @@ public class Shooting : MonoBehaviour
             bulletCount -= 1;
             
             Animator animator = this.GetComponent<Animator>();
-            Debug.Log($"Hit Point: {hit.point} & Transform: {transform.position}");
+            //Debug.Log($"Hit Point: {hit.point} & Transform: {transform.position}");
 
             if (hit.point.z > transform.position.z)
             {
