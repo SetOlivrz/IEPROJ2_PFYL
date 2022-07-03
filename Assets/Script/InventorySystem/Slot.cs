@@ -214,6 +214,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         Debug.Log("Test");
         for(int i = 0; i < hotbar.Length; i++)
         {
+            if(hotbar[i] == null) continue;
             hotbar[i].GetComponent<Slot>().ToggleSelector(false);
 
             if(hotbar[i] == gameObject)

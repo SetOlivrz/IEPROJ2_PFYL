@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     private float ticks = 0.0f;
     private Vector3 firepoint;
-    private float speed = 20f;
+    private float speed = 30f;
     private void FixedUpdate()
     {
         ticks += Time.deltaTime;
