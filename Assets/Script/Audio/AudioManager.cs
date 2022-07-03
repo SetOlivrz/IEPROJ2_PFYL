@@ -105,6 +105,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void SetMute(bool flag)
+    {
+        this.mainAudio.mute = flag;
+        isMuted = flag;
+    }
+
     public void OnMain()
     {
         PlayMainBGM(mainmenu);
