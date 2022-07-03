@@ -14186,7 +14186,7 @@ PrefabInstance:
     - target: {fileID: 6629390201071090990, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: containers.Array.data[1].containerPrefab
       value: 
-      objectReference: {fileID: 425698032277400108, guid: ee889116769cdc44eb11bf409e2824bc, type: 3}
+      objectReference: {fileID: 425698032277400108, guid: 22bf7acd235615648be6c39593b76b1a, type: 3}
     - target: {fileID: 6629390201071090991, guid: adc6124bf12a3b546a6f03bfba29f7f8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -32550,7 +32550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160412867932426009, guid: 51dcb6f773822af44854ccc1ce78a82b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160412867932426011, guid: 51dcb6f773822af44854ccc1ce78a82b, type: 3}
       propertyPath: m_RootOrder
@@ -34420,7 +34420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765825738166825761, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8070788976271096166, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_IsActive
@@ -34710,6 +34710,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 620765465}
     - target: {fileID: 5582039781294458237, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
+      propertyPath: mobileMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582039781294458237, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: useMobileControls
       value: 1
       objectReference: {fileID: 0}
@@ -34739,7 +34743,7 @@ PrefabInstance:
       objectReference: {fileID: 1604238307}
     - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: mobileMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5582039781294458247, guid: 5467e54fa1084174d8314eafa2b04d42, type: 3}
       propertyPath: itemsToAdd.Array.size

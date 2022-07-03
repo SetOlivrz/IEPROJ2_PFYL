@@ -92,10 +92,10 @@ public class PlayerPlanting : MonoBehaviour
                     switch (tool.GetToolType())
                     {
                         case Tool.ToolTypes.Hoe:
-                            //UseHoe();
+                            UseHoe();
                             break;
                         case Tool.ToolTypes.WateringCan:
-                            //UseWater();
+                            UseWater();
                             break;
                     }
                 }
@@ -155,7 +155,7 @@ public class PlayerPlanting : MonoBehaviour
                 }
 
 
-                //UseSeed(currentHeldItem);
+                UseSeed(currentHeldItem);
             }
         }
     }
