@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private GameObject leftHand;
 
     // Mobile controls
-    [SerializeField] private bool useMobileControls = false;
+    [SerializeField] private bool mobileMode = false;
     [SerializeField] private OnScreenJoystick joystick = null;
 
     // Start is called before the first frame update
@@ -37,8 +37,9 @@ public class PlayerController : MonoBehaviour
         defaultHand = player.transform.GetChild(3).gameObject;
         rightHand = player.transform.GetChild(4).gameObject;
         leftHand = player.transform.GetChild(5).gameObject;
+        mobileMode = player.MobileMode;
 
-        if (useMobileControls && !joystick)
+        if (mobileMode && !joystick)
         {
             joystick = FindObjectOfType<OnScreenJoystick>();
         }
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateMoveAnimation()
     {
         // Mobile only
-        if (useMobileControls && moveInput.sqrMagnitude > 0.0f)
+        if (mobileMode && moveInput.sqrMagnitude > 0.0f)
         {
             ResetBool();
 
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (useMobileControls)
+        if (mobileMode)
         {
             moveInput = joystick.axis;
         }

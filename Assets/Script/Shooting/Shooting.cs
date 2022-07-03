@@ -26,11 +26,15 @@ public class Shooting : MonoBehaviour
 
     //Current tool
     private ItemStack currentHeldItem;
+    
+    //Mobile mode
+    private bool mobileMode = false;
 
     private void Start()
     {
         reloadImage.fillAmount = 0;
         playerClass = gameObject.GetComponent<Player>();
+        mobileMode = playerClass.MobileMode;
 /*        defaultHand = player.transform.GetChild(6).gameObject;
         rightHand = player.transform.GetChild(7).gameObject;
         leftHand = player.transform.GetChild(8).gameObject;*/
@@ -55,6 +59,8 @@ public class Shooting : MonoBehaviour
             }
         }
         
+        if (mobileMode) return;
+
         if (player.isShooting)
         {
             // Mouse

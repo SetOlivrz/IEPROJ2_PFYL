@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     public Inventory myInventory = new Inventory(24);
     public bool isOpen { get; private set; }
     private int selectedHotbarIndex = 0;
-    [SerializeField] GameObject toolTip;
+    [SerializeField] private GameObject toolTip;
+    [SerializeField] private bool mobileMode = false;
+    public bool MobileMode { get { return mobileMode; } }
 
     private void Start()
     {

@@ -9,20 +9,19 @@ public class PlayerPlanting : MonoBehaviour
     [SerializeField] TutorialActionManager manager;
     private Soil soil;
     bool check = false;
+    
+    private bool mobileMode;
 
     void Start()
     {
         player = gameObject.GetComponent<Player>();
 
         if (manager == null)
-        {
             check = false;
-        }
         else
-        {
             check = true;
-        }
-
+        
+        mobileMode = player.MobileMode;
     }
 
     void Update()
@@ -41,6 +40,7 @@ public class PlayerPlanting : MonoBehaviour
             }
         }
         
+        if (mobileMode) return;
 
         if (Input.GetMouseButton(1))
         {
@@ -92,10 +92,10 @@ public class PlayerPlanting : MonoBehaviour
                     switch (tool.GetToolType())
                     {
                         case Tool.ToolTypes.Hoe:
-                            UseHoe();
+                            //UseHoe();
                             break;
                         case Tool.ToolTypes.WateringCan:
-                            UseWater();
+                            //UseWater();
                             break;
                     }
                 }
@@ -155,7 +155,7 @@ public class PlayerPlanting : MonoBehaviour
                 }
 
 
-                UseSeed(currentHeldItem);
+                //UseSeed(currentHeldItem);
             }
         }
     }
@@ -186,6 +186,8 @@ public class PlayerPlanting : MonoBehaviour
 
     public void UseHoe()
     {
+        if (soil == null) return;
+
         if (!soil.GetIsTilled())
         {
             // tutorial
@@ -206,6 +208,8 @@ public class PlayerPlanting : MonoBehaviour
 
     public void UseWater()
     {
+        if (soil == null) return;
+
         if (soil.GetHasSeed() && !soil.isGrowing)
             if (soil.GetHasSeed())
             {
@@ -221,6 +225,8 @@ public class PlayerPlanting : MonoBehaviour
 
     public void UseSeed(ItemStack currentHeldItem)
     {
+        if (soil == null) return;
+
         if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
         {
             //get seed from inventory and remove 1 instance

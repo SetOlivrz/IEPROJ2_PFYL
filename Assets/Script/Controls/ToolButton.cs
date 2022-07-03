@@ -8,15 +8,19 @@ public class ToolButton : MonoBehaviour
     private Button button;
     private Vector2 buttonMidPoint;
 
+    // Reference to Player Scripts
     private Player playerClass;
-
-    //Current tool
+    private PlayerPlanting planting;
+    
+    // Current tool
     private ItemStack currentHeldItem;
 
     // Start is called before the first frame update
     void Start()
     {
         playerClass = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        planting = playerClass.GetComponent<PlayerPlanting>();
+
         button = GetComponent<Button>();
         buttonMidPoint = this.transform.position;
         button.onClick.AddListener(() => OnClickAction(Input.mousePosition));
@@ -29,34 +33,60 @@ public class ToolButton : MonoBehaviour
 
         if (currentHeldItem.GetItem() != null)
         {
-            string itemName = currentHeldItem.GetItem().ItemName;
-            // Gun
-            if (itemName == "Gun")
+            // Tool
+            if (currentHeldItem.GetItem() is Tool tool)
             {
-                Vector2 heading = (buttonMidPoint - mousePos);
-                float distance = heading.magnitude;
-                Vector2 direction = heading / distance;
-                Debug.Log(direction);
-
-                Shooting shooting = GameObject.FindGameObjectWithTag("Player").GetComponent<Shooting>();
-                shooting.ShootInDirection(direction);
+                switch(tool.GetToolType())
+                {
+                    case Tool.ToolTypes.Hoe: HoeInput(); break;
+                    case Tool.ToolTypes.WateringCan: WateringCanInput(); break;
+                    case Tool.ToolTypes.Gun: GunInput(mousePos); break;
+                }
             }
-            else if (itemName == "Hoe")
+            // Plant Produce
+            else if (currentHeldItem.GetItem() is PlantProduce plantProduce)
             {
-                Debug.Log("Hoe!");
+                switch(plantProduce.GetProduceType())
+                {
+                    case PlantProduce.ProduceTypes.RoseSword: SwordInput(); break;
+                }
             }
-            else if (itemName == "WateringCan")
+            // Seed
+            else if (currentHeldItem.GetItem() is Seed seed)
             {
-                Debug.Log("Watering!");
-            }
-            else if (itemName == "Rose")
-            {
-                Debug.Log("Rose!");
-            }
-            else if (itemName == "RoseSword")
-            {
-                Debug.Log("Sword!");
+                SeedInput();
             }
         }
+    }
+
+    private void GunInput(Vector2 mousePos)
+    {
+        Vector2 heading = (buttonMidPoint - mousePos);
+        float distance = heading.magnitude;
+        Vector2 direction = heading / distance;
+        Debug.Log(direction);
+
+        Shooting shooting = GameObject.FindGameObjectWithTag("Player").GetComponent<Shooting>();
+        shooting.ShootInDirection(direction);
+    }
+
+    private void HoeInput()
+    {
+        planting.UseHoe();
+    }
+
+    private void WateringCanInput()
+    {
+        planting.UseWater();
+    }
+
+    private void SwordInput()
+    {
+        
+    }
+
+    private void SeedInput()
+    {
+        planting.UseSeed(currentHeldItem);
     }
 }
