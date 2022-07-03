@@ -193,6 +193,7 @@ MonoBehaviour:
   count: 0
   playerHit: {fileID: 0}
   spawnVFX: {fileID: 0}
+  attackVFX: {fileID: 2573766368864417822, guid: 8461b308a65bfd44483a8e2643768378, type: 3}
   deathVFX: {fileID: 0}
 --- !u!65 &5644725950407690740
 BoxCollider:
