@@ -34351,6 +34351,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ButtonSFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7765825738166825761, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8070788976271096166, guid: ced8c2f70cf1ea74792a50d48fa424b1, type: 3}
       propertyPath: m_IsActive
       value: 0
