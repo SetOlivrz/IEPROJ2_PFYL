@@ -54,7 +54,7 @@ public class EnemySpawning : MonoBehaviour
 
     private int[] nMaxEnemyPerWave = { 0,0,0,0,0,0} ;
 
-    [SerializeField] GameObject StageClearUI;
+    //[SerializeField] GameObject StageClearUI;
 
     // Start is called before the first frame update
     void Start()
@@ -96,7 +96,7 @@ public class EnemySpawning : MonoBehaviour
         {
             ResetAll();
             Time.timeScale = 0;
-            StageClearUI.SetActive(true);
+            //StageClearUI.SetActive(true);
         }
 
         //Prepare new wave
