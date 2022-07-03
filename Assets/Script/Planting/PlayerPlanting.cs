@@ -92,36 +92,10 @@ public class PlayerPlanting : MonoBehaviour
                     switch (tool.GetToolType())
                     {
                         case Tool.ToolTypes.Hoe:
-                            if(!soil.GetIsTilled())
-                            {
-                                // tutorial
-                                if (manager != null) // in tutorial
-                                {
-                                    if (manager.currentStep == 15 || manager.currentStep >= 30)
-                                    {
-                                        manager.hasUsedHoe = true;
-                                        soil.Till();
-                                    }
-                                }
-                                else // not in tutorial
-                                {
-                                    soil.Till();
-                                }
-                            }
+                            UseHoe();
                             break;
                         case Tool.ToolTypes.WateringCan:
-                            if(soil.GetHasSeed() && !soil.isGrowing)
-                                if(soil.GetHasSeed())
-                                {
-                                    soil.Water();
-
-                                    // tutorial
-                                    if (manager != null)
-                                    {
-                                        manager.hasWateredPlant = true;
-                                    }
-                                }
-                                   
+                            UseWater();
                             break;
                     }
                 }
@@ -180,29 +154,8 @@ public class PlayerPlanting : MonoBehaviour
                     }
                 }
 
-                if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
-                {
-                    //get seed from inventory and remove 1 instance
-                    currentHeldItem.DecreaseAmount(1);
-                    if(currentHeldItem.GetCount() < 1)
-                    {
-                        currentHeldItem.RemoveItem();
-                    }
 
-                    InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
-
- 
-                    if (check == true)
-                    {
-                        if (manager != null)
-                        {
-                            manager.hasPlantedSeed = true;
-                        }
-                    }
-                    soil.Plant(seed);
-                    // tutorial
-                   
-                }
+                UseSeed(currentHeldItem);
             }
         }
     }
@@ -229,5 +182,67 @@ public class PlayerPlanting : MonoBehaviour
         }
 
         Debug.Log("Out of range!");
+    }
+
+    public void UseHoe()
+    {
+        if (!soil.GetIsTilled())
+        {
+            // tutorial
+            if (manager != null) // in tutorial
+            {
+                if (manager.currentStep == 15 || manager.currentStep >= 30)
+                {
+                    manager.hasUsedHoe = true;
+                    soil.Till();
+                }
+            }
+            else // not in tutorial
+            {
+                soil.Till();
+            }
+        }
+    }
+
+    public void UseWater()
+    {
+        if (soil.GetHasSeed() && !soil.isGrowing)
+            if (soil.GetHasSeed())
+            {
+                soil.Water();
+
+                // tutorial
+                if (manager != null)
+                {
+                    manager.hasWateredPlant = true;
+                }
+            }
+    }
+
+    public void UseSeed(ItemStack currentHeldItem)
+    {
+        if (currentHeldItem.GetItem() is Seed seed && soil.GetIsTilled() && !soil.GetHasSeed())
+        {
+            //get seed from inventory and remove 1 instance
+            currentHeldItem.DecreaseAmount(1);
+            if (currentHeldItem.GetCount() < 1)
+            {
+                currentHeldItem.RemoveItem();
+            }
+
+            InventoryManager.INSTANCE.OpenContainer(new ContainerPlayerHotbar(null, player.myInventory));
+
+
+            if (check == true)
+            {
+                if (manager != null)
+                {
+                    manager.hasPlantedSeed = true;
+                }
+            }
+            soil.Plant(seed);
+            // tutorial
+
+        }
     }
 }
